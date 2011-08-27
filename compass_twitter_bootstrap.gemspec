@@ -6,7 +6,8 @@ Gem::Specification.new do |gem|
   gem.email         = ["vrwaller@gmail.com"]
   gem.description   = %q{Compass/SCSS version of the twitter bootstrap}
   gem.summary       = %q{Compass Twitter Bootstrap}
-  gem.homepage      = ""
+  
+  gem.homepage      = "https://github.com/vwall/compass-twitter-bootstrap"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
