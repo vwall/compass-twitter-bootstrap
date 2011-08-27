@@ -11,14 +11,14 @@
 
 @import "compass";
 // CSS Reset
-@import "twitter_bootstrap/reset";
+@import "compass_twitter_bootstrap/reset";
 
 // Core
-@import "twitter_bootstrap/preboot";
-@import "twitter_bootstrap/scaffolding";
+@import "compass_twitter_bootstrap/preboot";
+@import "compass_twitter_bootstrap/scaffolding";
 
 // Styled patterns and elements
-@import "twitter_bootstrap/type";
-@import "twitter_bootstrap/forms";
-@import "twitter_bootstrap/tables";
-@import "twitter_bootstrap/patterns";
+@import "compass_twitter_bootstrap/type";
+@import "compass_twitter_bootstrap/forms";
+@import "compass_twitter_bootstrap/tables";
+@import "compass_twitter_bootstrap/patterns";
