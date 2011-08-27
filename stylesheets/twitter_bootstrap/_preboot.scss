@@ -1,0 +1,230 @@
+/* Preboot.less
+ * Variables and mixins to pre-ignite any new web development project
+ * ------------------------------------------------------------------ */
+
+
+// VARIABLES
+// ---------
+
+// Links
+$linkColor:         #0069d6;
+$linkColorHover:    darken($linkColor, 10);
+
+// Grays
+$black:             #000;
+$grayDark:          lighten($black, 25%);
+$gray:              lighten($black, 50%);
+$grayLight:         lighten($black, 75%);
+$grayLighter:       lighten($black, 90%);
+$white:             #fff;
+
+// Accent Colors
+$blue:              #049CDB;
+$blueDark:          #0064CD;
+$green:             #46a546;
+$red:               #9d261d;
+$yellow:            #ffc40d;
+$orange:            #f89406;
+$pink:              #c3325f;
+$purple:            #7a43b6;
+
+// Baseline grid
+$basefont:          13px;
+$baseline:          18px;
+
+// Griditude
+$gridColumns:       16;
+$gridColumnWidth:   40px;
+$gridGutterWidth:   20px;
+$extraSpace:        40px;
+$siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+// Color Scheme
+$baseColor:         $blue;                  // Set a base color
+$complement:        spin($baseColor, 180);  // Determine a complementary color
+$split1:            spin($baseColor, 158);  // Split complements
+$split2:            spin($baseColor, -158);
+$triad1:            spin($baseColor, 135);  // Triads colors
+$triad2:            spin($baseColor, -135);
+$tetra1:            spin($baseColor, 90);   // Tetra colors
+$tetra2:            spin($baseColor, -90);
+$analog1:           spin($baseColor, 22);   // Analogs colors
+$analog2:           spin($baseColor, -22);
+
+
+// MIXINS
+// ------
+
+// Clearfix for clearing floats like a boss h5bp.com/q
+@mixin clearfix {
+  zoom: 1;
+  &:before, &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Center-align a block level element
+@mixin center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+// Sizing shortcuts
+@mixin size($height: 5px, $width: 5px) {
+  height: $height;
+  width: $width;
+}
+@mixin square($size: 5px) {
+  @include size($size, $size);
+}
+
+// Input placeholder text
+@mixin placeholder($color: $grayLight) {
+  :-moz-placeholder {
+    color: $color;
+  }
+  ::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+// Font Stacks
+@mixin shorthand($weight: normal, $size: 14px, $lineHeight: 20px) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
+ }
+@mixin sans-serif($weight: normal, $size: 14px, $lineHeight: 20px) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+@mixin serif($weight: normal, $size: 14px, $lineHeight: 20px) {
+    font-family: "Georgia", Times New Roman, Times, serif;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
+ }
+@mixin monospace($weight: normal, $size: 12px, $lineHeight: 20px) {
+    font-family: "Monaco", Courier New, monospace;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
+ }
+
+// Grid System
+@mixin container {
+  width: $siteWidth;
+  margin: 0 auto;
+  @include clearfix();
+}
+@mixin columns($columnSpan: 1) {
+  width: ($gridColumnWidth * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1));
+}
+@mixin offset($columnOffset: 1) {
+  margin-left: ($gridColumnWidth * $columnOffset) + ($gridGutterWidth * ($columnOffset - 1)) + $extraSpace;
+}
+
+// Drop shadows
+//@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+//  @include box-shadow($shadow);
+//}
+
+// Transitions
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+          transition: $transition;
+}
+
+// Background clipping
+//.background-clip($clip) {
+//  @include background-clip($clip);
+//}
+
+// CSS3 Content Columns
+@mixin content-columns($columnCount, $columnGap: 20px) {
+  @include column-count($columnCount);
+  @include column-count($columnGap);
+}
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+#translucent {
+  @mixin background($color: $white, $alpha: 1) {
+    background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  }
+  @mixin border($color: $white, $alpha: 1) {
+    border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+    @include background-clip(padding-box);
+  }
+}
+
+// Gradients
+
+@mixin horizontal ($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
+  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient(left, $startColor, $endColor); // Le standard
+}
+@mixin vertical ($startColor: #555, $endColor: #333) {
+  @include background-image(linear-gradient($startColor, $endColor));
+}
+@mixin directional ($startColor: #555, $endColor: #333, $deg: 45deg) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient($deg, $startColor, $endColor); // IE10
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient($deg, $startColor, $endColor); // The standard
+}
+@mixin vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  @include background-image(linear-gradient($startColor, $midColor $colorStop, $endColor));
+}
+
+// Gradient Bar Colors for buttons and allerts
+@mixin gradientBar($primaryColor, $secondaryColor) {
+  @include vertical($primaryColor, $secondaryColor);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: $white
+  }
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    @include gradientBar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    @include gradientBar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    @include gradientBar(#5bc0de, #339bb9);
+  }
+}
