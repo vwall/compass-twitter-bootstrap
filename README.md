@@ -6,21 +6,23 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
 
 **Install the gem**
 
-  gem install compass_twitter_bootstrap
+    gem install compass_twitter_bootstrap
 
-**Or add it to your Gemfile and bundle install**
+**Add it to your Gemfile**
 
-  gem 'compass_twitter_bootstrap'
+    gem 'compass_twitter_bootstrap'
 
-  bundle install
+**Bundle install**
+
+    bundle install
 
 **Add it to your Compass config.rb**
 
-  require 'compass_twitter_bootstrap'
+    require 'compass_twitter_bootstrap'
 
 **Import it into your SCSS file
 
-  @import "compass_twitter_bootstrap";
+    @import "compass_twitter_bootstrap";
 
 
 ## TWITTER BOOTSTRAP
