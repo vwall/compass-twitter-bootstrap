@@ -178,6 +178,8 @@ $analog2:           spin($baseColor, -22);
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
 }
 @mixin vertical ($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
   @include background-image(linear-gradient($startColor, $endColor));
 }
 @mixin directional ($startColor: #555, $endColor: #333, $deg: 45deg) {
@@ -190,6 +192,8 @@ $analog2:           spin($baseColor, -22);
   background-image: linear-gradient($deg, $startColor, $endColor); // The standard
 }
 @mixin vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: $endColor;
+  background-repeat: no-repeat;
   @include background-image(linear-gradient($startColor, $midColor $colorStop, $endColor));
 }
 

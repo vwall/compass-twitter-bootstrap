@@ -322,7 +322,8 @@ footer {
   }
 
    // Transitions
-  @include transition(.1s linear all);
+  //@include transition(.1s linear all);
+  @include single-transition(all, .1s, linear);
 
   // Active and Disabled states
   &.disabled {
