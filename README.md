@@ -43,7 +43,7 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
     config.sass.load_paths << Compass::Frameworks['compass'].stylesheets_directory
     config.sass.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
 
-**Import it into your SCSS file
+**Import it into your SCSS file**
 
     @import "compass_twitter_bootstrap"
     
