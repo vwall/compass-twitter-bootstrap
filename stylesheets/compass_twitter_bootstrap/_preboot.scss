@@ -36,7 +36,7 @@ $baseline:          18px;
 $gridColumns:       16;
 $gridColumnWidth:   40px;
 $gridGutterWidth:   20px;
-$extraSpace:        40px;
+$extraSpace:        ($gridGutterWidth * 2); // For our grid calculations
 $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
 
 // Color Scheme
@@ -56,7 +56,7 @@ $analog2:           spin($baseColor, -22);
 // ------
 
 // Clearfix for clearing floats like a boss h5bp.com/q
-@mixin clearfix {
+@mixin cft {
   zoom: 1;
   &:before, &:after {
     display: table;
@@ -94,10 +94,10 @@ $analog2:           spin($baseColor, -22);
 
 // Font Stacks
 @mixin shorthand($weight: normal, $size: 14px, $lineHeight: 20px) {
-    font-size: $size;
-    font-weight: $weight;
-    line-height: $lineHeight;
- }
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
 @mixin sans-serif($weight: normal, $size: 14px, $lineHeight: 20px) {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: $size;
@@ -105,23 +105,23 @@ $analog2:           spin($baseColor, -22);
   line-height: $lineHeight;
 }
 @mixin serif($weight: normal, $size: 14px, $lineHeight: 20px) {
-    font-family: "Georgia", Times New Roman, Times, serif;
-    font-size: $size;
-    font-weight: $weight;
-    line-height: $lineHeight;
- }
+  font-family: "Georgia", Times New Roman, Times, serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
 @mixin monospace($weight: normal, $size: 12px, $lineHeight: 20px) {
-    font-family: "Monaco", Courier New, monospace;
-    font-size: $size;
-    font-weight: $weight;
-    line-height: $lineHeight;
- }
+  font-family: "Monaco", Courier New, monospace;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
 
 // Grid System
 @mixin container {
   width: $siteWidth;
   margin: 0 auto;
-  @include clearfix();
+  @include cft();
 }
 @mixin columns($columnSpan: 1) {
   width: ($gridColumnWidth * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1));
@@ -130,11 +130,6 @@ $analog2:           spin($baseColor, -22);
   margin-left: ($gridColumnWidth * $columnOffset) + ($gridGutterWidth * ($columnOffset - 1)) + $extraSpace;
 }
 
-// Drop shadows
-//@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
-//  @include box-shadow($shadow);
-//}
-
 // Transitions
 @mixin transition($transition) {
   -webkit-transition: $transition;
@@ -142,10 +137,36 @@ $analog2:           spin($baseColor, -22);
           transition: $transition;
 }
 
-// Background clipping
-//.background-clip($clip) {
-//  @include background-clip($clip);
-//}
+
+// Gradients
+@mixin horizontal($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  @include filter-gradient($startColor, $endColor, horizontal);
+  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
+  @include background-image(linear-gradient(left, $startColor, $endColor));
+}
+
+@mixin vertical ($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  @include filter-gradient($startColor, $endColor);
+  background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
+  @include background-image(linear-gradient($startColor, $endColor));
+}
+
+@mixin directional ($startColor: #555, $endColor: #333, $deg: 45deg) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  @include background-image(linear-gradient(left top, $startColor, $endColor));
+}
+
+@mixin vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: $endColor;
+  background-repeat: no-repeat;
+  @include filter-gradient($startColor, $endColor);
+  @include background-image(linear-gradient($startColor, $midColor $colorStop, $endColor));
+}
 
 // CSS3 Content Columns
 @mixin content-columns($columnCount, $columnGap: 20px) {
@@ -154,47 +175,13 @@ $analog2:           spin($baseColor, -22);
 }
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
-#translucent {
-  @mixin background($color: $white, $alpha: 1) {
-    background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
-  }
-  @mixin border($color: $white, $alpha: 1) {
-    border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
-    @include background-clip(padding-box);
-  }
+@mixin background($color: $white, $alpha: 1) {
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
 }
 
-// Gradients
-
-@mixin horizontal ($startColor: #555, $endColor: #333) {
-  background-color: $endColor;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
-  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
-  background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
-  background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
-  background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
-  background-image: linear-gradient(left, $startColor, $endColor); // Le standard
-}
-@mixin vertical ($startColor: #555, $endColor: #333) {
-  background-color: $endColor;
-  background-repeat: repeat-x;
-  @include background-image(linear-gradient($startColor, $endColor));
-}
-@mixin directional ($startColor: #555, $endColor: #333, $deg: 45deg) {
-  background-color: $endColor;
-  background-repeat: repeat-x;
-  background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
-  background-image: -ms-linear-gradient($deg, $startColor, $endColor); // IE10
-  background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
-  background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
-  background-image: linear-gradient($deg, $startColor, $endColor); // The standard
-}
-@mixin vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
-  background-color: $endColor;
-  background-repeat: no-repeat;
-  @include background-image(linear-gradient($startColor, $midColor $colorStop, $endColor));
+@mixin border($color: $white, $alpha: 1) {
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  background-clip: padding-box;
 }
 
 // Gradient Bar Colors for buttons and allerts
@@ -231,4 +218,9 @@ $analog2:           spin($baseColor, -22);
   &.info {
     @include gradientBar(#5bc0de, #339bb9);
   }
+}
+
+// Reset filters for IE
+@mixin reset-filter() {
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
 }
