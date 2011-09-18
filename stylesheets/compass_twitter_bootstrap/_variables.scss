@@ -30,7 +30,7 @@ $basefont:          13px;
 $baseline:          18px;
 
 // Griditude
-// Modify the grid styles in mixins.scss
+// Modify the grid styles in mixins.less
 $gridColumns:       16;
 $gridColumnWidth:   40px;
 $gridGutterWidth:   20px;
@@ -40,7 +40,7 @@ $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gr
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
 $baseColor:         $blue;                  // Set a base color
-$complement:        complement($baseColor);  // Determine a complementary color
+$complement:        adjust-hue($baseColor, 180);  // Determine a complementary color
 $split1:            adjust-hue($baseColor, 158);  // Split complements
 $split2:            adjust-hue($baseColor, -158);
 $triad1:            adjust-hue($baseColor, 135);  // Triads colors
@@ -49,7 +49,7 @@ $tetra1:            adjust-hue($baseColor, 90);   // Tetra colors
 $tetra2:            adjust-hue($baseColor, -90);
 $analog1:           adjust-hue($baseColor, 22);   // Analogs colors
 $analog2:           adjust-hue($baseColor, -22);
-$shadow: 0 1px 3px rgba(0,0,0,.25);
+
 
 
 // More variables coming soon:
