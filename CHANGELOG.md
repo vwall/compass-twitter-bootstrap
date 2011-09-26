@@ -1,5 +1,8 @@
 # Overview
 
+## 0.1.7
+ Compass opacity fix (thanks to dnedbaylo)
+
 ## 0.1.6
 * Start of a less to scss converter
 * Added change log
