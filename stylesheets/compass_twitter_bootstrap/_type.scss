@@ -1,4 +1,4 @@
-/* Typography.less
+/* Typography.scss
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
 
@@ -7,7 +7,7 @@
 // ---------
 
 p {
-  @include shorthand(normal,$basefont,$baseline);
+  @include shorthand-font(normal,$basefont,$baseline);
   margin-bottom: $baseline / 2;
   small {
     font-size: $basefont - 2;
@@ -138,12 +138,12 @@ blockquote {
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    @include shorthand(300,14px,$baseline);
+    @include shorthand-font(300,14px,$baseline);
     margin-bottom: 0;
   }
   small {
     display: block;
-    @include shorthand(300,12px,$baseline);
+    @include shorthand-font(300,12px,$baseline);
     color: $grayLight;
     &:before {
       content: '\2014 \00A0';

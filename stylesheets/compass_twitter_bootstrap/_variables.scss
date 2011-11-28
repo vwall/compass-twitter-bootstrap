@@ -1,6 +1,6 @@
-/* Variables.less
- * Variables to customize the look and feel of Bootstrap
- * ----------------------------------------------------- */
+/* variables.scss
+ * Variables and mixins to pre-ignite any new web development project
+ * ------------------------------------------------------------------ */
 
 
 // Links
@@ -30,7 +30,7 @@ $basefont:          13px;
 $baseline:          18px;
 
 // Griditude
-// Modify the grid styles in mixins.less
+// Modify the grid styles in mixins.scss
 $gridColumns:       16;
 $gridColumnWidth:   40px;
 $gridGutterWidth:   20px;
@@ -39,8 +39,8 @@ $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gr
 
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
-$baseColor:         $blue;                  // Set a base color
-$complement:        adjust-hue($baseColor, 180);  // Determine a complementary color
+$baseColor:         $blue;                        // Set a base color
+$complement:        complement($baseColor);       // Determine a complementary color
 $split1:            adjust-hue($baseColor, 158);  // Split complements
 $split2:            adjust-hue($baseColor, -158);
 $triad1:            adjust-hue($baseColor, 135);  // Triads colors
@@ -53,8 +53,8 @@ $analog2:           adjust-hue($baseColor, -22);
 
 
 // More variables coming soon:
-// - $basefont to $baseFontSize
-// - $baseline to $baseLineHeight
-// - $baseFontFamily
-// - $primaryButtonColor
+// - @basefont to @baseFontSize
+// - @baseline to @baseLineHeight
+// - @baseFontFamily
+// - @primaryButtonColor
 // - anything else? File an issue on GitHub
