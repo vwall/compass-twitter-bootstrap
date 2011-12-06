@@ -884,39 +884,37 @@ input[type=submit].btn {
 // POPOVER ARROWS
 // --------------
 
-#popoverArrow {
-  @include above($arrowWidth: 5px); {
-    bottom: 0;
-    left: 50%;
-    margin-left: -$arrowWidth;
-    border-left: $arrowWidth solid transparent;
-    border-right: $arrowWidth solid transparent;
-    border-top: $arrowWidth solid $black;
-  }
-  @include left($arrowWidth: 5px); {
-    top: 50%;
-    right: 0;
-    margin-top: -$arrowWidth;
-    border-top: $arrowWidth solid transparent;
-    border-bottom: $arrowWidth solid transparent;
-    border-left: $arrowWidth solid $black;
-  }
-  @include below($arrowWidth: 5px); {
-    top: 0;
-    left: 50%;
-    margin-left: -$arrowWidth;
-    border-left: $arrowWidth solid transparent;
-    border-right: $arrowWidth solid transparent;
-    border-bottom: $arrowWidth solid $black;
-  }
-  @include right($arrowWidth: 5px); {
-    top: 50%;
-    left: 0;
-    margin-top: -$arrowWidth;
-    border-top: $arrowWidth solid transparent;
-    border-bottom: $arrowWidth solid transparent;
-    border-right: $arrowWidth solid $black;
-  }
+@mixin popover-arrow-above($arrowWidth: 5px) {
+  bottom: 0;
+  left: 50%;
+  margin-left: -$arrowWidth;
+  border-left: $arrowWidth solid transparent;
+  border-right: $arrowWidth solid transparent;
+  border-top: $arrowWidth solid #000;
+}
+@mixin popover-arrow-left($arrowWidth: 5px) {
+  top: 50%;
+  right: 0;
+  margin-top: -$arrowWidth;
+  border-top: $arrowWidth solid transparent;
+  border-bottom: $arrowWidth solid transparent;
+  border-left: $arrowWidth solid #000;
+}
+@mixin popover-arrow-below($arrowWidth: 5px) {
+  top: 0;
+  left: 50%;
+  margin-left: -$arrowWidth;
+  border-left: $arrowWidth solid transparent;
+  border-right: $arrowWidth solid transparent;
+  border-bottom: $arrowWidth solid #000;
+}
+@mixin popover-arrow-right($arrowWidth: 5px) {
+  top: 50%;
+  left: 0;
+  margin-top: -$arrowWidth;
+  border-top: $arrowWidth solid transparent;
+  border-bottom: $arrowWidth solid transparent;
+  border-right: $arrowWidth solid #000;
 }
 
 // TWIPSY
@@ -933,10 +931,10 @@ input[type=submit].btn {
   &.fade.in {
     @include opacity(80);
   }
-  &.above .twipsy-arrow   { #popoverArrow > @include above(); }
-  &.left .twipsy-arrow    { #popoverArrow > @include left(); }
-  &.below .twipsy-arrow   { #popoverArrow > @include below(); }
-  &.right .twipsy-arrow   { #popoverArrow > @include right(); }
+  &.above .twipsy-arrow   { @include popover-arrow-above(); }
+  &.left .twipsy-arrow    { @include popover-arrow-left();  }
+  &.below .twipsy-arrow   { @include popover-arrow-below(); }
+  &.right .twipsy-arrow   { @include popover-arrow-right(); }
 }
 .twipsy-inner {
   padding: 3px 8px;
@@ -964,10 +962,10 @@ input[type=submit].btn {
   z-index: 1000;
   padding: 5px;
   display: none;
-  &.above .arrow { #popoverArrow > @include above(); }
-  &.right .arrow { #popoverArrow > @include right(); }
-  &.below .arrow { #popoverArrow > @include below(); }
-  &.left .arrow  { #popoverArrow > @include left(); }
+  &.above .arrow { @include popover-arrow-above(); }
+  &.right .arrow { @include popover-arrow-right(); }
+  &.below .arrow { @include popover-arrow-below(); }
+  &.left .arrow  { @include popover-arrow-left();  }
   .arrow {
     position: absolute;
     width: 0;
