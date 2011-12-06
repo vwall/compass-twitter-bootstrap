@@ -6,9 +6,11 @@
 // Clearfix for clearing floats like a boss h5bp.com/q
 @mixin clearfix {
   zoom: 1;
-  &:before, &:after {
+  &:before,
+  &:after {
     display: table;
     content: "";
+    zoom: 1;
   }
   &:after {
     clear: both;
@@ -18,7 +20,8 @@
 // Center-align a block level element
 @mixin center-block {
   display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Sizing shortcuts

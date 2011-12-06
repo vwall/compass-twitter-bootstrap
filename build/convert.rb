@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Convert
   def process
     less_files.each do |name, file|
@@ -5,6 +7,15 @@ class Convert
       file = convert(file)
       save_file(name, file)
     end
+
+    self.process_mixins
+  end
+
+  def process_mixins
+    file = 'https://raw.github.com/twitter/bootstrap/master/lib/mixins.less'
+    file = open_git_file(file)
+    file = replace_mixins(file)
+    save_file('_mixins', file)
   end
 
 private
@@ -14,10 +25,10 @@ private
       '_reset'       => 'https://raw.github.com/twitter/bootstrap/master/lib/reset.less',
       '_variables'   => 'https://raw.github.com/twitter/bootstrap/master/lib/variables.less',
       '_scaffolding' => 'https://raw.github.com/twitter/bootstrap/master/lib/scaffolding.less',
-      '_type'        => 'https://raw.github.com/twitter/bootstrap/1.3-wip/lib/type.less',
+      '_type'        => 'https://raw.github.com/twitter/bootstrap/master/lib/type.less',
       '_forms'       => 'https://raw.github.com/twitter/bootstrap/master/lib/forms.less',
       '_tables'      => 'https://raw.github.com/twitter/bootstrap/master/lib/tables.less',
-      '_patterns'    => 'https://raw.github.com/twitter/bootstrap/1.3-wip/lib/patterns.less'
+      '_patterns'    => 'https://raw.github.com/twitter/bootstrap/master/lib/patterns.less'
     }
   end
 
@@ -33,13 +44,14 @@ private
   end
 
   def open_git_file(file)
-    URI.parse(file).read
+    open(file).read
   end
 
   def save_file(name, content)
-    f = File.new("#{name}.scss", "w")
+    f = File.open("stylesheets/compass_twitter_bootstrap/#{name}.scss", "w+")
     f.write(content)
     f.close
+    puts "Converted#{name}\n"
   end
 
   def replace_vars(less)
@@ -67,3 +79,5 @@ private
   end
 
 end
+
+Convert.new.process
