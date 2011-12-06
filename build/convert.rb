@@ -8,7 +8,7 @@ class Convert
       save_file(name, file)
     end
 
-    #self.process_mixins
+    self.fix_opacity
 
     self.create_sass_files
   end
@@ -37,6 +37,13 @@ class Convert
         end
       end
     end
+  end
+
+  def fix_opacity
+    loc = "stylesheets/compass_twitter_bootstrap/_patterns.scss"
+    scss = File.open(loc, "r").read
+    scss = replace_opacity(scss)
+    save_file('_patterns', scss)
   end
 
 private
@@ -97,6 +104,10 @@ private
 
   def replace_spin(less)
     less.gsub(/spin/, 'adjust-hue')
+  end
+
+  def replace_opacity(scss)
+    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include opacity(#{$1.to_f / 100})"}
   end
 
   def convert_scss(file, folder='')

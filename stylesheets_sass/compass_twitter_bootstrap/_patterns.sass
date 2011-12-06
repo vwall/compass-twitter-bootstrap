@@ -54,7 +54,7 @@
     float: left
     margin: 5px 0 0 0
     position: relative
-    +opacity(100)
+    +opacity(1)
   // Todo: remove from v2.0 when ready, added for legacy
   form.pull-right
     float: right
@@ -201,7 +201,7 @@ a.menu:after,
   border-left: 4px solid transparent
   border-right: 4px solid transparent
   border-top: 4px solid $white
-  +opacity(50)
+  +opacity(0.5)
 
 // The dropdown menu (ul)
 // .menu-dropdown for backwards compatibility
@@ -507,7 +507,7 @@ footer
     cursor: default
     background-image: none
     +reset-filter
-    +opacity(65)
+    +opacity(0.65)
     +box-shadow(none)
   &[disabled]
     // disabled pseudo can't be included with .disabled
@@ -515,7 +515,7 @@ footer
     cursor: default
     background-image: none
     +reset-filter
-    +opacity(65)
+    +opacity(0.65)
     +box-shadow(none)
   // Button Sizes
   &.large
@@ -550,11 +550,11 @@ input[type=submit].btn
   font-weight: bold
   line-height: $baseline * 0.75
   text-shadow: 0 1px 0 rgba(255, 255, 255, 1)
-  +opacity(25)
+  +opacity(0.25)
   &:hover
     color: $black
     text-decoration: none
-    +opacity(40)
+    +opacity(0.4)
 
 // ERROR STYLES
 // ------------
@@ -702,7 +702,7 @@ input[type=submit].btn
 
 .modal-backdrop,
 .modal-backdrop.fade.in
-  +opacity(80)
+  +opacity(0.8)
 
 .modal
   position: fixed
@@ -800,9 +800,9 @@ input[type=submit].btn
   padding: 5px
   font-size: 11px
   z-index: 1000
-  +opacity(80)
+  +opacity(0.8)
   &.fade.in
-    +opacity(80)
+    +opacity(0.8)
   &.above .twipsy-arrow
     +popover-arrow-above
   &.left .twipsy-arrow
