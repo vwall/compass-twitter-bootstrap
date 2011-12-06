@@ -46,7 +46,29 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
 **Import it into your SCSS file**
 
     @import "compass_twitter_bootstrap"
-    
+
+
+## Usage with Rails 3.1.1 (via plugin)
+
+**Install plugin**
+
+    rails plugin install git://github.com/tjgfernandes/compass-twitter-bootstrap.git
+
+**Add it to your config/initializers/sass.rb**
+
+	Rails.configuration.sass.tap do |config|
+		...
+
+		# twitter bootstrap  
+	  config.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
+		
+		...
+	end
+	
+**Import it into your SCSS file**
+
+    @import "compass_twitter_bootstrap"
+
 
 ## TWITTER BOOTSTRAP
 
