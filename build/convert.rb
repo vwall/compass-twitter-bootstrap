@@ -2,13 +2,15 @@ require 'open-uri'
 
 class Convert
   def process
-    less_files.each do |name, file|
-      file = open_git_file(file)
-      file = convert(file)
-      save_file(name, file)
-    end
+    #less_files.each do |name, file|
+    #  file = open_git_file(file)
+    #  file = convert(file)
+    #  save_file(name, file)
+    #end
 
-    self.process_mixins
+    #self.process_mixins
+
+    self.create_sass_files
   end
 
   def process_mixins
@@ -16,6 +18,47 @@ class Convert
     file = open_git_file(file)
     file = replace_mixins(file)
     save_file('_mixins', file)
+  end
+
+  
+  def create_sass_files
+    scss_files = 'stylesheets'
+    
+
+
+    Dir.glob(scss_files+'/*').each do |dir|
+      file_or_dir = File.open dir
+
+      if File.file? file_or_dir
+        convert_scss(file_or_dir)
+      else
+        Dir.open(file_or_dir).each do |filename|
+          file = File.open("#{file_or_dir.path}/#{filename}")
+          next unless File.fnmatch? '**.scss', file
+          convert_scss(file, 'compass_twitter_bootstrap/')
+        end
+      end
+
+      #puts File.file? file
+
+    end
+
+
+    #Dir.open(scss_files).each do |filename|
+    #  file = File.open("#{scss_files}/#{filename}")
+    #  next unless File.fnmatch? '**.scss', file
+
+    #  if File.directory? file
+    #    puts "#{filename} - Dir? #{File.directory?(file)}"
+    #  else
+    #    system("sass-convert #{file.path} #{sass_files}/#{File.basename(file, 'scss')}sass")
+    #    puts "#{filename} - File? #{File.file?(file)}"
+    #  end
+      
+
+
+      # otherwise, process file  
+    #end   
   end
 
 private
@@ -76,6 +119,11 @@ private
 
   def replace_spin(less)
     less.gsub(/spin/, 'adjust-hue')
+  end
+
+  def convert_scss(file, folder='')
+    sass_files = 'stylesheets_sass'
+    system("sass-convert #{file.path} #{sass_files}/#{folder}#{File.basename(file, 'scss')}sass")
   end
 
 end
