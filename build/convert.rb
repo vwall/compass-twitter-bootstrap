@@ -2,11 +2,11 @@ require 'open-uri'
 
 class Convert
   def process
-    #less_files.each do |name, file|
-    #  file = open_git_file(file)
-    #  file = convert(file)
-    #  save_file(name, file)
-    #end
+    less_files.each do |name, file|
+      file = open_git_file(file)
+      file = convert(file)
+      save_file(name, file)
+    end
 
     #self.process_mixins
 
@@ -23,8 +23,6 @@ class Convert
   
   def create_sass_files
     scss_files = 'stylesheets'
-    
-
 
     Dir.glob(scss_files+'/*').each do |dir|
       file_or_dir = File.open dir
@@ -38,27 +36,7 @@ class Convert
           convert_scss(file, 'compass_twitter_bootstrap/')
         end
       end
-
-      #puts File.file? file
-
     end
-
-
-    #Dir.open(scss_files).each do |filename|
-    #  file = File.open("#{scss_files}/#{filename}")
-    #  next unless File.fnmatch? '**.scss', file
-
-    #  if File.directory? file
-    #    puts "#{filename} - Dir? #{File.directory?(file)}"
-    #  else
-    #    system("sass-convert #{file.path} #{sass_files}/#{File.basename(file, 'scss')}sass")
-    #    puts "#{filename} - File? #{File.file?(file)}"
-    #  end
-      
-
-
-      # otherwise, process file  
-    #end   
   end
 
 private
