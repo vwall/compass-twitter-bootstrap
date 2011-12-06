@@ -845,7 +845,7 @@ input[type=submit].btn {
   @include background-clip(padding-box);
   .close { margin-top: 7px; }
   &.fade {
-    @include transition(e('opacity .3s linear, top .3s ease-out'));
+    @include transition(unquote('opacity .3s linear, top .3s ease-out'));
     top: -25%;
   }
   &.fade.in { top: 50%; }
