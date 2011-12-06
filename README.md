@@ -20,7 +20,7 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
 
     require 'compass_twitter_bootstrap'
 
-**Import it into your SCSS file
+**Import it into your SCSS file**
 
     @import "compass_twitter_bootstrap";
 
