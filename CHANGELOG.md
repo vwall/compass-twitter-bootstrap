@@ -1,5 +1,12 @@
 # Overview
 
+## 0.1.8
+* Upgraded to twitter bootstrap version 1.4
+* Add Javascript files to vendors directory (thanks to tmaier)
+* Add Rails engine to tell Rails to look into vendor/assets (tmaier)
+* rails 3.1.1 plugin install support (tjgfernandes)
+
+
 ## 0.1.7
  Compass opacity fix (thanks to dnedbaylo)
 
