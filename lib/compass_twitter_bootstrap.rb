@@ -1,6 +1,6 @@
 require "compass_twitter_bootstrap/version"
 
-if ::Rails.version >= "3.1"
+if defined?(::Rails) && ::Rails.version >= "3.1"
   require 'compass_twitter_bootstrap/engine'
 end
 
