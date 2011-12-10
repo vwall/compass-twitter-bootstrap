@@ -4,30 +4,30 @@
 
 
 // Links
-$linkColor:         #0069d6;
-$linkColorHover:    darken($linkColor, 15);
+$linkColor:         #0069d6 !default;
+$linkColorHover:    darken($linkColor, 15) !default;
 
 // Grays
 $black:             #000;
-$grayDark:          lighten($black, 25%);
-$gray:              lighten($black, 50%);
-$grayLight:         lighten($black, 75%);
-$grayLighter:       lighten($black, 90%);
+$grayDark:          lighten($black, 25%) !default;
+$gray:              lighten($black, 50%) !default;
+$grayLight:         lighten($black, 75%) !default;
+$grayLighter:       lighten($black, 90%) !default;
 $white:             #fff;
 
 // Accent Colors
-$blue:              #049CDB;
-$blueDark:          #0064CD;
-$green:             #46a546;
-$red:               #9d261d;
-$yellow:            #ffc40d;
-$orange:            #f89406;
-$pink:              #c3325f;
-$purple:            #7a43b6;
+$blue:              #049CDB !default;
+$blueDark:          #0064CD !default;
+$green:             #46a546 !default;
+$red:               #9d261d !default;
+$yellow:            #ffc40d !default;
+$orange:            #f89406 !default;
+$pink:              #c3325f !default;
+$purple:            #7a43b6 !default;
 
 // Baseline grid
-$basefont:          13px;
-$baseline:          18px;
+$basefont:          13px !default;
+$baseline:          18px !default;
 
 // Griditude
 // Modify the grid styles in mixins.less
@@ -39,16 +39,16 @@ $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gr
 
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
-$baseColor:         $blue;                  // Set a base color
-$complement:        adjust-hue($baseColor, 180);  // Determine a complementary color
-$split1:            adjust-hue($baseColor, 158);  // Split complements
-$split2:            adjust-hue($baseColor, -158);
-$triad1:            adjust-hue($baseColor, 135);  // Triads colors
-$triad2:            adjust-hue($baseColor, -135);
-$tetra1:            adjust-hue($baseColor, 90);   // Tetra colors
-$tetra2:            adjust-hue($baseColor, -90);
-$analog1:           adjust-hue($baseColor, 22);   // Analogs colors
-$analog2:           adjust-hue($baseColor, -22);
+$baseColor:         $blue !default;                  // Set a base color
+$complement:        adjust-hue($baseColor, 180) !default;  // Determine a complementary color
+$split1:            adjust-hue($baseColor, 158) !default;  // Split complements
+$split2:            adjust-hue($baseColor, -158) !default;
+$triad1:            adjust-hue($baseColor, 135) !default;  // Triads colors
+$triad2:            adjust-hue($baseColor, -135) !default;
+$tetra1:            adjust-hue($baseColor, 90) !default;   // Tetra colors
+$tetra2:            adjust-hue($baseColor, -90) !default;
+$analog1:           adjust-hue($baseColor, 22) !default;   // Analogs colors
+$analog2:           adjust-hue($baseColor, -22) !default;
 
 
 
