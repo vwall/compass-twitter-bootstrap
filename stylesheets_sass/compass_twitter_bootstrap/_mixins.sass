@@ -1,0 +1,159 @@
+/* Mixins.scss
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * -----------------------------------------------------------------
+
+// Clearfix for clearing floats like a boss h5bp.com/q
+=clearfix
+  zoom: 1
+  &:before,
+  &:after
+    display: table
+    content: ""
+    zoom: 1
+  &:after
+    clear: both
+
+// Center-align a block level element
+=center-block
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+// Sizing shortcuts
+=size($height: 5px, $width: 5px)
+  height: $height
+  width: $width
+
+=square($size: 5px)
+  +size($size, $size)
+
+// Input placeholder text
+=placeholder($color: $grayLight)
+  \:-moz-placeholder
+    color: $color
+  \::-webkit-input-placeholder
+    color: $color
+
+// Font Stacks
+=shorthand($weight: normal, $size: 14px, $lineHeight: 20px)
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+
+=sans-serif($weight: normal, $size: 14px, $lineHeight: 20px)
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+
+=serif($weight: normal, $size: 14px, $lineHeight: 20px)
+  font-family: "Georgia", Times New Roman, Times, serif
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+
+=monospace($weight: normal, $size: 12px, $lineHeight: 20px)
+  font-family: "Monaco", Courier New, monospace
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+
+// Grid System
+=fixed-container
+  width: $siteWidth
+  margin-left: auto
+  margin-right: auto
+  +clearfix
+
+=columns($columnSpan: 1)
+  width: $gridColumnWidth * $columnSpan + $gridGutterWidth * ($columnSpan - 1)
+
+=offset($columnOffset: 1)
+  margin-left: $gridColumnWidth * $columnOffset + $gridGutterWidth * ($columnOffset - 1) + $extraSpace
+
+// Necessary grid styles for every column to make them appear next to each other horizontally
+=gridColumn
+  display: inline
+  float: left
+  margin-left: $gridGutterWidth
+
+// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
+=makeColumn($columnSpan: 1)
+  +gridColumn
+  +columns($columnSpan)
+
+// Border Radius (Will use compass version)
+
+// Drop shadows (Will use compass version)
+
+// Transitions
+=transition($transition)
+  -webkit-transition: $transition
+  -moz-transition: $transition
+  -ms-transition: $transition
+  -o-transition: $transition
+  transition: $transition
+
+// Background clipping
+=background-clip($clip)
+  -webkit-background-clip: $clip
+  -moz-background-clip: $clip
+  background-clip: $clip
+
+// CSS3 Content Columns
+=content-columns($columnCount, $columnGap: 20px)
+  -webkit-column-count: $columnCount
+  -moz-column-count: $columnCount
+  column-count: $columnCount
+  -webkit-column-gap: $columnGap
+  -moz-column-gap: $columnGap
+  column-gap: $columnGap
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+=translucent-background($color: $white, $alpha: 1)
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+
+=translucent-border($color: $white, $alpha: 1)
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+  background-clip: padding-box
+
+// Gradients
+=gradient-horizontal($startColor: #555555, $endColor: #333333)
+  background-color: $endColor
+  background-repeat: repeat-x
+  +filter-gradient($startColor, $endColor, horizontal)
+  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor))
+  // Konqueror
+  +background-image(linear-gradient(left, $startColor, $endColor))
+
+=gradient-vertical($startColor: #555555, $endColor: #333333)
+  background-color: $endColor
+  background-repeat: repeat-x
+  +filter-gradient($startColor, $endColor)
+  background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor))
+  // Konqueror
+  +background-image(linear-gradient($startColor, $endColor))
+
+=gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
+  background-color: $endColor
+  background-repeat: repeat-x
+  +background-image(linear-gradient(left top, $startColor, $endColor))
+
+=gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
+  background-color: $endColor
+  background-repeat: no-repeat
+  +filter-gradient($startColor, $endColor)
+  +background-image(linear-gradient($startColor, $midColor $colorStop, $endColor))
+
+// Gradient Bar Colors for buttons and allerts
+=gradientBar($primaryColor, $secondaryColor)
+  +gradient-vertical($primaryColor, $secondaryColor)
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%)
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%)
+
+// Reset filters for IE
+=reset-filter
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)"
+
+// Opacity (Will use compass version)
