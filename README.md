@@ -48,7 +48,7 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
     @import "compass_twitter_bootstrap"
 
 
-## Usage with Rails 3.1.1 (via plugin)
+## Usage with Rails >= 3.1.1 (via plugin)
 
 **Install plugin**
 
