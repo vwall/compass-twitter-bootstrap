@@ -6,7 +6,7 @@
 code,
 pre {
   padding: 0 3px 2px;
-  @include font-fmaily-monospace;
+  @include font-family-monospace;
   font-size: $baseFontSize - 1;
   color: $grayDark;
   @include border-radius(3px);
