@@ -127,7 +127,7 @@
 }
 
 @mixin font-monospace($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
-  @include font-fmaily-monospace();
+  @include font-family-monospace();
   @include font-shorthand($size, $weight, $lineHeight);
 }
 
