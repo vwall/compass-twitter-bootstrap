@@ -108,7 +108,7 @@ private
   end
 
   def replace_font_family(less)
-    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include font-fmaily-\1')
+    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include font-family-\1')
   end
 
   def replace_grads(less)

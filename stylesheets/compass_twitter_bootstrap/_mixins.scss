@@ -122,7 +122,7 @@
 }
 
 @mixin font-sans-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
-  @include font-fmaily-sans-serif();
+  @include font-family-sans-serif();
   @include font-shorthand($size, $weight, $lineHeight);
 }
 
