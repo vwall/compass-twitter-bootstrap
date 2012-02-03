@@ -1,27 +1,28 @@
 require 'open-uri'
+require 'json'
 
 class Convert
-  def process
-    less_files.each do |name, file|
-      file = open_git_file(file)
-      file = convert(file)
-      save_file(name, file)
-    end
 
-    self.fix_opacity
+  def process
+    get_less_files.each do |name|
+      unless ['bootstrap.less', 'responsive.less'].include?(name)
+        file = open_git_file("https://raw.github.com/twitter/bootstrap/master/less/#{name}")
+        file = convert(file) 
+
+        if name == 'progress-bars.less'
+          file = fix_progress_bar(file)
+        end
+
+        save_file(name, file) unless name == 'mixins.less'
+      end
+    end
 
     self.create_sass_files
   end
-
-  def process_mixins
-    file = 'https://raw.github.com/twitter/bootstrap/master/lib/mixins.less'
-    file = open_git_file(file)
-    file = replace_mixins(file)
-    save_file('_mixins', file)
-  end
-
   
   def create_sass_files
+    puts 'Creating sass files for testing'
+
     scss_files = 'stylesheets'
 
     Dir.glob(scss_files+'/*').each do |dir|
@@ -39,34 +40,43 @@ class Convert
     end
   end
 
-  def fix_opacity
-    loc = "stylesheets/compass_twitter_bootstrap/_patterns.scss"
-    scss = File.open(loc, "r").read
-    scss = replace_opacity(scss)
-    save_file('_patterns', scss)
-  end
-
 private
 
-  def less_files
-    {
-      '_reset'       => 'https://raw.github.com/twitter/bootstrap/master/lib/reset.less',
-      '_variables'   => 'https://raw.github.com/twitter/bootstrap/master/lib/variables.less',
-      '_scaffolding' => 'https://raw.github.com/twitter/bootstrap/master/lib/scaffolding.less',
-      '_type'        => 'https://raw.github.com/twitter/bootstrap/master/lib/type.less',
-      '_forms'       => 'https://raw.github.com/twitter/bootstrap/master/lib/forms.less',
-      '_tables'      => 'https://raw.github.com/twitter/bootstrap/master/lib/tables.less',
-      '_patterns'    => 'https://raw.github.com/twitter/bootstrap/master/lib/patterns.less'
-    }
+  # Get the sha of less branch
+  def get_tree_sha
+    sha = nil
+    trees = open('https://api.github.com/repos/twitter/bootstrap/git/trees/master').read
+    trees = JSON.parse trees
+
+    trees['tree'].select do |t|
+      if t['path'] == 'less'
+        sha = t['sha']
+      end
+    end
+
+    sha
   end
+
+  def get_less_files
+    file_list = []
+    files = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{get_tree_sha}").read
+    files = JSON.parse files
+    files['tree'].each{|f| file_list << f['path']}
+
+    file_list
+  end
+
 
   def convert(file)
     file = replace_vars(file)
     file = replace_fonts(file)
+    file = replace_font_family(file)
     file = replace_grads(file)
     file = replace_mixins(file)
+    file = replace_less_extend(file)
     file = replace_includes(file)
     file = replace_spin(file)
+    file = replace_opacity(file)
 
     file
   end
@@ -76,18 +86,29 @@ private
   end
 
   def save_file(name, content)
-    f = File.open("stylesheets/compass_twitter_bootstrap/#{name}.scss", "w+")
+    name = name.gsub(/\.less/, '')
+    f = File.open("stylesheets/compass_twitter_bootstrap/_#{name}.scss", "w+")
     f.write(content)
     f.close
-    puts "Converted#{name}\n"
+    puts "Converted #{name}\n"
   end
 
   def replace_vars(less)
     less.gsub(/@/, '$')
   end
 
+  def fix_progress_bar(less)
+    less = less.gsub(/(\$)(-webkit-keyframes progress-bar-stripes)/, '@\2')
+    less = less.gsub(/(\$)(-moz-keyframes)/, '@\2')
+    less = less.gsub(/(\$)(keyframes progress-bar-stripes)/, '@\2')
+  end
+
   def replace_fonts(less)
-    less.gsub(/#font \> \.([\w-]+)/, '@include \1')
+    less.gsub(/#font \> \.([\w-]+)/, '@include font-\1')
+  end
+
+  def replace_font_family(less)
+    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include font-fmaily-\1')
   end
 
   def replace_grads(less)
@@ -100,6 +121,10 @@ private
 
   def replace_includes(less)
     less.gsub(/\.([\w-]*)(\(.*\));?/, '@include \1\2;')
+  end
+
+  def replace_less_extend(less)
+    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include \1-\2\3;')
   end
 
   def replace_spin(less)
