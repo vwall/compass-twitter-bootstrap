@@ -10,12 +10,14 @@
 
 @import "compass";
 
+@import "compass_twitter_bootstrap/mixins";
+
 // CSS Reset
 @import "compass_twitter_bootstrap/reset";
 
 // Core variables and mixins
 @import "compass_twitter_bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
-@import "compass_twitter_bootstrap/mixins";
+
 
 // Grid system and page structure
 @import "compass_twitter_bootstrap/scaffolding";
