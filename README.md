@@ -69,7 +69,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
     config.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
 
     ...
-  end
+    end
 
 **Import it into your SCSS file**
 
