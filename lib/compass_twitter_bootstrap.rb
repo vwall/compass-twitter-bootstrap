@@ -1,6 +1,6 @@
 require "compass_twitter_bootstrap/version"
 
-if defined?(::Rails) && ::Rails.version >= "3.1"
+if defined?(::Rails) && ::Rails.version >= "3.1" and !File.dirname(__FILE__).match("#{Rails.root}/vendor/plugins")
   require 'compass_twitter_bootstrap/engine'
 end
 
