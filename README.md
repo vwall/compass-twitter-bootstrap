@@ -2,7 +2,7 @@
 
 Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
 
-**Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
+Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
 
 ## Usage
 
