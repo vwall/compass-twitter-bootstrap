@@ -17,8 +17,8 @@
 // -------------------------
 // Required since we compile the responsive stuff separately
 
-@import "variables"; // Modify this for custom colors, font-sizes, etc
-@import "mixins";
+@import "compass_twitter_bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "compass_twitter_bootstrap/mixins";
 
 
 // RESPONSIVE CLASSES
