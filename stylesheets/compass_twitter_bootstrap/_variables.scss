@@ -32,7 +32,9 @@ $purple:                #7a43b6;
 
 // Typography
 $baseFontSize:          13px !default;
-$baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+// Hack to make fonts overwritable
+$baseFontFamilyDefault: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$baseFontFamily:        $baseFontFamilyDefault !default;
 $baseLineHeight:        18px !default;
 $textColor:             $grayDark !default;
 
