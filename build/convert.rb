@@ -77,6 +77,7 @@ private
     file = replace_includes(file)
     file = replace_spin(file)
     file = replace_opacity(file)
+    file = replace_image_urls(file)
 
     file
   end
@@ -133,6 +134,10 @@ private
 
   def replace_opacity(scss)
     scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include opacity(#{$1.to_f / 100})"}
+  end
+
+  def replace_image_urls(less)
+    less.gsub(/background-image: url\((.*)\);/) {|s| "background-image: image-url(\"#{$1.gsub('../img/','')}\");" }
   end
 
   def convert_scss(file, folder='')
