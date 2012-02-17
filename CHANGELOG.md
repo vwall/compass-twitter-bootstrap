@@ -1,4 +1,6 @@
 # Overview
+## 2.0.1.1
+* Fix sprite error
 
 ## 2.0.1
 * Upgrade twitter bootstrap to 2.0.1
