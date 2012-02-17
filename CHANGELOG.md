@@ -1,4 +1,8 @@
 # Overview
+
+## 2.0.1.2
+* Really fix sprites, maybe.
+
 ## 2.0.1.1
 * Fix sprite error
 
