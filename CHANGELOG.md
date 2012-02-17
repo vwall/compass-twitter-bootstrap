@@ -2,6 +2,7 @@
 
 ## 2.0.1.2
 * Really fix sprites, maybe.
+* Update JS
 
 ## 2.0.1.1
 * Fix sprite error
