@@ -1,5 +1,10 @@
 # Overview
 
+## 2.0.1
+* Upgrade twitter bootstrap to 2.0.1
+* Use compass @image-url() for sprites (thanks to jpfuentes2)
+* Added !default to variables
+
 ## 2.0.0
 * Updated twitter bootstrap to 2.0
 * Updated import script
