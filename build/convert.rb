@@ -13,6 +13,10 @@ class Convert
           file = fix_progress_bar(file)
         end
 
+        if name == 'variables.less'
+          file = insert_default_vars(file)
+        end
+
         save_file(name, file) unless name == 'mixins.less'
       end
     end
@@ -138,6 +142,10 @@ private
 
   def replace_image_urls(less)
     less.gsub(/background-image: url\((.*)\);/) {|s| "background-image: image-url(\"#{$1.gsub('../img/','')}\");" }
+  end
+
+  def insert_default_vars(scss)
+    scss.gsub(/^(\$.+);$/, '\1 !default;')
   end
 
   def convert_scss(file, folder='')
