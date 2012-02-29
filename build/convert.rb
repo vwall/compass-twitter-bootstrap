@@ -51,23 +51,13 @@ private
     sha = nil
     trees = open('https://api.github.com/repos/twitter/bootstrap/git/trees/master').read
     trees = JSON.parse trees
-
-    trees['tree'].select do |t|
-      if t['path'] == 'less'
-        sha = t['sha']
-      end
-    end
-
-    sha
+    trees['tree'].find{|t| t['path'] == 'less'}['sha']
   end
 
   def get_less_files
-    file_list = []
     files = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{get_tree_sha}").read
     files = JSON.parse files
-    files['tree'].each{|f| file_list << f['path']}
-
-    file_list
+    files['tree'].map{|f| f['path']}
   end
 
 
