@@ -76,6 +76,12 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
     @import "compass_twitter_bootstrap"
 
 
+## Using [Font Awesome](http://fortawesome.github.com/Font-Awesome/)
+
+To use the font awesome font and icons simply change the standard import to:
+
+    @import "compass_twitter_bootstrap_awesome"
+
 ## TWITTER BOOTSTRAP
 
 Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
