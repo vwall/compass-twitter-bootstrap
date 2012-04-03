@@ -82,6 +82,17 @@ To use the font awesome font and icons simply change the standard import to:
 
     @import "compass_twitter_bootstrap_awesome"
 
+## Using Javascripts with Rails Asset Pipeline
+
+Javascript Libraries are located in vendor/assets/javascripts
+
+Include them individually or 
+
+    //=require bootstrap-all
+
+to include all files
+
+
 ## TWITTER BOOTSTRAP
 
 Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
