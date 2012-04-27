@@ -12,10 +12,10 @@
 .navbar-inner
   padding-left: 20px
   padding-right: 20px
-  +gradient-vertical($navbarBackgroundHighlight, $navbarBackground)
   +border-radius(4px)
+  +bootstrap-gradient-vertical($navbarBackgroundHighlight, $navbarBackground)
   $shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1)
-  +box-shadow($shadow)
+  +bootstrap-box-shadow($shadow)
 
 // Navbar button for toggling navbar items in responsive layouts
 .btn-navbar
@@ -24,9 +24,9 @@
   padding: 7px 10px
   margin-left: 5px
   margin-right: 5px
-  +buttonBackground($navbarBackgroundHighlight, $navbarBackground)
+  +bootstrap-buttonBackground($navbarBackgroundHighlight, $navbarBackground)
   $shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075)
-  +box-shadow($shadow)
+  +bootstrap-box-shadow($shadow)
 
 .btn-navbar .icon-bar
   display: block
@@ -34,7 +34,7 @@
   height: 2px
   background-color: #f5f5f5
   +border-radius(1px)
-  +box-shadow(0 1px 0 rgba(0, 0, 0, 0.25))
+  +bootstrap-box-shadow(0 1px 0 rgba(0, 0, 0, 0.25))
 
 .btn-navbar .icon-bar + .icon-bar
   margin-top: 3px
@@ -80,7 +80,7 @@
 .navbar-form
   margin-bottom: 0
   // remove default bottom margin
-  +clearfix
+  +bootstrap-clearfix
   input,
   select
     display: inline-block
@@ -110,17 +110,17 @@
   margin-bottom: 0
   .search-query
     padding: 4px 9px
-    +font-sans-serif(13px, normal, 1)
+    +bootstrap-font-sans-serif(13px, normal, 1)
     color: $white
     color: rgba(255, 255, 255, 0.75)
     background: #666
     background: rgba(255, 255, 255, 0.3)
     border: 1px solid #111
     $shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.15)
-    +box-shadow($shadow)
-    +transition(none)
+    +bootstrap-box-shadow($shadow)
+    +bootstrap-transition(none)
     // Placeholder text gets special styles; can't be bundled together though for some reason
-    +placeholder($grayLighter)
+    +bootstrap-placeholder($grayLighter)
     // Hover states
     &:hover
       color: $white
@@ -134,7 +134,7 @@
       text-shadow: 0 1px 0 $white
       background-color: $white
       border: 0
-      +box-shadow(0 0 3px rgba(0, 0, 0, 0.15))
+      +bootstrap-box-shadow(0 0 3px rgba(0, 0, 0, 0.15))
       outline: 0
 
 // FIXED NAVBAR

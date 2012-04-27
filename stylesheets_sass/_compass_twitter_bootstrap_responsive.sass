@@ -130,11 +130,11 @@
 
 @media (min-width: 768px) and (max-width: 979px)
   // Fixed grid
-  +gridSystem-generate(12, 42px, 20px)
+  +bootstrap-gridSystem-generate(12, 42px, 20px)
   // Fluid grid
-  +fluidGridSystem-generate(12, 5.801%, 2.762%)
+  +bootstrap-fluidGridSystem-generate(12, 5.801%, 2.762%)
   // Input grid
-  +inputGridSystem-generate(12, 42px, 20px)
+  +bootstrap-inputGridSystem-generate(12, 42px, 20px)
 
 // TABLETS AND BELOW
 // -----------------
@@ -199,7 +199,7 @@
     background-color: transparent
     border: none
     +border-radius(0)
-    +box-shadow(none)
+    +bootstrap-box-shadow(none)
   .navbar .dropdown-menu:before,
   .navbar .dropdown-menu:after
     display: none
@@ -214,7 +214,7 @@
     border-top: 1px solid $navbarBackground
     border-bottom: 1px solid $navbarBackground
     $shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1)
-    +box-shadow($shadow)
+    +bootstrap-box-shadow($shadow)
   // Pull right (secondary) nav content
   .navbar .nav.pull-right
     float: none
@@ -243,11 +243,11 @@
 
 @media (min-width: 1200px)
   // Fixed grid
-  +gridSystem-generate(12, 70px, 30px)
+  +bootstrap-gridSystem-generate(12, 70px, 30px)
   // Fluid grid
-  +fluidGridSystem-generate(12, 5.983%, 2.564%)
+  +bootstrap-fluidGridSystem-generate(12, 5.983%, 2.564%)
   // Input grid
-  +inputGridSystem-generate(12, 70px, 30px)
+  +bootstrap-inputGridSystem-generate(12, 70px, 30px)
   // Thumbnails
   .thumbnails
     margin-left: -30px
