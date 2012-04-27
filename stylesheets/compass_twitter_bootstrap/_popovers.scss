@@ -12,10 +12,10 @@
   &.right  { margin-left:  5px; }
   &.bottom { margin-top:   5px; }
   &.left   { margin-left: -5px; }
-  &.top .arrow    { @include popoverArrow-top(); }
-  &.right .arrow  { @include popoverArrow-right(); }
-  &.bottom .arrow { @include popoverArrow-bottom(); }
-  &.left .arrow   { @include popoverArrow-left();  }
+  &.top .arrow    { @include bootstrap-popoverArrow-top(); }
+  &.right .arrow  { @include bootstrap-popoverArrow-right(); }
+  &.bottom .arrow { @include bootstrap-popoverArrow-bottom(); }
+  &.left .arrow   { @include bootstrap-popoverArrow-left();  }
   .arrow {
     position: absolute;
     width: 0;
@@ -29,7 +29,7 @@
   background: $black; // has to be full background declaration for IE fallback
   background: rgba(0,0,0,.8);
   @include border-radius(6px);
-  @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  @include bootstrap-box-shadow(0 3px 7px rgba(0,0,0,0.3));
 }
 .popover-title {
   padding: 9px 15px;
@@ -42,7 +42,7 @@
   padding: 14px;
   background-color: $white;
   @include border-radius(0 0 3px 3px);
-  @include background-clip(padding-box);
+  @include bootstrap-background-clip(padding-box);
   p, ul, ol {
     margin-bottom: 0;
   }

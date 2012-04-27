@@ -14,10 +14,10 @@
 .navbar-inner {
   padding-left:  20px;
   padding-right: 20px;
-  @include gradient-vertical($navbarBackgroundHighlight, $navbarBackground);
+  @include bootstrap-gradient-vertical($navbarBackgroundHighlight, $navbarBackground);
   @include border-radius(4px);
   $shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
+  @include bootstrap-box-shadow($shadow);
 }
 
 // Navbar button for toggling navbar items in responsive layouts
@@ -27,9 +27,9 @@
   padding: 7px 10px;
   margin-left: 5px;
   margin-right: 5px;
-  @include buttonBackground($navbarBackgroundHighlight, $navbarBackground);
+  @include bootstrap-buttonBackground($navbarBackgroundHighlight, $navbarBackground);
   $shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
-  @include box-shadow($shadow);
+  @include bootstrap-box-shadow($shadow);
 }
 .btn-navbar .icon-bar {
   display: block;
@@ -37,7 +37,7 @@
   height: 2px;
   background-color: #f5f5f5;
   @include border-radius(1px);
-  @include box-shadow(0 1px 0 rgba(0,0,0,.25));
+  @include bootstrap-box-shadow(0 1px 0 rgba(0,0,0,.25));
 }
 .btn-navbar .icon-bar + .icon-bar {
   margin-top: 3px;
@@ -88,7 +88,7 @@
 // Navbar forms
 .navbar-form {
   margin-bottom: 0; // remove default bottom margin
-  @include clearfix();
+  @include bootstrap-clearfix();
   input,
   select {
     display: inline-block;
@@ -122,18 +122,18 @@
   margin-bottom: 0;
   .search-query {
     padding: 4px 9px;
-    @include font-sans-serif(13px, normal, 1);
+    @include bootstrap-font-sans-serif(13px, normal, 1);
     color: $white;
     color: rgba(255,255,255,.75);
     background: #666;
     background: rgba(255,255,255,.3);
     border: 1px solid #111;
     $shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
-    @include box-shadow($shadow);
-    @include transition(none);
+    @include bootstrap-box-shadow($shadow);
+    @include bootstrap-transition(none);
 
     // Placeholder text gets special styles; can't be bundled together though for some reason
-    @include placeholder($grayLighter);
+    @include bootstrap-placeholder($grayLighter);
 
     // Hover states
     &:hover {
@@ -149,7 +149,7 @@
       text-shadow: 0 1px 0 $white;
       background-color: $white;
       border: 0;
-      @include box-shadow(0 0 3px rgba(0,0,0,.15));
+      @include bootstrap-box-shadow(0 0 3px rgba(0,0,0,.15));
       outline: 0;
     }
   }

@@ -42,13 +42,13 @@ input,
 button,
 select,
 textarea {
-  @include font-shorthand($baseFontSize,normal,$baseLineHeight); // Set size, weight, line-height here
+  @include bootstrap-font-shorthand($baseFontSize,normal,$baseLineHeight); // Set size, weight, line-height here
 }
 input,
 button,
 select,
 textarea {
-  @include font-family-sans-serif(); // And only set font-family here for those that need it (note the missing label element)
+  @include bootstrap-font-family-sans-serif(); // And only set font-family here for those that need it (note the missing label element)
 }
 
 // Identify controls by their labels
@@ -112,7 +112,7 @@ input[type="file"] {
   border: initial;
   background-color: $white;
   background-color: initial;
-  @include box-shadow(none);
+  @include bootstrap-box-shadow(none);
 }
 
 // Help out input buttons
@@ -150,7 +150,7 @@ select[size] {
 
 // Remove shadow from image inputs
 input[type="image"] {
-  @include box-shadow(none);
+  @include bootstrap-box-shadow(none);
 }
 
 // Make textarea height behave
@@ -206,15 +206,15 @@ input[type="hidden"] {
 
 input,
 textarea {
-  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @include bootstrap-box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   $transition: border linear .2s, box-shadow linear .2s;
-  @include transition($transition);
+  @include bootstrap-transition($transition);
 }
 input:focus,
 textarea:focus {
   border-color: rgba(82,168,236,.8);
   $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-  @include box-shadow($shadow);
+  @include bootstrap-box-shadow($shadow);
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
 }
@@ -222,8 +222,8 @@ input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus,
 select:focus {
-  @include box-shadow(none); // override for file inputs
-  @include tab-focus();
+  @include bootstrap-box-shadow(none); // override for file inputs
+  @include bootstrap-tab-focus();
 }
 
 
@@ -253,7 +253,7 @@ textarea[class*="span"],
 // GRID SIZING FOR INPUTS
 // ----------------------
 
-@include inputGridSystem-generate($gridColumns, $gridColumnWidth, $gridGutterWidth);
+@include bootstrap-inputGridSystem-generate($gridColumns, $gridColumnWidth, $gridGutterWidth);
 
 
 
@@ -281,15 +281,15 @@ textarea[readonly] {
 
 // Warning
 .control-group.warning {
-  @include formFieldState($warningText, $warningText, $warningBackground);
+  @include bootstrap-formFieldState($warningText, $warningText, $warningBackground);
 }
 // Error
 .control-group.error {
-  @include formFieldState($errorText, $errorText, $errorBackground);
+  @include bootstrap-formFieldState($errorText, $errorText, $errorBackground);
 }
 // Success
 .control-group.success {
-  @include formFieldState($successText, $successText, $successBackground);
+  @include bootstrap-formFieldState($successText, $successText, $successBackground);
 }
 
 // HTML5 invalid states
@@ -301,7 +301,7 @@ select:focus:required:invalid {
   border-color: #ee5f5b;
   &:focus {
     border-color: darken(#ee5f5b, 10%);
-    @include box-shadow(0 0 6px lighten(#ee5f5b, 20%));    
+    @include bootstrap-box-shadow(0 0 6px lighten(#ee5f5b, 20%));    
   }
 }
 
@@ -323,12 +323,12 @@ select:focus:required:invalid {
   display: block;
   background-color: $white;
   border-color: #eee;
-  @include box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+  @include bootstrap-box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
   cursor: not-allowed;
 }
 
 // Placeholder text gets special styles; can't be bundled together though for some reason
-@include placeholder($grayLight);
+@include bootstrap-placeholder($grayLight);
 
 
 
@@ -344,7 +344,7 @@ select:focus:required:invalid {
 
 .help-inline {
   display: inline-block;
-  @include ie7-inline-block();
+  @include bootstrap-ie7-inline-block();
   margin-bottom: 9px;
   vertical-align: middle;
   padding-left: 5px;
@@ -359,7 +359,7 @@ select:focus:required:invalid {
 .input-prepend,
 .input-append {
   margin-bottom: 5px;
-  @include clearfix(); // Clear the float to prevent wrapping
+  @include bootstrap-clearfix(); // Clear the float to prevent wrapping
   input,
   .uneditable-input {
     @include border-radius(0 3px 3px 0);
@@ -502,7 +502,7 @@ legend + .control-group {
   // Increase spacing between groups
   .control-group {
     margin-bottom: $baseLineHeight;
-    @include clearfix();
+    @include bootstrap-clearfix();
   }
   // Float the labels left
   .control-label {

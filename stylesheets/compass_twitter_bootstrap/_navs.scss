@@ -73,7 +73,7 @@
 // Common styles
 .nav-tabs,
 .nav-pills {
-  @include clearfix();
+  @include bootstrap-clearfix();
 }
 .nav-tabs > li,
 .nav-pills > li {
@@ -253,7 +253,7 @@
 
 // Clear any floats
 .tabbable {
-  @include clearfix();
+  @include bootstrap-clearfix();
 }
 .tab-content {
   overflow: hidden; // prevent content from running below tabs

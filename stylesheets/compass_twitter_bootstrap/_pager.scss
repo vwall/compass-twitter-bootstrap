@@ -6,7 +6,7 @@
   margin-bottom: $baseLineHeight;
   list-style: none;
   text-align: center;
-  @include clearfix();
+  @include bootstrap-clearfix();
 }
 .pager li {
   display: inline;
