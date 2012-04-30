@@ -7,31 +7,35 @@
 // Core
 .btn
   display: inline-block
+  +bootstrap-ie7-inline-block
   padding: 4px 10px 4px
   margin-bottom: 0
   // For input.btn
   font-size: $baseFontSize
   line-height: $baseLineHeight
+  *line-height: 20px
   color: $grayDark
   text-align: center
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75)
   vertical-align: middle
-  +bootstrap-buttonBackground($white, darken($white, 10%))
-  border: 1px solid #ccc
-  border-bottom-color: #bbb
-  +border-radius(4px)
-  $shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
-  +bootstrap-box-shadow($shadow)
   cursor: pointer
-  // Give IE7 some love
-  +bootstrap-reset-filter
+  +bootstrap-buttonBackground($btnBackground, $btnBackgroundHighlight)
+  border: 1px solid $btnBorder
+  *border: 0
+  // Remove the border to prevent IE7's black border on input:focus
+  border-bottom-color: darken($btnBorder, 10%)
+  +bootstrap-border-radius(4px)
   +bootstrap-ie7-restore-left-whitespace
+  // Give IE7 some love
+  +bootstrap-box-shadow("inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)")
 
 // Hover state
 .btn:hover
   color: $grayDark
   text-decoration: none
   background-color: darken($white, 10%)
+  *background-color: darken($white, 15%)
+  /* Buttons in IE7 don't get borders, so darken on hover
   background-position: 0 -15px
   // transition is only when going to hover, otherwise the background
   // behind the gradient (there for IE<=9 fallback) gets mismatched
@@ -45,22 +49,21 @@
 
 .btn.active,
 .btn:active
-  background-image: none
-  $shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)
-  +bootstrap-box-shadow($shadow)
   background-color: darken($white, 10%)
-  background-color: darken($white, 15%)\9
+  background-color: darken($white, 15%) \9
+  background-image: none
   outline: 0
+  +bootstrap-box-shadow("inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)")
 
 // Disabled state
 
 .btn.disabled,
 .btn[disabled]
   cursor: default
-  background-image: none
   background-color: darken($white, 10%)
-  +opacity(0.65)
-  +box-shadow(none)
+  background-image: none
+  +bootstrap-opacity(65)
+  +bootstrap-box-shadow(none)
 
 // Button Sizes
 // --------------------------------------------------
@@ -70,7 +73,7 @@
   padding: 9px 14px
   font-size: $baseFontSize + 2px
   line-height: normal
-  +border-radius(5px)
+  +bootstrap-border-radius(5px)
 
 .btn-large [class^="icon-"]
   margin-top: 1px
@@ -108,8 +111,8 @@
 .btn-info:hover,
 .btn-inverse,
 .btn-inverse:hover
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
   color: $white
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
 
 // Provide *some* extra contrast for those who can get it
 
@@ -118,33 +121,38 @@
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-dark.active
+.btn-inverse.active
   color: rgba(255, 255, 255, 0.75)
 
 // Set the backgrounds
 // -------------------------
+.btn
+  // reset here as of 2.0.3 due to Recess property order
+  border-color: #ccc
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+
 .btn-primary
-  +bootstrap-buttonBackground($primaryButtonBackground, adjust-hue($primaryButtonBackground, 20))
+  +bootstrap-buttonBackground($btnPrimaryButtonBackground, $btnPrimaryButtonBackground)
 
 // Warning appears are orange
 .btn-warning
-  +bootstrap-buttonBackground(lighten($orange, 15%), $orange)
+  +bootstrap-buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight)
 
 // Danger and error appear as red
 .btn-danger
-  +bootstrap-buttonBackground(#ee5f5b, #bd362f)
+  +bootstrap-buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight)
 
 // Success appears as green
 .btn-success
-  +bootstrap-buttonBackground(#62c462, #51a351)
+  +bootstrap-buttonBackground($btnSuccessBackground, $btnSuccessBackgroundHighlight)
 
 // Info appears as a neutral blue
 .btn-info
-  +bootstrap-buttonBackground(#5bc0de, #2f96b4)
+  +bootstrap-buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight)
 
 // Inverse appears as dark gray
 .btn-inverse
-  +bootstrap-buttonBackground(#454545, #262626)
+  +bootstrap-buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight)
 
 // Cross-browser Jank
 // --------------------------------------------------
@@ -158,9 +166,12 @@ input[type="submit"].btn
   // IE7 has some default padding on button controls
   *padding-top: 2px
   *padding-bottom: 2px
-  &.large
+  &.btn-large
     *padding-top: 7px
     *padding-bottom: 7px
-  &.small
+  &.btn-small
     *padding-top: 3px
     *padding-bottom: 3px
+  &.btn-mini
+    *padding-top: 1px
+    *padding-bottom: 1px

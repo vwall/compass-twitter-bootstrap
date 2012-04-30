@@ -8,8 +8,8 @@
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  @include opacity(0.0);
-  &.in     { @include opacity(0.8); }
+  @include bootstrap-opacity(0);
+  &.in     { @include bootstrap-opacity(80); }
   &.top    { margin-top:  -2px; }
   &.right  { margin-left:  2px; }
   &.bottom { margin-top:   2px; }
@@ -26,7 +26,7 @@
   text-align: center;
   text-decoration: none;
   background-color: $black;
-  @include border-radius(4px);
+  @include bootstrap-border-radius(4px);
 }
 .tooltip-arrow {
   position: absolute;

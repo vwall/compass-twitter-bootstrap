@@ -79,8 +79,8 @@
   text-align: center;
   background: $grayDarker;
   border: 3px solid $white;
-  @include border-radius(23px);
-  @include opacity(0.5);
+  @include bootstrap-border-radius(23px);
+  @include bootstrap-opacity(50);
 
   // we can't have this transition here
   // because webkit cancels the carousel
@@ -99,7 +99,7 @@
   &:hover {
     color: $white;
     text-decoration: none;
-    @include opacity(0.9);
+    @include bootstrap-opacity(90);
   }
 }
 

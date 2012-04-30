@@ -60,14 +60,14 @@
   text-align: center
   background: $grayDarker
   border: 3px solid $white
-  +border-radius(23px)
-  +opacity(0.5)
+  +bootstrap-border-radius(23px)
+  +bootstrap-opacity(50)
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
   // in the middle of another animation
   // ;_;
-  // @include transition(opacity .2s linear);
+  // @include bootstrap-transition(opacity .2s linear);
   // Reposition the right one
   &.right
     left: auto
@@ -76,7 +76,7 @@
   &:hover
     color: $white
     text-decoration: none
-    +opacity(0.9)
+    +bootstrap-opacity(90)
 
 // Caption for text below images
 // -----------------------------

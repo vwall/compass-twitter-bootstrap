@@ -9,7 +9,7 @@
 // Clearfix
 // --------
 // For clearing floats like a boss h5bp.com/q
-@mixin bootstrap-clearfix() {
+@mixin bootstrap-clearfix {
   *zoom: 1;
   &:before,
   &:after {
@@ -70,11 +70,11 @@
 
 // Sizing shortcuts
 // -------------------------
-@mixin bootstrap-size($height: 5px, $width: 5px) {
+@mixin bootstrap-size($height, $width) {
   width: $width;
   height: $height;
 }
-@mixin bootstrap-square($size: 5px) {
+@mixin bootstrap-square($size) {
   @include bootstrap-size($size, $size);
 }
 
@@ -98,23 +98,29 @@
   white-space: nowrap;
 }
 
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+@mixin bootstrap-hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
 // FONTS
 // --------------------------------------------------
 @mixin bootstrap-font-family-serif {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: $serifFontFamily;
 }
 
 @mixin bootstrap-font-family-sans-serif {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $sansFontFamily;
 }
 
 @mixin bootstrap-font-family-monospace {
-  font-family: Menlo, Monaco, "Courier New", monospace;
-}
-
-@mixin bootstrap-font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  @include bootstrap-shorthand($size, $weight, $lineHeight);
+  font-family: $monoFontFamily;
 }
 
 @mixin bootstrap-font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
@@ -138,156 +144,17 @@
   @include bootstrap-font-shorthand($size, $weight, $lineHeight);
 }
 
-
-// GRID SYSTEM
+// FORMS
 // --------------------------------------------------
 
-// Site container
-// -------------------------
-@mixin bootstrap-container-fixed() {
-  width: $gridRowWidth;
-  margin-left: auto;
-  margin-right: auto;
-  @include bootstrap-clearfix();
+// Block level inputs
+@mixin bootstrap-input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;        // Make inputs at least the height of their button counterpart
+  @include bootstrap-box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
 
-// Le grid system
-@mixin bootstrap-gridSystem-columns ($gridGutterWidth, $gridColumnWidth, $gridRowWidth, $columns) {
-  width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
-} 
-
-@mixin bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, $columns) {
-  margin-left: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1)) + ($gridGutterWidth * 2);
-}
-
-@mixin bootstrap-gridSystem-gridColumn($gridGutterWidth) {
-  float: left;
-  margin-left: $gridGutterWidth;
-}
-
-// Take these values and mixins, and make 'em do their thang
-@mixin bootstrap-gridSystem-generate($gridColumns, $gridColumnWidth, $gridGutterWidth) {
-  // Row surrounds the columns
-  .row {
-    margin-left: $gridGutterWidth * -1;
-    @include bootstrap-clearfix();
-  }
-  // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks $dhg)
-  [class*="span"] {
-    @include bootstrap-gridSystem-gridColumn($gridGutterWidth);
-  }
-  // Default columns
-  .span1     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 1); }
-  .span2     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 2); }
-  .span3     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 3); }
-  .span4     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 4); }
-  .span5     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 5); }
-  .span6     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 6); }
-  .span7     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 7); }
-  .span8     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 8); }
-  .span9     { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 9); }
-  .span10    { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 10); }
-  .span11    { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 11); }
-  .span12,
-  .container { @include bootstrap-gridSystem-columns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 12); }
-  // Offset column options
-  .offset1   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 1); }
-  .offset2   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 2); }
-  .offset3   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 3); }
-  .offset4   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 4); }
-  .offset5   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 5); }
-  .offset6   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 6); }
-  .offset7   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 7); }
-  .offset8   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 8); }
-  .offset9   { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 9); }
-  .offset10  { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 10); }
-  .offset11  { @include bootstrap-gridSystem-offset($gridColumnWidth, $gridGutterWidth, 11); }
-}
-
-// Fluid grid system
-// -------------------------
-@mixin bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, $columns) {
-  width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1));
-}
-
-@mixin bootstrap-fluidGridSystem-gridColumn($fluidGridGutterWidth) {
-  float: left;
-  margin-left: $fluidGridGutterWidth;
-}
-
-// Take these values and mixins, and make 'em do their thang
-@mixin bootstrap-fluidGridSystem-generate($gridColumns, $fluidGridColumnWidth, $fluidGridGutterWidth) {      
-  // Row surrounds the columns
-  .row-fluid {
-    width: 100%;
-    @include bootstrap-clearfix();
-
-    // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks $dhg)
-    > [class*="span"] {
-      @include bootstrap-fluidGridSystem-gridColumn($fluidGridGutterWidth);
-    }
-    > [class*="span"]:first-child {
-      margin-left: 0;
-    }
-    // Default columns
-    > .span1     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 1); }
-    > .span2     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 2); }
-    > .span3     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 3); }
-    > .span4     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 4); }
-    > .span5     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 5); }
-    > .span6     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 6); }
-    > .span7     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 7); }
-    > .span8     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 8); }
-    > .span9     { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 9); }
-    > .span10    { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 10); }
-    > .span11    { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 11); }
-    > .span12    { @include bootstrap-fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 12); }
-  }
-}
-
-
-
-// Input grid system
-// -------------------------
-@mixin bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, $columns) {
-  width: (($gridColumnWidth) * $columns) + ($gridGutterWidth * ($columns - 1)) - 10;
-}
-
-@mixin bootstrap-inputGridSystem-generate($gridColumns, $gridColumnWidth, $gridGutterWidth) {
-  input,
-  textarea,
-  .uneditable-input {
-    &.span1     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 1); }
-    &.span2     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 2); }
-    &.span3     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 3); }
-    &.span4     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 4); }
-    &.span5     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 5); }
-    &.span6     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 6); }
-    &.span7     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 7); }
-    &.span8     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 8); }
-    &.span9     { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 9); }
-    &.span10    { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 10); }
-    &.span11    { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 11); }
-    &.span12    { @include bootstrap-inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 12); }
-  }
-}
-
-// Make a Grid
-// -------------------------
-// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-@mixin bootstrap-makeRow() {
-  margin-left: $gridGutterWidth * -1;
-  @include bootstrap-clearfix();
-}
-@mixin bootstrap-makeColumn($columns: 1) {
-  float: left;
-  margin-left: $gridGutterWidth;
-  width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
-}
-
-
-// Form field states (used in forms.less)
-// --------------------------------------------------
 
 // Mixin for form field states
 @mixin bootstrap-formFieldState($textColor: #555, $borderColor: #ccc, $backgroundColor: #f5f5f5) {
@@ -321,9 +188,15 @@
 // CSS3 PROPERTIES
 // --------------------------------------------------
 
+// Border Radius
+@mixin bootstrap-border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
 
 // Drop shadows
-@mixin bootstrap-box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+@mixin bootstrap-box-shadow($shadow) {
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
           box-shadow: $shadow;
@@ -353,26 +226,37 @@
        -o-transform: scale($ratio);
           transform: scale($ratio);
 }
-@mixin bootstrap-translate($x: 0, $y: 0) {
+@mixin bootstrap-translate($x, $y) {
   -webkit-transform: translate($x, $y);
      -moz-transform: translate($x, $y);
       -ms-transform: translate($x, $y);
        -o-transform: translate($x, $y);
           transform: translate($x, $y);
 }
-@mixin bootstrap-skew($x: 0, $y: 0) {
+@mixin bootstrap-skew($x, $y) {
   -webkit-transform: skew($x, $y);
      -moz-transform: skew($x, $y);
       -ms-transform: skew($x, $y);
        -o-transform: skew($x, $y);
           transform: skew($x, $y);
 }
-@mixin bootstrap-translate3d($x: 0, $y: 0, $z: 0) {
+@mixin bootstrap-translate3d($x, $y, $z) {
   -webkit-transform: translate($x, $y, $z);
      -moz-transform: translate($x, $y, $z);
       -ms-transform: translate($x, $y, $z);
        -o-transform: translate($x, $y, $z);
           transform: translate($x, $y, $z);
+}
+
+// Backface visibility
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+@mixin bootstrap-backface-visibility($visibility){
+	-webkit-backface-visibility: $visibility;
+	   -moz-backface-visibility: $visibility;
+	    -ms-backface-visibility: $visibility;
+	        backface-visibility: $visibility;
 }
 
 // Background clipping
@@ -396,6 +280,7 @@
 @mixin bootstrap-box-sizing($boxmodel) {
   -webkit-box-sizing: $boxmodel;
      -moz-box-sizing: $boxmodel;
+      -ms-box-sizing: $boxmodel;
           box-sizing: $boxmodel;
 }
 
@@ -404,24 +289,31 @@
 @mixin bootstrap-user-select($select) {
   -webkit-user-select: $select;
      -moz-user-select: $select;
+      -ms-user-select: $select;
        -o-user-select: $select;
           user-select: $select;
 }
 
 // Resize anything
-@mixin bootstrap-resizable($direction: both) {
+@mixin bootstrap-resizable($direction) {
   resize: $direction; // Options: horizontal, vertical, both
   overflow: auto; // Safari fix
 }
 
 // CSS3 Content Columns
-@mixin bootstrap-content-columns($columnCount, $columnGap: $gridColumnGutter) {
+@mixin bootstrap-content-columns($columnCount, $columnGap: $gridGutterWidth) {
   -webkit-column-count: $columnCount;
      -moz-column-count: $columnCount;
           column-count: $columnCount;
   -webkit-column-gap: $columnGap;
      -moz-column-gap: $columnGap;
           column-gap: $columnGap;
+}
+
+// Opacity
+@mixin bootstrap-opacity($opacity) {
+  opacity: $opacity / 100;
+  filter: unquote("alpha(opacity=#{$opacity})");
 }
 
 
@@ -431,7 +323,7 @@
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 @mixin bootstrap-translucent-background($color: $white, $alpha: 1) {
-    background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
 }
 
 @mixin bootstrap-translucent-border($color: $white, $alpha: 1) {
@@ -449,10 +341,9 @@
 // Gradients
 @mixin bootstrap-gradient-horizontal($startColor: #555, $endColor: #333) {
   background-color: $endColor;
-  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
   background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
@@ -460,16 +351,15 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
 }
 @mixin bootstrap-gradient-vertical($startColor: #555, $endColor: #333) {
-  background-color: $endColor;
-  background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
+  background-color: mix($startColor, $endColor, 60%);
   background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
-  //background-image: linear-gradient(top left, $startColor, $endColor); // The standard
+  background-image: linear-gradient(top, $startColor, $endColor); // The standard
   background-repeat: repeat-x;
- filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
 }
 @mixin bootstrap-gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -481,7 +371,7 @@
   background-image: linear-gradient($deg, $startColor, $endColor); // The standard
 }
 @mixin bootstrap-gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
-  background-color: $endColor;
+  background-color: mix($midColor, $endColor, 80%);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
   background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
@@ -489,32 +379,25 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
 }
-@mixin bootstrap-gradient-radial($centerColor: #555, $outsideColor: #333)  {
-  background-color: $outsideColor;
-  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($centerColor), to($outsideColor));
-  background-image: -webkit-radial-gradient(circle, $centerColor, $outsideColor);
-  background-image: -moz-radial-gradient(circle, $centerColor, $outsideColor);
-  background-image: -ms-radial-gradient(circle, $centerColor, $outsideColor);
+@mixin bootstrap-gradient-radial($innerColor: #555, $outerColor: #333)  {
+  background-color: $outerColor;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+  background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -ms-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
   background-repeat: no-repeat;
-  // Opera cannot do radial gradients yet
 }
-@mixin bootstrap-gradient-striped($color,$angle: -45deg) {
-    background-color: $color;
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
-    background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -ms-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    //background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-  }
-
-// Gradient Bar Colors for buttons and alerts
-@mixin bootstrap-gradientBar($primaryColor, $secondaryColor) {
-  @include bootstrap-gradient-vertical($primaryColor, $secondaryColor);
-  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fade-in(rgba(0,0,0,.1), 0.15);
+@mixin bootstrap-gradient-striped($color, $angle: -45deg) {
+  background-color: $color;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
 }
 
 // Reset filters for IE
@@ -522,16 +405,40 @@
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
-// Mixin for generating button backgrounds
-// ---------------------------------------
+
+
+// COMPONENT MIXINS
+// --------------------------------------------------
+
+// Horizontal dividers
+// -------------------------
+// Dividers (basically an hr) within dropdowns and nav lists
+@mixin bootstrap-nav-divider() {
+  // IE7 needs a set width since we gave a height. Restricting just
+  // to IE7 to keep the 1px left/right space in other browsers.
+  // It is unclear where IE is getting the extra space that we need
+  // to negative-margin away, but so it goes.
+  *width: 100%;
+  height: 1px;
+  margin: (($baseLineHeight / 2) - 1) 1px; // 8px 1px
+  *margin: -5px 0 5px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid $white;
+}
+
+// Button backgrounds
+// ------------------
 @mixin bootstrap-buttonBackground($startColor, $endColor) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   @include bootstrap-gradientBar($startColor, $endColor);
+  *background-color: $endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   @include bootstrap-reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
     background-color: $endColor;
+    *background-color: darken($endColor, 5%);
   }
 
   // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
@@ -541,42 +448,153 @@
   }
 }
 
+// Navbar vertical align
+// -------------------------
+// Vertically center elements in the navbar.
+// Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
+@mixin bootstrap-navbarVerticalAlign($elementHeight) {
+  margin-top: ($navbarHeight - $elementHeight) / 2;
+}
 
-// COMPONENT MIXINS
-// --------------------------------------------------
-
-// POPOVER ARROWS
+// Popover arrows
 // -------------------------
 // For tipsies and popovers
-@mixin bootstrap-popoverArrow-top($arrowWidth: 5px) {
+@mixin bootstrap-popoverArrow-top($arrowWidth: 5px, $color: $black) {
   bottom: 0;
   left: 50%;
   margin-left: -$arrowWidth;
   border-left: $arrowWidth solid transparent;
   border-right: $arrowWidth solid transparent;
-  border-top: $arrowWidth solid $black;
+  border-top: $arrowWidth solid $color;
 }
-@mixin bootstrap-popoverArrow-left($arrowWidth: 5px) {
+
+@mixin bootstrap-popoverArrow-left($arrowWidth: 5px, $color: $black) {
   top: 50%;
   right: 0;
   margin-top: -$arrowWidth;
   border-top: $arrowWidth solid transparent;
   border-bottom: $arrowWidth solid transparent;
-  border-left: $arrowWidth solid $black;
+  border-left: $arrowWidth solid $color;
 }
-@mixin bootstrap-popoverArrow-bottom($arrowWidth: 5px) {
+
+@mixin bootstrap-popoverArrow-bottom($arrowWidth: 5px, $color: $black) {
   top: 0;
   left: 50%;
   margin-left: -$arrowWidth;
   border-left: $arrowWidth solid transparent;
   border-right: $arrowWidth solid transparent;
-  border-bottom: $arrowWidth solid $black;
+  border-bottom: $arrowWidth solid $color;
 }
-@mixin bootstrap-popoverArrow-right($arrowWidth: 5px) {
+
+@mixin bootstrap-popoverArrow-right($arrowWidth: 5px, $color: $black) {
   top: 50%;
   left: 0;
   margin-top: -$arrowWidth;
   border-top: $arrowWidth solid transparent;
   border-bottom: $arrowWidth solid transparent;
-  border-right: $arrowWidth solid $black;
+  border-right: $arrowWidth solid $color;
+}
+
+
+// Grid System
+// -----------
+
+// Centered container element
+@mixin bootstrap-container-fixed() {
+  margin-right: auto;
+  margin-left: auto;
+  @include bootstrap-clearfix();
+}
+
+// Table columns
+@mixin bootstrap-tableColumns($columnSpan: 1) {
+  float: none; // undo default grid column styles
+  width: (($gridColumnWidth) * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
+  margin-left: 0; // undo default grid column styles
+}
+
+// Make a Grid
+// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
+@mixin bootstrap-makeRow() {
+  margin-left: $gridGutterWidth * -1;
+  @include bootstrap-clearfix();
+}
+@mixin bootstrap-makeColumn($columns: 1, $offset: 0) {
+  float: left;
+  margin-left: ($gridColumnWidth * $offset) + ($gridGutterWidth * ($offset - 1)) + ($gridGutterWidth * 2);
+  width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
+}
+
+// The Grid
+@mixin bootstrap-grid-core-offset ($columns, $gridColumnWidth, $gridGutterWidth) {
+  margin-left: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns + 1));
+}
+  
+@mixin bootstrap-grid-core-span ($columns, $gridColumnWidth, $gridGutterWidth) {
+  width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
+}
+
+@mixin bootstrap-grid-core($gridColumnWidth, $gridGutterWidth) {
+  .row {
+    margin-left: $gridGutterWidth * -1;
+    @include bootstrap-clearfix();
+  }
+  
+  [class*="span"] {
+    float: left;
+    margin-left: $gridGutterWidth;
+  }
+  
+  // Set the container width, and override it for fixed navbars in media queries
+  .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container { @include bootstrap-grid-core-span($gridColumns, $gridColumnWidth, $gridGutterWidth); }
+  
+  // generate .spanX and .offsetX
+  @for $i from 1 through $gridColumns {
+    .span#{$i} { @include bootstrap-grid-core-span($i, $gridColumnWidth, $gridGutterWidth); }
+    .offset#{$i} { @include bootstrap-grid-core-offset($i, $gridColumnWidth, $gridGutterWidth); }
+  }
+}
+
+@mixin bootstrap-grid-fluid-span($columns, $fluidGridColumnWidth, $fluidGridGutterWidth) {
+  width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1));
+  *width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1)) - (.5 / $gridRowWidth * 100 * 1%);
+}
+
+@mixin bootstrap-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth) {
+  .row-fluid {
+    width: 100%;
+    @include bootstrap-clearfix();
+    [class*="span"] {
+      @include bootstrap-input-block-level();
+      float: left;
+      margin-left: $fluidGridGutterWidth;
+      *margin-left: $fluidGridGutterWidth - (.5 / $gridRowWidth * 100 * 1%);
+    }
+    [class*="span"]:first-child {
+      margin-left: 0;
+    }
+
+    // generate .spanX
+    @for $i from 1 through $gridColumns {
+      .span#{$i} { @include bootstrap-grid-fluid-span($i, $fluidGridColumnWidth, $fluidGridGutterWidth); }
+    }
+  }
+}
+
+@mixin bootstrap-grid-input-span($columns, $gridColumnWidth, $gridGutterWidth) {
+  width: (($gridColumnWidth) * $columns) + ($gridGutterWidth * ($columns - 1)) - 10;
+}
+
+@mixin bootstrap-grid-input($gridColumnWidth, $gridGutterWidth) {
+  input,
+  textarea,
+  .uneditable-input {
+    margin-left: 0; // override margin-left from core grid system
+  }
+  
+  @for $i from 1 through $gridColumns {
+    input.span#{$i}, textarea.span#{$i}, .uneditable-input.span#{$i} { @include bootstrap-grid-input-span($i); }
+  } 
 }
