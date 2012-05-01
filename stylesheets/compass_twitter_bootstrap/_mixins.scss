@@ -559,7 +559,7 @@
 
 @mixin bootstrap-grid-fluid-span($columns, $fluidGridColumnWidth, $fluidGridGutterWidth) {
   width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1));
-  *width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1)) - (.5 / $gridRowWidth * 100 * 1%);
+  *width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1)) - (.5 / ($gridRowWidth / 1px) * 100 * 1%);
 }
 
 @mixin bootstrap-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth) {
@@ -570,7 +570,7 @@
       @include bootstrap-input-block-level();
       float: left;
       margin-left: $fluidGridGutterWidth;
-      *margin-left: $fluidGridGutterWidth - (.5 / $gridRowWidth * 100 * 1%);
+      *margin-left: $fluidGridGutterWidth - (.5 / ($gridRowWidth / 1px) * 100 * 1%);
     }
     [class*="span"]:first-child {
       margin-left: 0;
@@ -595,6 +595,8 @@
   }
   
   @for $i from 1 through $gridColumns {
-    input.span#{$i}, textarea.span#{$i}, .uneditable-input.span#{$i} { @include bootstrap-grid-input-span($i); }
+    input.span#{$i}, textarea.span#{$i}, .uneditable-input.span#{$i} {
+      @include bootstrap-grid-input-span($i, $gridColumnWidth, $gridGutterWidth);
+    }
   } 
 }

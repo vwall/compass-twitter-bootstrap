@@ -512,7 +512,7 @@
 
 =bootstrap-grid-fluid-span($columns, $fluidGridColumnWidth, $fluidGridGutterWidth)
   width: $fluidGridColumnWidth * $columns + $fluidGridGutterWidth * ($columns - 1)
-  *width: $fluidGridColumnWidth * $columns + $fluidGridGutterWidth * ($columns - 1) - 0.5 / $gridRowWidth * 100 * 1%
+  *width: $fluidGridColumnWidth * $columns + $fluidGridGutterWidth * ($columns - 1) - 0.5 / ($gridRowWidth / 1px) * 100 * 1%
 
 =bootstrap-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth)
   .row-fluid
@@ -522,7 +522,7 @@
       +bootstrap-input-block-level
       float: left
       margin-left: $fluidGridGutterWidth
-      *margin-left: $fluidGridGutterWidth - 0.5 / $gridRowWidth * 100 * 1%
+      *margin-left: $fluidGridGutterWidth - 0.5 / ($gridRowWidth / 1px) * 100 * 1%
     [class*="span"]:first-child
       margin-left: 0
     // generate .spanX
@@ -541,4 +541,4 @@
     // override margin-left from core grid system
   @for $i from 1 through $gridColumns
     input.span#{$i}, textarea.span#{$i}, .uneditable-input.span#{$i}
-      +bootstrap-grid-input-span($i)
+      +bootstrap-grid-input-span($i, $gridColumnWidth, $gridGutterWidth)

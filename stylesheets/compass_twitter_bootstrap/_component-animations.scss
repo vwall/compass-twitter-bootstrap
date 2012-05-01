@@ -5,7 +5,7 @@
   @include bootstrap-opacity(0);
   @include bootstrap-transition(opacity .15s linear);
   &.in {
-    @include boostrap-opacity(100);
+    @include bootstrap-opacity(100);
   }
 }
 
