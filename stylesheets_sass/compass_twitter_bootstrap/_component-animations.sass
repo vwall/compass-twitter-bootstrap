@@ -2,15 +2,15 @@
 // --------------------
 
 .fade
-  +transition(opacity 0.15s linear)
-  opacity: 0
+  +bootstrap-opacity(0)
+  +bootstrap-transition(opacity 0.15s linear)
   &.in
-    opacity: 1
+    +bootstrap-opacity(100)
 
 .collapse
-  +transition(height 0.35s ease)
   position: relative
-  overflow: hidden
   height: 0
+  overflow: hidden
+  +bootstrap-transition(height 0.35s ease)
   &.in
     height: auto

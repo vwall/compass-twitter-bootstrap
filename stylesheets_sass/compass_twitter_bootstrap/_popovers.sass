@@ -17,13 +17,13 @@
   &.left
     margin-left: -5px
   &.top .arrow
-    +popoverArrow-top
+    +bootstrap-popoverArrow-top
   &.right .arrow
-    +popoverArrow-right
+    +bootstrap-popoverArrow-right
   &.bottom .arrow
-    +popoverArrow-bottom
+    +bootstrap-popoverArrow-bottom
   &.left .arrow
-    +popoverArrow-left
+    +bootstrap-popoverArrow-left
   .arrow
     position: absolute
     width: 0
@@ -36,20 +36,20 @@
   background: $black
   // has to be full background declaration for IE fallback
   background: rgba(0, 0, 0, 0.8)
-  +border-radius(6px)
-  +box-shadow(0 3px 7px rgba(0, 0, 0, 0.3))
+  +bootstrap-border-radius(6px)
+  +bootstrap-box-shadow(0 3px 7px rgba(0, 0, 0, 0.3))
 
 .popover-title
   padding: 9px 15px
   line-height: 1
   background-color: #f5f5f5
   border-bottom: 1px solid #eee
-  +border-radius(3px 3px 0 0)
+  +bootstrap-border-radius(3px 3px 0 0)
 
 .popover-content
   padding: 14px
   background-color: $white
-  +border-radius(0 0 3px 3px)
-  +background-clip(padding-box)
+  +bootstrap-border-radius(0 0 3px 3px)
+  +bootstrap-background-clip(padding-box)
   p, ul, ol
     margin-bottom: 0
