@@ -1,8 +1,5 @@
-// GRID SYSTEM
-// -----------
-
 // Fixed (940px)
-@include gridSystem-generate($gridColumns, $gridColumnWidth, $gridGutterWidth);
+@include bootstrap-grid-core($gridColumnWidth, $gridGutterWidth);
 
 // Fluid (940px)
-@include fluidGridSystem-generate($gridColumns, $fluidGridColumnWidth, $fluidGridGutterWidth);
+@include bootstrap-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth);

@@ -43,7 +43,7 @@ html
 
 // Focus states
 a:focus
-  +tab-focus
+  +bootstrap-tab-focus
 
 // Hover & Active
 
@@ -72,7 +72,8 @@ sub
 
 img
   max-width: 100%
-  height: auto
+  // Make images inherently responsive
+  vertical-align: middle
   border: 0
   -ms-interpolation-mode: bicubic
 
@@ -113,10 +114,10 @@ input[type="submit"]
 
 input[type="search"]
   // Appearance in Safari/Chrome
-  -webkit-appearance: textfield
   -webkit-box-sizing: content-box
   -moz-box-sizing: content-box
   box-sizing: content-box
+  -webkit-appearance: textfield
 
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button

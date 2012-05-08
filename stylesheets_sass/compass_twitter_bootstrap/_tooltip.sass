@@ -8,9 +8,9 @@
   visibility: visible
   padding: 5px
   font-size: 11px
-  +opacity(0)
+  +bootstrap-opacity(0)
   &.in
-    +opacity(0.8)
+    +bootstrap-opacity(80)
   &.top
     margin-top: -2px
   &.right
@@ -20,13 +20,13 @@
   &.left
     margin-left: -2px
   &.top .tooltip-arrow
-    +popoverArrow-top
+    +bootstrap-popoverArrow-top
   &.left .tooltip-arrow
-    +popoverArrow-left
+    +bootstrap-popoverArrow-left
   &.bottom .tooltip-arrow
-    +popoverArrow-bottom
+    +bootstrap-popoverArrow-bottom
   &.right .tooltip-arrow
-    +popoverArrow-right
+    +bootstrap-popoverArrow-right
 
 .tooltip-inner
   max-width: 200px
@@ -35,7 +35,7 @@
   text-align: center
   text-decoration: none
   background-color: $black
-  +border-radius(4px)
+  +bootstrap-border-radius(4px)
 
 .tooltip-arrow
   position: absolute

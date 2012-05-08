@@ -8,11 +8,11 @@
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   background-color: $warningBackground;
   border: 1px solid $warningBorder;
-  @include border-radius(4px);
-}
-.alert,
-.alert-heading {
+  @include bootstrap-border-radius(4px);
   color: $warningText;
+}
+.alert-heading {
+  color: inherit;
 }
 
 // Adjust close link position
@@ -29,31 +29,19 @@
 .alert-success {
   background-color: $successBackground;
   border-color: $successBorder;  
-}
-.alert-success,
-.alert-success .alert-heading {
   color: $successText;
 }
 .alert-danger,
 .alert-error {
   background-color: $errorBackground;
   border-color: $errorBorder;
-}
-.alert-danger,
-.alert-error,
-.alert-danger .alert-heading,
-.alert-error .alert-heading {
   color: $errorText;
 }
 .alert-info {
   background-color: $infoBackground;
   border-color: $infoBorder;
-}
-.alert-info,
-.alert-info .alert-heading {
   color: $infoText;
 }
-
 
 // Block alerts
 // ------------------------

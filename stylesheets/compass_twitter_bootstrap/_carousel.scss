@@ -18,7 +18,7 @@
   .item {
     display: none;
     position: relative;
-    @include transition(.6s ease-in-out left);
+    @include bootstrap-transition(.6s ease-in-out left);
   }
 
   // Account for jankitude on images
@@ -79,15 +79,15 @@
   text-align: center;
   background: $grayDarker;
   border: 3px solid $white;
-  @include border-radius(23px);
-  @include opacity(0.5);
+  @include bootstrap-border-radius(23px);
+  @include bootstrap-opacity(50);
 
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
   // in the middle of another animation
   // ;_;
-  // @include transition(opacity .2s linear);
+  // @include bootstrap-transition(opacity .2s linear);
 
   // Reposition the right one
   &.right {
@@ -99,7 +99,7 @@
   &:hover {
     color: $white;
     text-decoration: none;
-    @include opacity(0.9);
+    @include bootstrap-opacity(90);
   }
 }
 
