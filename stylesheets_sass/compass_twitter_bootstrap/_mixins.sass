@@ -307,7 +307,7 @@
   background-image: linear-gradient(left, $startColor, $endColor)
   // Le standard
   background-repeat: repeat-x
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=1)
   // IE9 and down
 
 =bootstrap-gradient-vertical($startColor: #555555, $endColor: #333333)
@@ -325,7 +325,7 @@
   background-image: linear-gradient(top, $startColor, $endColor)
   // The standard
   background-repeat: repeat-x
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0)
   // IE9 and down
 
 =bootstrap-gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
@@ -351,7 +351,7 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor)
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor)
   background-repeat: no-repeat
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0)
   // IE9 and down, gets no color-stop at all for proper fallback
 
 =bootstrap-gradient-radial($innerColor: #555555, $outerColor: #333333)
