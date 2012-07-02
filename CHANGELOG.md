@@ -1,5 +1,15 @@
 # Overview
 
+## 2.0.4
+* Upgrade twitter bootstrap to 2.0.4
+* unquote all the shorthand parameters to bootstrap''s CSS animation mixins
+* Fixed regression with image-url for sprites
+
+## 2.0.3
+* Upgrade twitter bootstrap to 2.0.3
+* Prefixed all bootstrap mixins with "bootstrap-"
+* Rewrote the grid system to be align with Bootstrap''s
+
 ## 2.0.1.2
 * Really fix sprites, maybe.
 * Update JS

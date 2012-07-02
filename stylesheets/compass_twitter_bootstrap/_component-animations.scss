@@ -2,10 +2,10 @@
 // --------------------
 
 .fade {
-  @include bootstrap-opacity(0);
+  opacity: 0;
   @include bootstrap-transition(opacity .15s linear);
   &.in {
-    @include bootstrap-opacity(100);
+    opacity: 1;
   }
 }
 

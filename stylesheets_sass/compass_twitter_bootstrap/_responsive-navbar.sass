@@ -7,10 +7,15 @@
   body
     padding-top: 0
   // Unfix the navbar
-  .navbar-fixed-top
+  .navbar-fixed-top,
+  .navbar-fixed-bottom
     position: static
+  .navbar-fixed-top
     margin-bottom: $baseLineHeight
-  .navbar-fixed-top .navbar-inner
+  .navbar-fixed-bottom
+    margin-top: $baseLineHeight
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner
     padding: 5px
   .navbar .container
     width: auto
@@ -86,7 +91,7 @@
     margin: $baseLineHeight / 2 0
     border-top: 1px solid $navbarBackground
     border-bottom: 1px solid $navbarBackground
-    +bootstrap-box-shadow("inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)")
+    +bootstrap-box-shadow(unquote("inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)"))
   // Pull right (secondary) nav content
   .navbar .nav-collapse .nav.pull-right
     float: none
