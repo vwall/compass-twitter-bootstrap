@@ -99,27 +99,27 @@ private
   end
 
   def replace_fonts(less)
-    less.gsub(/#font \> \.([\w-]+)/, '@include font-\1')
+    less.gsub(/#font \> \.([\w-]+)/, '@include bootstrap-font-\1')
   end
 
   def replace_font_family(less)
-    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include font-family-\1')
+    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include bootstrap-font-family-\1')
   end
 
   def replace_grads(less)
-    less.gsub(/#gradient \> \.([\w-]+)/, '@include gradient-\1')
+    less.gsub(/#gradient \> \.([\w-]+)/, '@include bootstrap-gradient-\1')
   end
 
   def replace_mixins(less)
-    less.gsub(/^\.([\w-]*)(\(.*\))([\s\{]+)$/, '@mixin \1\2\3')
+    less.gsub(/^\.([\w-]*)(\(.*\))([\s\{]+)$/, '@mixin bootstrap-\1\2\3')
   end
 
   def replace_includes(less)
-    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include \1\2;')
+    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include bootstrap-\1\2;')
   end
 
   def replace_less_extend(less)
-    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include \1-\2\3;')
+    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include bootstrap-\1-\2\3;')
   end
 
   def replace_spin(less)
@@ -127,7 +127,7 @@ private
   end
 
   def replace_opacity(scss)
-    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include opacity(#{$1.to_f / 100})"}
+    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include bootstrap-opacity(#{$1.to_f / 100})"}
   end
 
   def replace_image_urls(less)

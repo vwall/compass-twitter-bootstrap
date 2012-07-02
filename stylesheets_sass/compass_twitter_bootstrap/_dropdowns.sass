@@ -68,7 +68,7 @@
     left: auto
   // Dividers (basically an hr) within the dropdown
   .divider
-    +bootstrap-nav-divider
+    +bootstrap-nav-divider($dropdownDividerTop, $dropdownDividerBottom)
   // Links within the dropdown menu
   a
     display: block
@@ -95,12 +95,12 @@
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
   *z-index: $zindexDropdown
-  .dropdown-menu
+  & > .dropdown-menu
     display: block
 
 // Right aligned dropdowns
 // ---------------------------
-.pull-right .dropdown-menu
+.pull-right > .dropdown-menu
   right: 0
   left: auto
 

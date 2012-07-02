@@ -18,7 +18,7 @@
   padding-right: 20px
   +bootstrap-gradient-vertical($navbarBackgroundHighlight, $navbarBackground)
   +bootstrap-border-radius(4px)
-  +bootstrap-box-shadow("0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)")
+  +bootstrap-box-shadow(unquote("0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)"))
 
 // Set width to auto for default container
 // We then reset it for fixed navbars in the #gridSystem mixin
@@ -107,13 +107,9 @@
     color: $white
     background-color: $navbarSearchBackground
     border: 1px solid $navbarSearchBorder
-    +bootstrap-box-shadow("inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15)")
+    +bootstrap-box-shadow(unquote("inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)"))
     +bootstrap-transition(none)
-    // Placeholder text gets special styles; can't be a grouped selector
-    &:-moz-placeholder
-      color: $navbarSearchPlaceholderColor
-    &::-webkit-input-placeholder
-      color: $navbarSearchPlaceholderColor
+    +bootstrap-placeholder($navbarSearchPlaceholderColor)
     // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
     &:focus,
     &.focused
@@ -239,7 +235,7 @@
   margin-left: 5px
   margin-right: 5px
   +bootstrap-buttonBackground($navbarBackgroundHighlight, $navbarBackground)
-  +bootstrap-box-shadow("inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)")
+  +bootstrap-box-shadow(unquote("inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)"))
 
 .navbar .btn-navbar .icon-bar
   display: block

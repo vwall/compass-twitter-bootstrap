@@ -25,7 +25,7 @@
   border-bottom-color: darken($btnBorder, 10%);
   @include bootstrap-border-radius(4px);
   @include bootstrap-ie7-restore-left-whitespace(); // Give IE7 some love
-  @include bootstrap-box-shadow("inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+  @include bootstrap-box-shadow(unquote("inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)"));
 }
 
 // Hover state
@@ -53,7 +53,7 @@
   background-color: darken($white, 15%)\9;
   background-image: none;
   outline: 0;
-  @include bootstrap-box-shadow("inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+  @include bootstrap-box-shadow(unquote("inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)"));
 }
 
 // Disabled state

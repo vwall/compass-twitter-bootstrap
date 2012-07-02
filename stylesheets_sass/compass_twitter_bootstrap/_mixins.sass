@@ -68,9 +68,11 @@
 // Placeholder text
 // -------------------------
 =bootstrap-placeholder($color: $placeholderText)
-  \:-moz-placeholder
+  &:-moz-placeholder
     color: $color
-  \::-webkit-input-placeholder
+  &:-ms-input-placeholder
+    color: $color
+  &::-webkit-input-placeholder
     color: $color
 
 // Text overflow
@@ -139,6 +141,8 @@
   .help-inline
     color: $textColor
   // Style inputs accordingly
+  .checkbox,
+  .radio,
   input,
   select,
   textarea
@@ -269,6 +273,15 @@
   -moz-column-gap: $columnGap
   column-gap: $columnGap
 
+// Optional hyphenation
+=bootstrap-hyphens($mode: auto)
+  word-wrap: break-word
+  -webkit-hyphens: $mode
+  -moz-hyphens: $mode
+  -ms-hyphens: $mode
+  -o-hyphens: $mode
+  hyphens: $mode
+
 // Opacity
 =bootstrap-opacity($opacity)
   opacity: $opacity / 100
@@ -307,7 +320,7 @@
   background-image: linear-gradient(left, $startColor, $endColor)
   // Le standard
   background-repeat: repeat-x
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=1)
   // IE9 and down
 
 =bootstrap-gradient-vertical($startColor: #555555, $endColor: #333333)
@@ -325,7 +338,7 @@
   background-image: linear-gradient(top, $startColor, $endColor)
   // The standard
   background-repeat: repeat-x
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0)
   // IE9 and down
 
 =bootstrap-gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
@@ -351,7 +364,7 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor)
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor)
   background-repeat: no-repeat
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0)
   // IE9 and down, gets no color-stop at all for proper fallback
 
 =bootstrap-gradient-radial($innerColor: #555555, $outerColor: #333333)
@@ -382,7 +395,7 @@
 // Horizontal dividers
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
-=bootstrap-nav-divider
+=bootstrap-nav-divider($top: #e5e5e5, $bottom: $white)
   // IE7 needs a set width since we gave a height. Restricting just
   // to IE7 to keep the 1px left/right space in other browsers.
   // It is unclear where IE is getting the extra space that we need
@@ -393,8 +406,8 @@
   // 8px 1px
   *margin: -5px 0 5px
   overflow: hidden
-  background-color: #e5e5e5
-  border-bottom: 1px solid $white
+  background-color: $top
+  border-bottom: 1px solid $bottom
 
 // Button backgrounds
 // ------------------
