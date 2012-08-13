@@ -28,12 +28,9 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
 
 ## Usage with asset pipeline(Rails 3.2)
 
-**Add it to your Gemfile**
+**Add these gems to your Gemfile. To learn about the new compass-rails gem, see https://github.com/Compass/compass-rails for more info.**
 
     gem 'compass_twitter_bootstrap'
-
-**Use the new compass-rails gem.  See https://github.com/Compass/compass-rails for more info.**
-
     gem 'compass-rails'
 
 **Bundle install**
