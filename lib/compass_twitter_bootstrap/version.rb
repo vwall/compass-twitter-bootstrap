@@ -1,3 +1,3 @@
 module CompassTwitterBootstrap
-  VERSION = "0.1.8"
+  VERSION = "2.0.3"
 end

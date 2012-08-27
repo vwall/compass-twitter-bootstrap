@@ -1,6 +1,8 @@
-# TWITTER BOOTSTRAP - For Compass
+# Twitter Bootstrap - For Compass
 
 Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
+
+Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
 
 ## Usage
 
@@ -24,11 +26,12 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
 
     @import "compass_twitter_bootstrap";
 
-## Usage with asset pipeline(Rails 3.1)
+## Usage with asset pipeline(Rails 3.2)
 
-**Add it to your Gemfile**
+**Add these gems to your Gemfile. To learn about the new compass-rails gem, see https://github.com/Compass/compass-rails for more info.**
 
     gem 'compass_twitter_bootstrap'
+    gem 'compass-rails'
 
 **Bundle install**
 
@@ -39,16 +42,16 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    # Compass integration
-    config.sass.load_paths << Compass::Frameworks['compass'].stylesheets_directory
-    config.sass.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
-
 **Import it into your SCSS file**
 
     @import "compass_twitter_bootstrap"
 
+**Import twitter bootstrap responsive if you're looking for that**
 
-## Usage with Rails >= 3.1.1 (via plugin)
+    @import "compass_twitter_bootstrap_responsive"
+
+
+## Usage with Rails 3.1 (via plugin)
 
 **Install plugin**
 
@@ -63,11 +66,28 @@ Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
     config.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
 
     ...
-  end
+    end
 
 **Import it into your SCSS file**
 
     @import "compass_twitter_bootstrap"
+
+
+## Using [Font Awesome](http://fortawesome.github.com/Font-Awesome/)
+
+To use the font awesome font and icons simply change the standard import to:
+
+    @import "compass_twitter_bootstrap_awesome"
+
+## Using Javascripts with Rails Asset Pipeline
+
+Javascript Libraries are located in vendor/assets/javascripts
+
+Include them individually or 
+
+    //=require bootstrap-all
+
+to include all files
 
 
 ## TWITTER BOOTSTRAP

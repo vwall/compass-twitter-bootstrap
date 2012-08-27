@@ -1,5 +1,23 @@
 # Overview
 
+## 2.0.1.2
+* Really fix sprites, maybe.
+* Update JS
+
+## 2.0.1.1
+* Fix sprite error
+
+## 2.0.1
+* Upgrade twitter bootstrap to 2.0.1
+* Use compass @image-url() for sprites (thanks to jpfuentes2)
+* Added !default to variables
+
+## 2.0.0
+* Updated twitter bootstrap to 2.0
+* Updated import script
+* Changed version number to match twitter boot
+* Added link to demo app
+
 ## 0.1.8
 * Upgraded to twitter bootstrap version 1.4
 * Add Javascript files to vendors directory (thanks to tmaier)
