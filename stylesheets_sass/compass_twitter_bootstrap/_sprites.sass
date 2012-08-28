@@ -1,6 +1,6 @@
-// SPRITES
-// Glyphs and icons for buttons, nav, and more
-// -------------------------------------------
+//
+// Sprites
+// --------------------------------------------------
 
 // ICONS
 // -----
@@ -18,15 +18,24 @@
   display: inline-block
   width: 14px
   height: 14px
-  +bootstrap-ie7-restore-right-whitespace
+  +ie7-restore-right-whitespace
   line-height: 14px
   vertical-align: text-top
-  background-image: image-url(#{$iconSpritePath})
+  background-image: url($iconSpritePath)
   background-position: 14px 14px
   background-repeat: no-repeat
+  margin-top: 1px
 
-.icon-white
-  background-image: image-url(#{$iconWhiteSpritePath})
+/* White icons with optional class, or on hover/active states of certain elements
+
+.icon-white,
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"]
+  background-image: url($iconWhiteSpritePath)
 
 .icon-glass
   background-position: 0      0
@@ -361,6 +370,7 @@
 
 .icon-random
   background-position: -216px -120px
+  width: 16px
 
 .icon-comment
   background-position: -240px -120px
@@ -386,6 +396,7 @@
 
 .icon-folder-open
   background-position: -408px -120px
+  width: 16px
 
 .icon-resize-vertical
   background-position: -432px -119px

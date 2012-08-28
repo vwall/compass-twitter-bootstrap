@@ -1,5 +1,6 @@
-// LABELS & BADGES
-// ---------------
+//
+// Labels and badges
+// --------------------------------------------------
 
 // Base classes
 
@@ -18,11 +19,11 @@
 // Set unique padding and border-radii
 .label
   padding: 1px 4px 2px
-  +bootstrap-border-radius(3px)
+  +border-radius(3px)
 
 .badge
   padding: 1px 9px 2px
-  +bootstrap-border-radius(9px)
+  +border-radius(9px)
 
 // Hover state, but only for links
 a
@@ -35,51 +36,48 @@ a
 // Colors
 // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
 // Important (red)
-
-.label-important,
-.badge-important
+.label-important, .badge-important
   background-color: $errorText
 
-.label-important[href],
-.badge-important[href]
+.label-important[href], .badge-important[href]
   background-color: darken($errorText, 10%)
 
 // Warnings (orange)
-
-.label-warning,
-.badge-warning
+.label-warning, .badge-warning
   background-color: $orange
 
-.label-warning[href],
-.badge-warning[href]
+.label-warning[href], .badge-warning[href]
   background-color: darken($orange, 10%)
 
 // Success (green)
-
-.label-success,
-.badge-success
+.label-success, .badge-success
   background-color: $successText
 
-.label-success[href],
-.badge-success[href]
+.label-success[href], .badge-success[href]
   background-color: darken($successText, 10%)
 
 // Info (turquoise)
-
-.label-info,
-.badge-info
+.label-info, .badge-info
   background-color: $infoText
 
-.label-info[href],
-.badge-info[href]
+.label-info[href], .badge-info[href]
   background-color: darken($infoText, 10%)
 
 // Inverse (black)
-
-.label-inverse,
-.badge-inverse
+.label-inverse, .badge-inverse
   background-color: $grayDark
 
-.label-inverse[href],
-.badge-inverse[href]
+.label-inverse[href], .badge-inverse[href]
   background-color: darken($grayDark, 10%)
+
+// Quick fix for labels/badges in buttons
+.btn
+  .label,
+  .badge
+    position: relative
+    top: -1px
+
+.btn-mini
+  .label,
+  .badge
+    top: 0

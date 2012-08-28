@@ -1,16 +1,16 @@
-// Code.less
-// Code typography styles for the <code> and <pre> elements
-// --------------------------------------------------------
+//
+// Code (inline and blocK)
+// --------------------------------------------------
 
 // Inline and block code styles
 
 code,
 pre
   padding: 0 3px 2px
-  +bootstrap-font-family-monospace
-  font-size: $baseFontSize - 1
+  +font-family-monospace
+  font-size: $baseFontSize - 2
   color: $grayDark
-  +bootstrap-border-radius(3px)
+  +border-radius(3px)
 
 // Inline code
 code
@@ -24,8 +24,8 @@ pre
   display: block
   padding: ($baseLineHeight - 1) / 2
   margin: 0 0 $baseLineHeight / 2
-  font-size: $baseFontSize * 0.925
-  // 13px to 12px
+  font-size: $baseFontSize - 1
+  // 14px to 13px
   line-height: $baseLineHeight
   word-break: break-all
   word-wrap: break-word
@@ -35,7 +35,7 @@ pre
   border: 1px solid #ccc
   // fallback for IE7-8
   border: 1px solid rgba(0, 0, 0, 0.15)
-  +bootstrap-border-radius(4px)
+  +border-radius(4px)
   // Make prettyprint styles more spaced out for readability
   &.prettyprint
     margin-bottom: $baseLineHeight
