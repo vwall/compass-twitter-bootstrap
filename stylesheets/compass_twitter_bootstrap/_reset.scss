@@ -84,9 +84,8 @@ img {
 }
 
 // Prevent max-width from affecting Google Maps
-#map_canvas img {
-  max-width: none;
-}
+#mapCanvas label { width: auto; display:inline; }
+#mapCanvas img { max-width: none; }
 
 // Forms
 // -------------------------
