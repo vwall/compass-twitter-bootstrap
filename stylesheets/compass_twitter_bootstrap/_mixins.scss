@@ -606,7 +606,7 @@
       margin-left: $gutterWidth;
       *margin-left: $gutterWidth - (.5 / $gridRowWidth * 100px * 1%);
     }
-    [class*="span"]:first-child {
+    [class*="span"]:first-child:not([class*="offset"]) {
       margin-left: 0;
     }
 
@@ -615,6 +615,8 @@
     @while $i > 0 {
       .span#{$i} {
         @include fluid-span($i, $columnWidth, $gutterWidth);
+      }
+      .offset#{$i} {
         @include fluid-offset($i, $columnWidth, $gutterWidth);
       }
       $i: $i - 1;
