@@ -1,5 +1,8 @@
 # Overview
 
+## 2.1.0
+* Upgrade twitter bootstrap to 2.1.0 in the scss files (@kristianmandrup)
+
 ## 2.0.1.2
 * Really fix sprites, maybe.
 * Update JS

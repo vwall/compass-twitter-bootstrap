@@ -1,18 +1,12 @@
-// Typography.less
-// Headings, body text, lists, code, and more for a versatile and durable typography system
-// ----------------------------------------------------------------------------------------
+//
+// Typography
+// --------------------------------------------------
 
-// BODY TEXT
-// ---------
+// Body text
+// -------------------------
 
 p
   margin: 0 0 $baseLineHeight / 2
-  font-family: $baseFontFamily
-  font-size: $baseFontSize
-  line-height: $baseLineHeight
-  small
-    font-size: $baseFontSize - 2
-    color: $grayLight
 
 .lead
   margin-bottom: $baseLineHeight
@@ -20,65 +14,87 @@ p
   font-weight: 200
   line-height: $baseLineHeight * 1.5
 
-// HEADINGS
-// --------
+// Emphasis & misc
+// -------------------------
+
+small
+  font-size: 85%
+  // Ex: 14px base font * 85% = about 12px
+
+strong
+  font-weight: bold
+
+em
+  font-style: italic
+
+cite
+  font-style: normal
+
+.muted
+  color: $grayLight
+
+// Headings
+// -------------------------
 
 h1, h2, h3, h4, h5, h6
-  margin: 0
+  margin: $baseLineHeight / 2 0
   font-family: $headingsFontFamily
   font-weight: $headingsFontWeight
+  line-height: 1
   color: $headingsColor
   text-rendering: optimizelegibility
   // Fix the character spacing for headings
   small
     font-weight: normal
+    line-height: 1
     color: $grayLight
 
 h1
-  font-size: 30px
-  line-height: $baseLineHeight * 2
-  small
-    font-size: 18px
+  font-size: 36px
+  line-height: 40px
 
 h2
-  font-size: 24px
-  line-height: $baseLineHeight * 2
-  small
-    font-size: 18px
+  font-size: 30px
+  line-height: 40px
 
 h3
-  font-size: 18px
-  line-height: $baseLineHeight * 1.5
-  small
-    font-size: 14px
-
-h4, h5, h6
-  line-height: $baseLineHeight
+  font-size: 24px
+  line-height: 40px
 
 h4
-  font-size: 14px
-  small
-    font-size: 12px
+  font-size: 18px
+  line-height: 20px
 
 h5
-  font-size: 12px
+  font-size: 14px
+  line-height: 20px
 
 h6
-  font-size: 11px
-  color: $grayLight
-  text-transform: uppercase
+  font-size: 12px
+  line-height: 20px
+
+h1 small
+  font-size: 24px
+
+h2 small
+  font-size: 18px
+
+h3 small
+  font-size: 14px
+
+h4 small
+  font-size: 14px
 
 // Page header
+// -------------------------
+
 .page-header
-  padding-bottom: $baseLineHeight - 1
-  margin: $baseLineHeight 0
+  padding-bottom: $baseLineHeight / 2 - 1
+  margin: $baseLineHeight 0 $baseLineHeight * 1.5
   border-bottom: 1px solid $grayLighter
 
-.page-header h1
-  line-height: 1
-
-// LISTS
-// -----
+// Lists
+// --------------------------------------------------
 
 // Unordered and Ordered lists
 ul, ol
@@ -90,12 +106,6 @@ ul ol,
 ol ol,
 ol ul
   margin-bottom: 0
-
-ul
-  list-style: disc
-
-ol
-  list-style: decimal
 
 li
   line-height: $baseLineHeight
@@ -115,8 +125,6 @@ dd
 
 dt
   font-weight: bold
-  line-height: $baseLineHeight - 1
-  // fix jank Helvetica Neue font bug
 
 dd
   margin-left: $baseLineHeight / 2
@@ -128,7 +136,7 @@ dd
     width: 120px
     clear: left
     text-align: right
-    +bootstrap-text-overflow
+    +text-overflow
   dd
     margin-left: 130px
 
@@ -142,20 +150,10 @@ hr
   border-top: 1px solid $hrBorder
   border-bottom: 1px solid $white
 
-// Emphasis
-strong
-  font-weight: bold
-
-em
-  font-style: italic
-
-.muted
-  color: $grayLight
-
 // Abbreviations and acronyms
 abbr[title]
   cursor: help
-  border-bottom: 1px dotted #ddd
+  border-bottom: 1px dotted $grayLight
 
 abbr.initialism
   font-size: 90%
@@ -168,7 +166,7 @@ blockquote
   border-left: 5px solid $grayLighter
   p
     margin-bottom: 0
-    +bootstrap-font-shorthand(16px, 300, $baseLineHeight * 1.25)
+    +font-shorthand(16px, 300, $baseLineHeight * 1.25)
   small
     display: block
     line-height: $baseLineHeight
@@ -185,6 +183,11 @@ blockquote
     p,
     small
       text-align: right
+    small
+      &:before
+        content: ''
+      &:after
+        content: '\00A0 \2014'
 
 // Quotes
 
@@ -200,10 +203,3 @@ address
   margin-bottom: $baseLineHeight
   font-style: normal
   line-height: $baseLineHeight
-
-// Misc
-small
-  font-size: 100%
-
-cite
-  font-style: normal
