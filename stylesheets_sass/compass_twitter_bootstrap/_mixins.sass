@@ -530,12 +530,12 @@
     $i: $i - 1
 
 =fluid-offset($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
-  margin-left: $columnWidth * $columns + $gutterWidth * ($columns + 1) + $gutterWidth * 2
-  *margin-left: $columnWidth * $columns + $gutterWidth * ($columns + 1) - 0.5 / $gridRowWidth * 100px * 1% + $gutterWidth * 2 - 0.5 / $gridRowWidth * 100px * 1%
+  margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) + $gutterWidth * 2
+  *margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) - 0.5 / $gridRowWidth * 100px * 1% + $gutterWidth * 2 - 0.5 / $gridRowWidth * 100px * 1%
 
 =fluid-offset-first-child($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
-  margin-left: $columnWidth * $columns + $gutterWidth * ($columns + 1) + $gutterWidth * 2
-  *margin-left: $columnWidth * $columns + $gutterWidth * ($columns + 1) - 0.5 / $gridRowWidth * 100px * 1% + $gutterWidth - 0.5 / $gridRowWidth * 100px * 1%
+  margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) + $gutterWidth
+  *margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) - 0.5 / $gridRowWidth * 100px * 1% + $gutterWidth - 0.5 / $gridRowWidth * 100px * 1%
 
 =fluid-span($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
   width: $columnWidth * $columns + $gutterWidth * ($columns - 1)
@@ -557,7 +557,10 @@
     @while $i > 0
       .span#{$i}
         +fluid-span($i, $columnWidth, $gutterWidth)
+      .offset#{$i}
         +fluid-offset($i, $columnWidth, $gutterWidth)
+      .offset#{$i}:first-child
+        +fluid-offset-first-child($i, $columnWidth, $gutterWidth)
       $i: $i - 1
 
 =input-span($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)

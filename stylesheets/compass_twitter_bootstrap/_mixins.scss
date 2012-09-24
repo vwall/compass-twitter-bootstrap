@@ -582,13 +582,13 @@
 }
 
 @mixin fluid-offset($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth) {
-  margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns + 1)) + ($gutterWidth * 2);
-  *margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns + 1)) - (.5 / $gridRowWidth * 100px * 1%) + ($gutterWidth * 2) - (.5 / $gridRowWidth * 100px * 1%);
+  margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns - 1)) + ($gutterWidth * 2);
+  *margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns - 1)) - (.5 / $gridRowWidth * 100px * 1%) + ($gutterWidth * 2) - (.5 / $gridRowWidth * 100px * 1%);
 }
 
 @mixin fluid-offset-first-child($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth) {
-  margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns + 1)) + ($gutterWidth * 2);
-  *margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns + 1)) - (.5 / $gridRowWidth * 100px * 1%) + $gutterWidth - (.5 / $gridRowWidth * 100px * 1%);
+  margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns - 1)) + $gutterWidth;
+  *margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns - 1)) - (.5 / $gridRowWidth * 100px * 1%) + $gutterWidth - (.5 / $gridRowWidth * 100px * 1%);
 }
 
 @mixin fluid-span($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth) {
@@ -606,7 +606,7 @@
       margin-left: $gutterWidth;
       *margin-left: $gutterWidth - (.5 / $gridRowWidth * 100px * 1%);
     }
-    [class*="span"]:first-child:not([class*="offset"]) {
+    [class*="span"]:first-child {
       margin-left: 0;
     }
 
@@ -618,6 +618,9 @@
       }
       .offset#{$i} {
         @include fluid-offset($i, $columnWidth, $gutterWidth);
+      }
+      .offset#{$i} {
+        @include fluid-offset-first-child($i, $columnWidth, $gutterWidth);
       }
       $i: $i - 1;
     }
