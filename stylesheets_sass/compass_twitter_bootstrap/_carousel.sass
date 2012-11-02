@@ -62,13 +62,13 @@
   background: $grayDarker
   border: 3px solid $white
   +border-radius(23px)
-  +opacity(50)
+  +opacity(0.5)
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
   // in the middle of another animation
   // ;_;
-  // .transition(opacity .2s linear);
+  // @include transition(opacity .2s linear);
   // Reposition the right one
   &.right
     left: auto
@@ -77,7 +77,7 @@
   &:hover
     color: $white
     text-decoration: none
-    +opacity(90)
+    +opacity(0.9)
 
 // Caption for text below images
 // -----------------------------

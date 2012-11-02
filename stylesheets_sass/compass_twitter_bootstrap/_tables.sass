@@ -60,7 +60,7 @@ table
   *border-collapse: collapse
   // IE7 can't round corners anyway
   border-left: 0
-  +border-radius(4px)
+  +border-radius($baseBorderRadius)
   th,
   td
     border-left: 1px solid $tableBorder
@@ -114,7 +114,7 @@ table
   colgroup + tbody tr:first-child td:last-child
     -webkit-border-top-right-radius: 4px
     border-top-right-radius: 4px
-    -moz-border-right-topleft: 4px
+    -moz-border-radius-topright: 4px
 
 // ZEBRA-STRIPING
 // --------------
@@ -140,8 +140,10 @@ table
 
 // Reset default grid behavior
 
-table [class*=span],
-.row-fluid table [class*=span]
+table td[class*="span"],
+table th[class*="span"],
+.row-fluid table td[class*="span"],
+.row-fluid table th[class*="span"]
   display: table-cell
   float: none
   // undo default grid column styles
@@ -149,19 +151,55 @@ table [class*=span],
   // undo default grid column styles
 
 // Change the column widths to account for td/th padding
-table
-  @for $i from 1 through 24
-    .span#{$i}
-      +tableColumns($i)
+
+.table td,
+.table th
+  &.span1
+    +tableColumns(1)
+  &.span2
+    +tableColumns(2)
+  &.span3
+    +tableColumns(3)
+  &.span4
+    +tableColumns(4)
+  &.span5
+    +tableColumns(5)
+  &.span6
+    +tableColumns(6)
+  &.span7
+    +tableColumns(7)
+  &.span8
+    +tableColumns(8)
+  &.span9
+    +tableColumns(9)
+  &.span10
+    +tableColumns(10)
+  &.span11
+    +tableColumns(11)
+  &.span12
+    +tableColumns(12)
 
 // TABLE BACKGROUNDS
 // -----------------
 // Exact selectors below required to override .table-striped
 
-.table
-  tbody tr.success td
+.table tbody tr
+  &.success td
     background-color: $successBackground
-  tbody tr.error td
+  &.error td
     background-color: $errorBackground
-  tbody tr.info td
+  &.warning td
+    background-color: $warningBackground
+  &.info td
     background-color: $infoBackground
+
+// Hover states for .table-hover
+.table-hover tbody tr
+  &.success:hover td
+    background-color: darken($successBackground, 5%)
+  &.error:hover td
+    background-color: darken($errorBackground, 5%)
+  &.warning:hover td
+    background-color: darken($warningBackground, 5%)
+  &.info:hover td
+    background-color: darken($infoBackground, 5%)
