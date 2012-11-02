@@ -10,7 +10,7 @@
   // Remove any padding from the body
   body
     padding-top: 0
-  // Unfix the navbar
+  // Unfix the navbars
   .navbar-fixed-top,
   .navbar-fixed-bottom
     position: static
@@ -58,12 +58,15 @@
   .nav-collapse .btn
     padding: 4px 10px 4px
     font-weight: normal
-    +border-radius(4px)
+    +border-radius($baseBorderRadius)
   .nav-collapse .dropdown-menu li + li a
     margin-bottom: 2px
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover
     background-color: $navbarBackground
+  .navbar-inverse .nav-collapse .nav > li > a,
+  .navbar-inverse .nav-collapse .dropdown-menu a
+    color: $navbarInverseLinkColor
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover
     background-color: $navbarInverseBackground
@@ -77,7 +80,7 @@
     top: auto
     left: auto
     float: none
-    display: block
+    display: none
     max-width: none
     margin: 0 15px
     padding: 0
@@ -85,11 +88,17 @@
     border: none
     +border-radius(0)
     +box-shadow(none)
+  .nav-collapse .open > .dropdown-menu
+    display: block
   .nav-collapse .dropdown-menu:before,
   .nav-collapse .dropdown-menu:after
     display: none
   .nav-collapse .dropdown-menu .divider
     display: none
+  .nav-collapse .nav > li > .dropdown-menu
+    &:before,
+    &:after
+      display: none
   // Forms in navbar
   .nav-collapse .navbar-form,
   .nav-collapse .navbar-search
@@ -99,6 +108,10 @@
     border-top: 1px solid $navbarBackground
     border-bottom: 1px solid $navbarBackground
     +box-shadow(#{inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1)})
+  .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search
+    border-top-color: $navbarInverseBackground
+    border-bottom-color: $navbarInverseBackground
   // Pull right (secondary) nav content
   .navbar .nav-collapse .nav.pull-right
     float: none
@@ -120,7 +133,7 @@
 // DEFAULT DESKTOP
 // ---------------
 
-@media (min-width: 980px)
+@media (min-width: $navbarCollapseDesktopWidth)
   // Required to make the collapsing navbar work on regular desktops
   .nav-collapse.collapse
     height: auto !important
