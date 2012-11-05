@@ -42,7 +42,7 @@ input,
 button,
 select,
 textarea {
-  @include font-shorthand($baseFontSize,normal,$baseLineHeight); // Set size, weight, line-height here
+  @include ctb-font-shorthand($baseFontSize,normal,$baseLineHeight); // Set size, weight, line-height here
 }
 input,
 button,
@@ -85,7 +85,7 @@ input[type="color"],
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
   color: $gray;
-  @include border-radius($inputBorderRadius);
+  @include ctb-border-radius($inputBorderRadius);
   vertical-align: middle;
 }
 
@@ -119,15 +119,15 @@ input[type="color"],
 .uneditable-input {
   background-color: $inputBackground;
   border: 1px solid $inputBorder;
-  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  @include transition(#{border linear .2s, box-shadow linear .2s});
+  @include ctb-box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @include ctb-transition(#{border linear .2s, box-shadow linear .2s});
 
   // Focus state
   &:focus {
     border-color: rgba(82,168,236,.8);
     outline: 0;
     outline: thin dotted \9; /* IE6-9 */
-    @include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)});
+    @include ctb-box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)});
   }
 }
 
@@ -178,7 +178,7 @@ select:focus,
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  @include tab-focus();
+  @include ctb-tab-focus();
 }
 
 
@@ -191,7 +191,7 @@ input[type="checkbox"]:focus {
   color: $grayLight;
   background-color: darken($inputBackground, 1%);
   border-color: $inputBorder;
-  @include box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+  @include ctb-box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
   cursor: not-allowed;
 }
 
@@ -214,7 +214,7 @@ input[type="checkbox"]:focus {
 // Placeholder text gets special styles because when browsers invalidate entire lines if it doesn't understand a selector
 input,
 textarea {
-  @include placeholder();
+  @include ctb-placeholder();
 }
 
 
@@ -299,11 +299,11 @@ textarea[class*="span"],
 // ----------------------
 
 // Grid sizes
-@include grid-input($gridColumnWidth, $gridGutterWidth);
+@include ctb-grid-input($gridColumnWidth, $gridGutterWidth);
 
 // Control row for multiple inputs per line
 .controls-row {
-  @include clearfix(); // Clear the float from controls
+  @include ctb-clearfix(); // Clear the float from controls
 }
 
 // Float to collapse white-space for proper grid alignment
@@ -350,19 +350,19 @@ input[type="checkbox"][readonly] {
 
 // Warning
 .control-group.warning {
-  @include formFieldState($warningText, $warningText, $warningBackground);
+  @include ctb-formFieldState($warningText, $warningText, $warningBackground);
 }
 // Error
 .control-group.error {
-  @include formFieldState($errorText, $errorText, $errorBackground);
+  @include ctb-formFieldState($errorText, $errorText, $errorBackground);
 }
 // Success
 .control-group.success {
-  @include formFieldState($successText, $successText, $successBackground);
+  @include ctb-formFieldState($successText, $successText, $successBackground);
 }
 // Success
 .control-group.info {
-  @include formFieldState($infoText, $infoText, $infoBackground);
+  @include ctb-formFieldState($infoText, $infoText, $infoBackground);
 }
 
 // HTML5 invalid states
@@ -375,7 +375,7 @@ select:focus:required:invalid {
   &:focus {
     border-color: darken(#ee5f5b, 10%);
     $shadow: 0 0 6px lighten(#ee5f5b, 20%);
-    @include box-shadow($shadow);
+    @include ctb-box-shadow($shadow);
   }
 }
 
@@ -390,7 +390,7 @@ select:focus:required:invalid {
   margin-bottom: $baseLineHeight;
   background-color: $formActionsBackground;
   border-top: 1px solid #e5e5e5;
-  @include clearfix(); // Adding clearfix to allow for .pull-right button containers
+  @include ctb-clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
 
@@ -410,7 +410,7 @@ select:focus:required:invalid {
 
 .help-inline {
   display: inline-block;
-  @include ie7-inline-block();
+  @include ctb-ie7-inline-block();
   vertical-align: middle;
   padding-left: 5px;
 }
@@ -442,7 +442,7 @@ select:focus:required:invalid {
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
     vertical-align: top;
-    @include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+    @include ctb-border-radius(0 $inputBorderRadius $inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
     &:focus {
       z-index: 2;
@@ -465,7 +465,7 @@ select:focus:required:invalid {
   .add-on,
   .btn {
     vertical-align: top;
-    @include border-radius(0);
+    @include ctb-border-radius(0);
   }
   .active {
     background-color: lighten($green, 30);
@@ -481,7 +481,7 @@ select:focus:required:invalid {
   .add-on:first-child,
   .btn:first-child {
     // FYI, `.btn:first-child` accounts for a button group that's prepended
-    @include border-radius($inputBorderRadius 0 0 $inputBorderRadius);
+    @include ctb-border-radius($inputBorderRadius 0 0 $inputBorderRadius);
   }
 }
 
@@ -489,9 +489,9 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
-    @include border-radius($inputBorderRadius 0 0 $inputBorderRadius);
+    @include ctb-border-radius($inputBorderRadius 0 0 $inputBorderRadius);
     + .btn-group .btn {
-      @include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+      @include ctb-border-radius(0 $inputBorderRadius $inputBorderRadius 0);
     }
   }
   .add-on,
@@ -501,7 +501,7 @@ select:focus:required:invalid {
   }
   .add-on:last-child,
   .btn:last-child {
-    @include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+    @include ctb-border-radius(0 $inputBorderRadius $inputBorderRadius 0);
   }
 }
 
@@ -510,20 +510,20 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
-    @include border-radius(0);
+    @include ctb-border-radius(0);
     + .btn-group .btn {
-      @include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+      @include ctb-border-radius(0 $inputBorderRadius $inputBorderRadius 0);
     }
   }
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
-    @include border-radius($inputBorderRadius 0 0 $inputBorderRadius);
+    @include ctb-border-radius($inputBorderRadius 0 0 $inputBorderRadius);
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
-    @include border-radius(0 $inputBorderRadius $inputBorderRadius 0);
+    @include ctb-border-radius(0 $inputBorderRadius $inputBorderRadius 0);
   }
   .btn-group:first-child {
     margin-left: 0;
@@ -542,25 +542,25 @@ input.search-query {
   padding-left: 14px;
   padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
   margin-bottom: 0; // Remove the default margin on all inputs
-  @include border-radius(15px);
+  @include ctb-border-radius(15px);
 }
 
 /* Allow for input prepend/append in search forms */
 .form-search .input-append .search-query,
 .form-search .input-prepend .search-query {
-  @include border-radius(0); // Override due to specificity
+  @include ctb-border-radius(0); // Override due to specificity
 }
 .form-search .input-append .search-query {
-  @include border-radius(14px 0 0 14px);
+  @include ctb-border-radius(14px 0 0 14px);
 }
 .form-search .input-append .btn {
-  @include border-radius(0 14px 14px 0);
+  @include ctb-border-radius(0 14px 14px 0);
 }
 .form-search .input-prepend .search-query {
-  @include border-radius(0 14px 14px 0);
+  @include ctb-border-radius(0 14px 14px 0);
 }
 .form-search .input-prepend .btn {
-  @include border-radius(14px 0 0 14px);
+  @include ctb-border-radius(14px 0 0 14px);
 }
 
 
@@ -583,7 +583,7 @@ input.search-query {
   .input-prepend,
   .input-append {
     display: inline-block;
-    @include ie7-inline-block();
+    @include ctb-ie7-inline-block();
     margin-bottom: 0;
     vertical-align: middle;
   }
@@ -643,7 +643,7 @@ legend + .control-group {
   // Increase spacing between groups
   .control-group {
     margin-bottom: $baseLineHeight;
-    @include clearfix();
+    @include ctb-clearfix();
   }
   // Float the labels left
   .control-label {

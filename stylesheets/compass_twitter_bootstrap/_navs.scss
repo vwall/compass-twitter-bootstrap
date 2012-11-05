@@ -73,7 +73,7 @@
 }
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider {
-  @include nav-divider();
+  @include ctb-nav-divider();
 }
 
 
@@ -84,7 +84,7 @@
 // Common styles
 .nav-tabs,
 .nav-pills {
-  @include clearfix();
+  @include ctb-clearfix();
 }
 .nav-tabs > li,
 .nav-pills > li {
@@ -115,7 +115,7 @@
   padding-bottom: 8px;
   line-height: $baseLineHeight;
   border: 1px solid transparent;
-  @include border-radius(4px 4px 0 0);
+  @include ctb-border-radius(4px 4px 0 0);
   &:hover {
     border-color: $grayLighter $grayLighter #ddd;
   }
@@ -140,7 +140,7 @@
   padding-bottom: 8px;
   margin-top: 2px;
   margin-bottom: 2px;
-  @include border-radius(5px);
+  @include ctb-border-radius(5px);
 }
 
 // Active state
@@ -169,13 +169,13 @@
 }
 .nav-tabs.nav-stacked > li > a {
   border: 1px solid #ddd;
-  @include border-radius(0);
+  @include ctb-border-radius(0);
 }
 .nav-tabs.nav-stacked > li:first-child > a {
-  @include border-top-radius(4px);
+  @include ctb-border-top-radius(4px);
 }
 .nav-tabs.nav-stacked > li:last-child > a {
-  @include border-bottom-radius(4px);
+  @include ctb-border-bottom-radius(4px);
 }
 .nav-tabs.nav-stacked > li > a:hover {
   border-color: #ddd;
@@ -196,10 +196,10 @@
 // ---------
 
 .nav-tabs .dropdown-menu {
-  @include border-radius(0 0 6px 6px); // remove the top rounded corners here since there is a hard edge above the menu
+  @include ctb-border-radius(0 0 6px 6px); // remove the top rounded corners here since there is a hard edge above the menu
 }
 .nav-pills .dropdown-menu {
-  @include border-radius(6px); // make rounded corners match the pills
+  @include ctb-border-radius(6px); // make rounded corners match the pills
 }
 
 // Default dropdown links
@@ -250,7 +250,7 @@
 .nav li.dropdown.open a:hover .caret {
   border-top-color: $white;
   border-bottom-color: $white;
-  @include opacity(1.0);
+  @include ctb-opacity(1.0);
 }
 
 // Dropdowns in stacked tabs
@@ -269,7 +269,7 @@
 
 // Clear any floats
 .tabbable {
-  @include clearfix();
+  @include ctb-clearfix();
 }
 .tab-content {
   overflow: auto; // prevent content from running below tabs
@@ -304,7 +304,7 @@
   margin-bottom: 0;
 }
 .tabs-below > .nav-tabs > li > a {
-  @include border-radius(0 0 4px 4px);
+  @include ctb-border-radius(0 0 4px 4px);
   &:hover {
     border-bottom-color: transparent;
     border-top-color: #ddd;
@@ -338,7 +338,7 @@
 }
 .tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
-  @include border-radius(4px 0 0 4px);
+  @include ctb-border-radius(4px 0 0 4px);
 }
 .tabs-left > .nav-tabs > li > a:hover {
   border-color: $grayLighter #ddd $grayLighter $grayLighter;
@@ -357,7 +357,7 @@
 }
 .tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
-  @include border-radius(0 4px 4px 0);
+  @include ctb-border-radius(0 4px 4px 0);
 }
 .tabs-right > .nav-tabs > li > a:hover {
   border-color: $grayLighter $grayLighter $grayLighter #ddd;

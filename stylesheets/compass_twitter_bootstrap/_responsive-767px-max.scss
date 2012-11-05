@@ -64,12 +64,12 @@
     display: block;
     width: 100%;
     margin-left: 0;
-    @include box-sizing(border-box);
+    @include ctb-box-sizing(border-box);
   }
   .span12,
   .row-fluid .span12 {
     width: 100%;
-    @include box-sizing(border-box);
+    @include ctb-box-sizing(border-box);
   }
   .row-fluid [class*="offset"]:first-child {
 		margin-left: 0;
@@ -85,7 +85,7 @@
   select[class*="span"],
   textarea[class*="span"],
   .uneditable-input {
-    @include input-block-level();
+    @include ctb-input-block-level();
   }
   // But don't let it screw up prepend/append inputs
   .input-prepend input,

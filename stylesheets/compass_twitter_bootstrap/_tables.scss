@@ -71,7 +71,7 @@ table {
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; // IE7 can't round corners anyway
   border-left: 0;
-  @include border-radius($baseBorderRadius);
+  @include ctb-border-radius($baseBorderRadius);
   th,
   td {
     border-left: 1px solid $tableBorder;
@@ -105,7 +105,7 @@ table {
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child,
   tfoot:last-child tr:last-child td:first-child {
-    @include border-radius(0 0 0 4px);
+    @include ctb-border-radius(0 0 0 4px);
     -webkit-border-bottom-left-radius: 4px;
             border-bottom-left-radius: 4px;
         -moz-border-radius-bottomleft: 4px;
@@ -184,18 +184,18 @@ table th[class*="span"],
 // Change the column widths to account for td/th padding
 .table td,
 .table th {
-  &.span1     { @include tableColumns(1); }
-  &.span2     { @include tableColumns(2); }
-  &.span3     { @include tableColumns(3); }
-  &.span4     { @include tableColumns(4); }
-  &.span5     { @include tableColumns(5); }
-  &.span6     { @include tableColumns(6); }
-  &.span7     { @include tableColumns(7); }
-  &.span8     { @include tableColumns(8); }
-  &.span9     { @include tableColumns(9); }
-  &.span10    { @include tableColumns(10); }
-  &.span11    { @include tableColumns(11); }
-  &.span12    { @include tableColumns(12); }
+  &.span1     { @include ctb-tableColumns(1); }
+  &.span2     { @include ctb-tableColumns(2); }
+  &.span3     { @include ctb-tableColumns(3); }
+  &.span4     { @include ctb-tableColumns(4); }
+  &.span5     { @include ctb-tableColumns(5); }
+  &.span6     { @include ctb-tableColumns(6); }
+  &.span7     { @include ctb-tableColumns(7); }
+  &.span8     { @include ctb-tableColumns(8); }
+  &.span9     { @include ctb-tableColumns(9); }
+  &.span10    { @include ctb-tableColumns(10); }
+  &.span11    { @include ctb-tableColumns(11); }
+  &.span12    { @include ctb-tableColumns(12); }
 }
 
 

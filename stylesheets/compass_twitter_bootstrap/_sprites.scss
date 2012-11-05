@@ -19,7 +19,7 @@
   display: inline-block;
   width: 14px;
   height: 14px;
-  @include ie7-restore-right-whitespace();
+  @include ctb-ie7-restore-right-whitespace();
   line-height: 14px;
   vertical-align: text-top;
   background-image: image-url(#{iconSpritePath});
