@@ -54,8 +54,8 @@
   border: 1px solid $dropdownBorder;
   *border-right-width: 2px;
   *border-bottom-width: 2px;
-  @include border-radius(6px);
-  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
+  @include ctb-border-radius(6px);
+  @include ctb-box-shadow(0 5px 10px rgba(0,0,0,.2));
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -68,7 +68,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    @include nav-divider();
+    @include ctb-nav-divider();
   }
 
   // Links within the dropdown menu
@@ -91,7 +91,7 @@
   text-decoration: none;
   color: $dropdownLinkColorHover;
   background-color: $dropdownLinkBackgroundHover;
-  @include gradient-vertical($dropdownLinkBackgroundHover, darken($dropdownLinkBackgroundHover, 5%));
+  @include ctb-gradient-vertical($dropdownLinkBackgroundHover, darken($dropdownLinkBackgroundHover, 5%));
 }
 
 // Active state
@@ -102,7 +102,7 @@
   text-decoration: none;
   outline: 0;
   background-color: $dropdownLinkBackgroundActive;
-  @include gradient-vertical($dropdownLinkBackgroundActive, darken($dropdownLinkBackgroundActive, 5%));
+  @include ctb-gradient-vertical($dropdownLinkBackgroundActive, darken($dropdownLinkBackgroundActive, 5%));
 }
 
 // Disabled state
@@ -206,5 +206,5 @@
 // ---------
 .typeahead {
   margin-top: 2px; // give it some space to breathe
-  @include border-radius(4px);
+  @include ctb-border-radius(4px);
 }
