@@ -38,7 +38,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
     bundle install
 
 **Add it to your Application.rb**
-        
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -62,7 +62,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
   Rails.configuration.sass.tap do |config|
     ...
 
-    # twitter bootstrap  
+    # twitter bootstrap
     config.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
 
     ...
@@ -83,7 +83,7 @@ To use the font awesome font and icons simply change the standard import to:
 
 Javascript Libraries are located in vendor/assets/javascripts
 
-Include them individually or 
+Include them individually or
 
     //=require bootstrap-all
 
@@ -102,6 +102,15 @@ To convert all twitter bootstrap .scss files to .sass (with overwrite):
 `$ for f in stylesheets/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/${f%%.*}.sass; done`
 
 Nice and easy :)
+
+## Upgrading
+
+If you want to contribute and help out keeping this gem in sync with the latest release of Twitter Bootstrap, you should keep in mind that all mixins are prefixed with `ctb-`.
+With this prefixed we can't run into problems where the converted less-mixins conflict with native Compass names, parameters, ...
+
+There is a Rake-task that will help you to fetch all recent changes from the Twitter Bootstrap master:
+
+`rake convert`
 
 ## TWITTER BOOTSTRAP
 
