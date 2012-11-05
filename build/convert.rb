@@ -62,6 +62,7 @@ private
 
 
   def convert(file)
+    file = replace_interpolation(file)
     file = replace_vars(file)
     file = replace_fonts(file)
     file = replace_font_family(file)
@@ -86,6 +87,10 @@ private
     f.write(content)
     f.close
     puts "Converted #{name}\n"
+  end
+
+  def replace_interpolation(less)
+    less.gsub(/@{([^}]+)}/, '#{$\1}')
   end
 
   def replace_vars(less)
