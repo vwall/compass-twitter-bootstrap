@@ -54,8 +54,8 @@
   border: 1px solid $dropdownBorder
   *border-right-width: 2px
   *border-bottom-width: 2px
-  +border-radius(6px)
-  +box-shadow(0 5px 10px rgba(0, 0, 0, 0.2))
+  +ctb-border-radius(6px)
+  +ctb-box-shadow(0 5px 10px rgba(0, 0, 0, 0.2))
   -webkit-background-clip: padding-box
   -moz-background-clip: padding
   background-clip: padding-box
@@ -65,7 +65,7 @@
     left: auto
   // Dividers (basically an hr) within the dropdown
   .divider
-    +nav-divider
+    +ctb-nav-divider
   // Links within the dropdown menu
   a
     display: block
@@ -85,7 +85,7 @@
   text-decoration: none
   color: $dropdownLinkColorHover
   background-color: $dropdownLinkBackgroundHover
-  +gradient-vertical($dropdownLinkBackgroundHover, darken($dropdownLinkBackgroundHover, 5%))
+  +ctb-gradient-vertical($dropdownLinkBackgroundHover, darken($dropdownLinkBackgroundHover, 5%))
 
 // Active state
 // ------------
@@ -96,7 +96,7 @@
   text-decoration: none
   outline: 0
   background-color: $dropdownLinkBackgroundActive
-  +gradient-vertical($dropdownLinkBackgroundActive, darken($dropdownLinkBackgroundActive, 5%))
+  +ctb-gradient-vertical($dropdownLinkBackgroundActive, darken($dropdownLinkBackgroundActive, 5%))
 
 // Disabled state
 // --------------
@@ -190,4 +190,4 @@
 .typeahead
   margin-top: 2px
   // give it some space to breathe
-  +border-radius(4px)
+  +ctb-border-radius(4px)
