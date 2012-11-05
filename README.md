@@ -38,7 +38,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
     bundle install
 
 **Add it to your Application.rb**
-        
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -62,7 +62,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
   Rails.configuration.sass.tap do |config|
     ...
 
-    # twitter bootstrap  
+    # twitter bootstrap
     config.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
 
     ...
@@ -83,7 +83,7 @@ To use the font awesome font and icons simply change the standard import to:
 
 Javascript Libraries are located in vendor/assets/javascripts
 
-Include them individually or 
+Include them individually or
 
     //=require bootstrap-all
 
@@ -100,6 +100,8 @@ To convert all twitter bootstrap .scss files to .sass (with overwrite):
 `$ for f in stylesheets/compass_twitter_bootstrap/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/compass_twitter_bootstrap/${f%%.*}.sass; done`
 
 `$ for f in stylesheets/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/${f%%.*}.sass; done`
+
+Or just use `rake convert`
 
 Nice and easy :)
 
