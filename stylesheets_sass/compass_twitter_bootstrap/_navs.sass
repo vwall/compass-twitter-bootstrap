@@ -60,12 +60,13 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2)
   background-color: $linkColor
 
-.nav-list [class^="icon-"]
+.nav-list [class^="icon-"],
+.nav-list [class*=" icon-"]
   margin-right: 2px
 
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider
-  +nav-divider
+  +ctb-nav-divider
 
 // TABS AND PILLS
 // -------------
@@ -74,7 +75,7 @@
 
 .nav-tabs,
 .nav-pills
-  +clearfix
+  +ctb-clearfix
 
 .nav-tabs > li,
 .nav-pills > li
@@ -105,7 +106,7 @@
   padding-bottom: 8px
   line-height: $baseLineHeight
   border: 1px solid transparent
-  +border-radius(4px 4px 0 0)
+  +ctb-border-radius(4px 4px 0 0)
   &:hover
     border-color: $grayLighter $grayLighter #dddddd
 
@@ -114,7 +115,7 @@
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover
   color: $gray
-  background-color: $white
+  background-color: $bodyBackground
   border: 1px solid #ddd
   border-bottom-color: transparent
   cursor: default
@@ -128,7 +129,7 @@
   padding-bottom: 8px
   margin-top: 2px
   margin-bottom: 2px
-  +border-radius(5px)
+  +ctb-border-radius(5px)
 
 // Active state
 
@@ -154,13 +155,13 @@
 
 .nav-tabs.nav-stacked > li > a
   border: 1px solid #ddd
-  +border-radius(0)
+  +ctb-border-radius(0)
 
 .nav-tabs.nav-stacked > li:first-child > a
-  +border-top-radius(4px)
+  +ctb-border-top-radius(4px)
 
 .nav-tabs.nav-stacked > li:last-child > a
-  +border-bottom-radius(4px)
+  +ctb-border-bottom-radius(4px)
 
 .nav-tabs.nav-stacked > li > a:hover
   border-color: #ddd
@@ -178,11 +179,11 @@
 // ---------
 
 .nav-tabs .dropdown-menu
-  +border-radius(0 0 6px 6px)
+  +ctb-border-radius(0 0 6px 6px)
   // remove the top rounded corners here since there is a hard edge above the menu
 
 .nav-pills .dropdown-menu
-  +border-radius(6px)
+  +ctb-border-radius(6px)
   // make rounded corners match the pills
 
 // Default dropdown links
@@ -204,8 +205,8 @@
 // Active dropdown links
 // -------------------------
 .nav .active .dropdown-toggle .caret
-  border-top-color: $grayDark
-  border-bottom-color: $grayDark
+  border-top-color: #fff
+  border-bottom-color: #fff
 
 .nav-tabs .active .dropdown-toggle .caret
   border-top-color: $gray
@@ -231,7 +232,7 @@
 .nav li.dropdown.open a:hover .caret
   border-top-color: $white
   border-bottom-color: $white
-  +opacity(100)
+  +ctb-opacity(1)
 
 // Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover
@@ -245,7 +246,7 @@
 
 // Clear any floats
 .tabbable
-  +clearfix
+  +ctb-clearfix
 
 .tab-content
   overflow: auto
@@ -279,7 +280,7 @@
   margin-bottom: 0
 
 .tabs-below > .nav-tabs > li > a
-  +border-radius(0 0 4px 4px)
+  +ctb-border-radius(0 0 4px 4px)
   &:hover
     border-bottom-color: transparent
     border-top-color: #ddd
@@ -311,7 +312,7 @@
 
 .tabs-left > .nav-tabs > li > a
   margin-right: -1px
-  +border-radius(4px 0 0 4px)
+  +ctb-border-radius(4px 0 0 4px)
 
 .tabs-left > .nav-tabs > li > a:hover
   border-color: $grayLighter #dddddd $grayLighter $grayLighter
@@ -329,7 +330,7 @@
 
 .tabs-right > .nav-tabs > li > a
   margin-left: -1px
-  +border-radius(0 4px 4px 0)
+  +ctb-border-radius(0 4px 4px 0)
 
 .tabs-right > .nav-tabs > li > a:hover
   border-color: $grayLighter $grayLighter $grayLighter #dddddd

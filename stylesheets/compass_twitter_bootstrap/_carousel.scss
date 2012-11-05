@@ -20,7 +20,7 @@
   .item {
     display: none;
     position: relative;
-    @include transition(.6s ease-in-out left);
+    @include ctb-transition(.6s ease-in-out left);
   }
 
   // Account for jankitude on images
@@ -81,15 +81,15 @@
   text-align: center;
   background: $grayDarker;
   border: 3px solid $white;
-  @include border-radius(23px);
-  @include opacity(50);
+  @include ctb-border-radius(23px);
+  @include ctb-opacity(0.5);
 
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
   // in the middle of another animation
   // ;_;
-  // .transition(opacity .2s linear);
+  // @include ctb-transition(opacity .2s linear);
 
   // Reposition the right one
   &.right {
@@ -101,7 +101,7 @@
   &:hover {
     color: $white;
     text-decoration: none;
-    @include opacity(90);
+    @include ctb-opacity(0.9);
   }
 }
 

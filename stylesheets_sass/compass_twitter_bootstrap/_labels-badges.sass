@@ -6,6 +6,8 @@
 
 .label,
 .badge
+  display: inline-block
+  padding: 2px 4px
   font-size: $baseFontSize * 0.846
   font-weight: bold
   line-height: 14px
@@ -18,12 +20,12 @@
 
 // Set unique padding and border-radii
 .label
-  padding: 1px 4px 2px
-  +border-radius(3px)
+  +ctb-border-radius(3px)
 
 .badge
-  padding: 1px 9px 2px
-  +border-radius(9px)
+  padding-left: 9px
+  padding-right: 9px
+  +ctb-border-radius(9px)
 
 // Hover state, but only for links
 a
