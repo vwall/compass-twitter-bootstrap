@@ -73,6 +73,7 @@ private
     file = replace_spin(file)
     file = replace_opacity(file)
     file = replace_image_urls(file)
+    file = replace_image_paths(file)
 
     file
   end
@@ -136,7 +137,11 @@ private
   end
 
   def replace_image_urls(less)
-    less.gsub(/background-image: url\((.*)\);/) {|s| "background-image: image-url(\"#{$1.gsub('../img/','')}\");" }
+    less.gsub(/background-image: url\("?(.*?)"?\);/) {|s| "background-image: image-url(\"#{$1}\");" }
+  end
+
+  def replace_image_paths(less)
+    less.gsub('../img/', '')
   end
 
   def insert_default_vars(scss)
