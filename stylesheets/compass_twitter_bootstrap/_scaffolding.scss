@@ -33,7 +33,7 @@ a:hover {
 // -------------------------
 
 .img-rounded {
-  @include ctb-border-radius(6px);
+  @include border-radius(6px);
 }
 
 .img-polaroid {
@@ -47,5 +47,5 @@ a:hover {
 }
 
 .img-circle {
-  @include ctb-border-radius(500px);
+  @include border-radius(500px);
 }

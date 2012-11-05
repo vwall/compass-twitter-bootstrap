@@ -47,7 +47,7 @@ html {
 }
 // Focus states
 a:focus {
-  @include ctb-tab-focus();
+  @include tab-focus();
 }
 // Hover & Active
 a:hover,

@@ -11,8 +11,8 @@
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  @include ctb-opacity(0);
-  &.in     { @include ctb-opacity(80); }
+  @include opacity(0);
+  &.in     { @include opacity(80); }
   &.top    { margin-top:  -3px; }
   &.right  { margin-left:  3px; }
   &.bottom { margin-top:   3px; }
@@ -27,7 +27,7 @@
   text-align: center;
   text-decoration: none;
   background-color: $tooltipBackground;
-  @include ctb-border-radius(4px);
+  @include border-radius(4px);
 }
 
 // Arrows

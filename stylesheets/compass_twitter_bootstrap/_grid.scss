@@ -4,10 +4,10 @@
 
 
 // Fixed (940px)
-@include ctb-grid-core($gridColumnWidth, $gridGutterWidth);
+@include grid-core($gridColumnWidth, $gridGutterWidth);
 
 // Fluid (940px)
-@include ctb-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth);
+@include grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth);
 
 // Reset utility classes due to specificity
 [class*="span"].hide,

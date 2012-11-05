@@ -31,15 +31,15 @@
 
 // Clearing floats
 .clearfix {
-  @include ctb-clearfix();
+  @include clearfix();
 }
 
 // Accessible yet invisible text
 .hide-text {
-  @include ctb-hide-text();
+  @include hide-text();
 }
 
 // Uses box-sizing mixin, so must be defined here
 .input-block-level {
-  @include ctb-input-block-level();
+  @include input-block-level();
 }

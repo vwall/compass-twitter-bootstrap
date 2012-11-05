@@ -9,7 +9,7 @@
 // Core
 .btn {
   display: inline-block;
-  @include ctb-ie7-inline-block();
+  @include ie7-inline-block();
   padding: 4px 14px;
   margin-bottom: 0; // For input.btn
   font-size: $baseFontSize;
@@ -18,13 +18,13 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  @include ctb-buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0 1px 1px rgba(255,255,255,.75));
+  @include buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0 1px 1px rgba(255,255,255,.75));
   border: 1px solid $btnBorder;
   *border: 0; // Remove the border to prevent IE7's black border on input:focus
   border-bottom-color: darken($btnBorder, 10%);
-  @include ctb-border-radius(4px);
-  @include ctb-ie7-restore-left-whitespace(); // Give IE7 some love
-  @include ctb-box-shadow(#{inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)});
+  @include border-radius(4px);
+  @include ie7-restore-left-whitespace(); // Give IE7 some love
+  @include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)});
 
   // Hover state
   &:hover {
@@ -36,12 +36,12 @@
 
     // transition is only when going to hover, otherwise the background
     // behind the gradient (there for IE<=9 fallback) gets mismatched
-    @include ctb-transition(background-position .1s linear);
+    @include transition(background-position .1s linear);
   }
 
   // Focus state for keyboard and accessibility
   &:focus {
-    @include ctb-tab-focus();
+    @include tab-focus();
   }
 
   // Active state
@@ -51,7 +51,7 @@
     background-color: darken($white, 15%) \9;
     background-image: none;
     outline: 0;
-    @include ctb-box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
+    @include box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
   }
 
   // Disabled state
@@ -60,8 +60,8 @@
     cursor: default;
     background-color: darken($white, 10%);
     background-image: none;
-    @include ctb-opacity(65);
-    @include ctb-box-shadow(none);
+    @include opacity(65);
+    @include box-shadow(none);
   }
 
 }
@@ -76,7 +76,7 @@
   padding: 9px 14px;
   font-size: $baseFontSize + 2px;
   line-height: normal;
-  @include ctb-border-radius(5px);
+  @include border-radius(5px);
 }
 .btn-large [class^="icon-"] {
   margin-top: 2px;
@@ -105,7 +105,7 @@
   width: 100%;
   padding-left: 0;
   padding-right: 0;
-  @include ctb-box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 .btn-block + .btn-block {
   margin-top: 5px;
@@ -133,27 +133,27 @@
   border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
 }
 .btn-primary {
-  @include ctb-buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
+  @include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
 }
 // Warning appears are orange
 .btn-warning {
-  @include ctb-buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
+  @include buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
 }
 // Danger and error appear as red
 .btn-danger {
-  @include ctb-buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight);
+  @include buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight);
 }
 // Success appears as green
 .btn-success {
-  @include ctb-buttonBackground($btnSuccessBackground, $btnSuccessBackgroundHighlight);
+  @include buttonBackground($btnSuccessBackground, $btnSuccessBackgroundHighlight);
 }
 // Info appears as a neutral blue
 .btn-info {
-  @include ctb-buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
+  @include buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
 }
 // Inverse appears as dark gray
 .btn-inverse {
-  @include ctb-buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
+  @include buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
 }
 
 
@@ -195,13 +195,13 @@ input[type="submit"].btn {
 .btn-link:active {
   background-color: transparent;
   background-image: none;
-  @include ctb-box-shadow(none);
+  @include box-shadow(none);
 }
 .btn-link {
   border-color: transparent;
   cursor: pointer;
   color: $linkColor;
-  @include ctb-border-radius(0);
+  @include border-radius(0);
 }
 .btn-link:hover {
   color: $linkColorHover;
