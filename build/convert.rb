@@ -57,7 +57,7 @@ private
   def get_less_files
     files = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{get_tree_sha}").read
     files = JSON.parse files
-    files['tree'].map{|f| f['path']}
+    files['tree'].select{|f| f['type'] == 'blob' }.map{|f| f['path'] }
   end
 
 
