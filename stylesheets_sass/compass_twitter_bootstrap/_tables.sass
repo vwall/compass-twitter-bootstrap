@@ -60,7 +60,7 @@ table
   *border-collapse: collapse
   // IE7 can't round corners anyway
   border-left: 0
-  +border-radius($baseBorderRadius)
+  +ctb-border-radius($baseBorderRadius)
   th,
   td
     border-left: 1px solid $tableBorder
@@ -90,7 +90,7 @@ table
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child,
   tfoot:last-child tr:last-child td:first-child
-    +border-radius(0 0 0 4px)
+    +ctb-border-radius(0 0 0 4px)
     -webkit-border-bottom-left-radius: 4px
     border-bottom-left-radius: 4px
     -moz-border-radius-bottomleft: 4px
@@ -155,29 +155,29 @@ table th[class*="span"],
 .table td,
 .table th
   &.span1
-    +tableColumns(1)
+    +ctb-tableColumns(1)
   &.span2
-    +tableColumns(2)
+    +ctb-tableColumns(2)
   &.span3
-    +tableColumns(3)
+    +ctb-tableColumns(3)
   &.span4
-    +tableColumns(4)
+    +ctb-tableColumns(4)
   &.span5
-    +tableColumns(5)
+    +ctb-tableColumns(5)
   &.span6
-    +tableColumns(6)
+    +ctb-tableColumns(6)
   &.span7
-    +tableColumns(7)
+    +ctb-tableColumns(7)
   &.span8
-    +tableColumns(8)
+    +ctb-tableColumns(8)
   &.span9
-    +tableColumns(9)
+    +ctb-tableColumns(9)
   &.span10
-    +tableColumns(10)
+    +ctb-tableColumns(10)
   &.span11
-    +tableColumns(11)
+    +ctb-tableColumns(11)
   &.span12
-    +tableColumns(12)
+    +ctb-tableColumns(12)
 
 // TABLE BACKGROUNDS
 // -----------------
