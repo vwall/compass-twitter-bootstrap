@@ -57,11 +57,12 @@ private
   def get_less_files
     files = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{get_tree_sha}").read
     files = JSON.parse files
-    files['tree'].map{|f| f['path']}
+    files['tree'].select{|f| f['type'] == 'blob' }.map{|f| f['path'] }
   end
 
 
   def convert(file)
+    file = replace_interpolation(file)
     file = replace_vars(file)
     file = replace_fonts(file)
     file = replace_font_family(file)
@@ -72,6 +73,8 @@ private
     file = replace_spin(file)
     file = replace_opacity(file)
     file = replace_image_urls(file)
+    file = replace_image_paths(file)
+    file = replace_escaping(file)
 
     file
   end
@@ -86,6 +89,10 @@ private
     f.write(content)
     f.close
     puts "Converted #{name}\n"
+  end
+
+  def replace_interpolation(less)
+    less.gsub(/@{([^}]+)}/, '#{$\1}')
   end
 
   def replace_vars(less)
@@ -131,7 +138,16 @@ private
   end
 
   def replace_image_urls(less)
-    less.gsub(/background-image: url\((.*)\);/) {|s| "background-image: image-url(\"#{$1.gsub('../img/','')}\");" }
+    less.gsub(/background-image: url\("?(.*?)"?\);/) {|s| "background-image: image-url(\"#{$1}\");" }
+  end
+
+  def replace_image_paths(less)
+    less.gsub('../img/', '')
+  end
+
+  def replace_escaping(less)
+    less = less.gsub(/\~"([^"]+)"/, '#{\1}') # Get rid of ~ escape
+    less.gsub(/(\W)e\("([^\)]+)"\)/) {|s| "#{$1 if $1 != /\s/}#{$2}"} # Get rid of e escape
   end
 
   def insert_default_vars(scss)
