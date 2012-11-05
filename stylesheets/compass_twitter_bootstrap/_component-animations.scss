@@ -4,10 +4,10 @@
 
 
 .fade {
-  @include opacity(0);
-  @include transition(opacity .15s linear);
+  opacity: 0;
+  @include ctb-transition(opacity .15s linear);
   &.in {
-    @include opacity(100);
+    opacity: 1;
   }
 }
 
@@ -15,8 +15,7 @@
   position: relative;
   height: 0;
   overflow: hidden;
-  overflow: visible \9;
-  @include transition(height .35s ease);
+  @include ctb-transition(height .35s ease);
   &.in {
     height: auto;
   }

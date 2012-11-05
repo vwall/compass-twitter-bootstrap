@@ -47,28 +47,56 @@ $baseFontFamily: $sansFontFamily !default
 $baseLineHeight: 20px !default
 $altFontFamily: $serifFontFamily !default
 
-$headingsFontFamily: inherit !default
+$headingsFontFamily: inherit
 
 // empty to use BS default, $baseFontFamily
-$headingsFontWeight: bold !default
+$headingsFontWeight: bold
 
 // instead of browser default, bold
-$headingsColor: inherit !default
+$headingsColor: inherit
 
 // empty to use BS default, $textColor
 
+// Component sizing
+// -------------------------
+// Based on 14px font-size and 20px line-height
+
+$fontSizeLarge: $baseFontSize * 1.25
+
+// ~18px
+$fontSizeSmall: $baseFontSize * 0.85
+
+// ~12px
+$fontSizeMini: $baseFontSize * 0.75
+
+// ~11px
+
+$paddingLarge: 11px 19px
+
+// 44px
+$paddingSmall: 2px 10px
+
+// 26px
+$paddingMini: 1px 6px
+
+// 24px
+
+$baseBorderRadius: 4px !default
+$borderRadiusLarge: 6px !default
+$borderRadiusSmall: 3px !default
+
 // Tables
 // -------------------------
-$tableBackground: transparent !default
+$tableBackground: transparent
 
 // overall background-color
-$tableBackgroundAccent: #f9f9f9 !default
+$tableBackgroundAccent: #f9f9f9
 
 // for striping
-$tableBackgroundHover: #f5f5f5 !default
+$tableBackgroundHover: whitesmoke
 
 // for hover
-$tableBorder: #dddddd !default
+$tableBorder: #dddddd
 
 // table and cell border
 
@@ -100,9 +128,12 @@ $btnInverseBackgroundHighlight: $grayDarker !default
 // -------------------------
 $inputBackground: $white !default
 $inputBorder: #cccccc !default
-$inputBorderRadius: 3px !default
+$inputBorderRadius: $baseBorderRadius !default
 $inputDisabledBackground: $grayLighter !default
-$formActionsBackground: #f5f5f5 !default
+$formActionsBackground: whitesmoke !default
+$inputHeight: $baseLineHeight + 10px
+
+// base line-height + 8px vertical padding + 2px top/bottom border
 
 // Dropdowns
 // -------------------------
@@ -112,12 +143,11 @@ $dropdownDividerTop: #e5e5e5 !default
 $dropdownDividerBottom: $white !default
 
 $dropdownLinkColor: $grayDark !default
-
 $dropdownLinkColorHover: $white !default
-$dropdownLinkBackgroundHover: $linkColor !default
-
 $dropdownLinkColorActive: $dropdownLinkColor !default
+
 $dropdownLinkBackgroundActive: $linkColor !default
+$dropdownLinkBackgroundHover: $dropdownLinkBackgroundActive !default
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -146,25 +176,30 @@ $placeholderText: $grayLight !default
 // -------------------------
 $hrBorder: $grayLighter !default
 
+// Horizontal forms & lists
+// -------------------------
+$horizontalComponentOffset: 180px !default
+
 // Wells
 // -------------------------
-$wellBackground: #f5f5f5 !default
+$wellBackground: whitesmoke !default
 
 // Navbar
 // -------------------------
 $navbarCollapseWidth: 979px !default
+$navbarCollapseDesktopWidth: $navbarCollapseWidth + 1 !default
 
 $navbarHeight: 40px !default
 $navbarBackgroundHighlight: white !default
 $navbarBackground: darken($navbarBackgroundHighlight, 5%) !default
 $navbarBorder: darken($navbarBackground, 12%) !default
 
-$navbarText: $gray !default
-$navbarLinkColor: $gray !default
+$navbarText: #777777 !default
+$navbarLinkColor: #777777 !default
 $navbarLinkColorHover: $grayDark !default
 $navbarLinkColorActive: $gray !default
 $navbarLinkBackgroundHover: transparent !default
-$navbarLinkBackgroundActive: darken($navbarBackground, 5.25%) !default
+$navbarLinkBackgroundActive: darken($navbarBackground, 5%) !default
 
 $navbarBrandColor: $navbarLinkColor !default
 
@@ -191,7 +226,7 @@ $navbarInverseBrandColor: $navbarInverseLinkColor !default
 // -------------------------
 $paginationBackground: white !default
 $paginationBorder: #dddddd !default
-$paginationActiveBackground: #f5f5f5 !default
+$paginationActiveBackground: whitesmoke !default
 
 // Hero unit
 // -------------------------

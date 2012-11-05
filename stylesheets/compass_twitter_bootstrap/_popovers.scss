@@ -17,14 +17,14 @@
           background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.2);
-  @include border-radius(6px);
-  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
+  @include ctb-border-radius(6px);
+  @include ctb-box-shadow(0 5px 10px rgba(0,0,0,.2));
 
   // Offset the popover to account for the popover arrow
-  &.top     { margin-bottom: 10px; }
+  &.top     { margin-top: -10px; }
   &.right   { margin-left: 10px; }
   &.bottom  { margin-top: 10px; }
-  &.left    { margin-right: 10px; }
+  &.left    { margin-left: -10px; }
 
 }
 
@@ -36,7 +36,7 @@
   line-height: 18px;
   background-color: $popoverTitleBackground;
   border-bottom: 1px solid darken($popoverTitleBackground, 5%);
-  @include border-radius(5px 5px 0 0);
+  @include ctb-border-radius(5px 5px 0 0);
 }
 
 .popover-content {
