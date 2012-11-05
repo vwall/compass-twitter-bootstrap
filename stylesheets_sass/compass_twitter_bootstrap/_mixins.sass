@@ -8,21 +8,21 @@
 // Clearfix
 // --------
 // For clearing floats like a boss h5bp.com/q
-=ctb-clearfix
+=clearfix
   *zoom: 1
   &:before,
   &:after
     display: table
     content: ""
     // Fixes Opera/contenteditable bug:
-    // http://nicolasgallagher.com/micro-ctb-clearfix-hack/#comment-36952
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
     line-height: 0
   &:after
     clear: both
 
 // Webkit-style focus
 // ------------------
-=ctb-tab-focus
+=tab-focus
   // Default
   outline: thin dotted #333
   // Webkit
@@ -31,14 +31,14 @@
 
 // Center-align a block level element
 // ----------------------------------
-=ctb-center-block
+=center-block
   display: block
   margin-left: auto
   margin-right: auto
 
 // IE7 inline-block
 // ----------------
-=ctb-ie7-inline-block
+=ie7-inline-block
   *display: inline
   // IE7 inline-block hack
   *zoom: 1
@@ -49,26 +49,26 @@
 // right version is for icons, which come before. Applying both is ok, but it will
 // mean that space between those elements will be .6em (~2 space characters) in IE7,
 // instead of the 1 space in other browsers.
-=ctb-ie7-restore-left-whitespace
+=ie7-restore-left-whitespace
   *margin-left: .3em
   &:first-child
     *margin-left: 0
 
-=ctb-ie7-restore-right-whitespace
+=ie7-restore-right-whitespace
   *margin-right: .3em
 
 // Sizing shortcuts
 // -------------------------
-=ctb-size($height, $width)
+=size($height, $width)
   width: $width
   height: $height
 
-=ctb-square($size)
-  +ctb-size($size, $size)
+=square($size)
+  +size($size, $size)
 
 // Placeholder text
 // -------------------------
-=ctb-placeholder($color: $placeholderText)
+=placeholder($color: $placeholderText)
   &:-moz-placeholder
     color: $color
   &:-ms-input-placeholder
@@ -79,7 +79,7 @@
 // Text overflow
 // -------------------------
 // Requires inline-block or block for proper styling
-=ctb-text-overflow
+=text-overflow
   overflow: hidden
   text-overflow: ellipsis
   white-space: nowrap
@@ -87,7 +87,7 @@
 // CSS image replacement
 // -------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
-=ctb-hide-text
+=hide-text
   font: 0 / 0 a
   color: transparent
   text-shadow: none
@@ -97,46 +97,46 @@
 // FONTS
 // --------------------------------------------------
 
-=ctb-font-family-serif
+=font-family-serif
   font-family: $serifFontFamily
 
-=ctb-font-family-sans-serif
+=font-family-sans-serif
   font-family: $sansFontFamily
 
-=ctb-font-family-monospace
+=font-family-monospace
   font-family: $monoFontFamily
 
-=ctb-font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+=font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
   font-size: $size
   font-weight: $weight
   line-height: $lineHeight
 
-=ctb-font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
-  +ctb-font-family-serif
-  +ctb-font-shorthand($size, $weight, $lineHeight)
+=font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  +font-family-serif
+  +font-shorthand($size, $weight, $lineHeight)
 
-=ctb-font-sans-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
-  +ctb-font-family-sans-serif
-  +ctb-font-shorthand($size, $weight, $lineHeight)
+=font-sans-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  +font-family-sans-serif
+  +font-shorthand($size, $weight, $lineHeight)
 
-=ctb-font-monospace($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
-  +ctb-font-family-monospace
-  +ctb-font-shorthand($size, $weight, $lineHeight)
+=font-monospace($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  +font-family-monospace
+  +font-shorthand($size, $weight, $lineHeight)
 
 // FORMS
 // --------------------------------------------------
 
 // Block level inputs
-=ctb-input-block-level
+=input-block-level
   display: block
   width: 100%
   min-height: 30px
   // Make inputs at least the height of their button counterpart
-  +ctb-box-sizing(border-box)
+  +box-sizing(border-box)
   // Makes inputs behave like true block-level elements
 
 // Mixin for form field states
-=ctb-formFieldState($textColor: #555555, $borderColor: #cccccc, $backgroundColor: whitesmoke)
+=formFieldState($textColor: #555555, $borderColor: #cccccc, $backgroundColor: #f5f5f5)
   // Set the text color
   > label,
   .help-block,
@@ -150,7 +150,7 @@
   textarea
     color: $textColor
     border-color: $borderColor
-    +ctb-box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075))
+    +box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075))
     // Redeclare so transitions work
     &:focus
       border-color: darken($borderColor, 10%)
@@ -169,92 +169,92 @@
 // --------------------------------------------------
 
 // Border Radius
-=ctb-border-radius($radius)
+=border-radius($radius)
   -webkit-border-radius: $radius
   -moz-border-radius: $radius
   border-radius: $radius
 
 // Single Corner Border Radius
-=ctb-border-top-left-radius($radius)
+=border-top-left-radius($radius)
   -webkit-border-top-left-radius: $radius
   -moz-border-radius-topleft: $radius
   border-top-left-radius: $radius
 
-=ctb-border-top-right-radius($radius)
+=border-top-right-radius($radius)
   -webkit-border-top-right-radius: $radius
   -moz-border-radius-topright: $radius
   border-top-right-radius: $radius
 
-=ctb-border-bottom-right-radius($radius)
+=border-bottom-right-radius($radius)
   -webkit-border-bottom-right-radius: $radius
   -moz-border-radius-bottomright: $radius
   border-bottom-right-radius: $radius
 
-=ctb-border-bottom-left-radius($radius)
+=border-bottom-left-radius($radius)
   -webkit-border-bottom-left-radius: $radius
   -moz-border-radius-bottomleft: $radius
   border-bottom-left-radius: $radius
 
 // Single Side Border Radius
-=ctb-border-top-radius($radius)
-  +ctb-border-top-right-radius($radius)
-  +ctb-border-top-left-radius($radius)
+=border-top-radius($radius)
+  +border-top-right-radius($radius)
+  +border-top-left-radius($radius)
 
-=ctb-border-right-radius($radius)
-  +ctb-border-top-right-radius($radius)
-  +ctb-border-bottom-right-radius($radius)
+=border-right-radius($radius)
+  +border-top-right-radius($radius)
+  +border-bottom-right-radius($radius)
 
-=ctb-border-bottom-radius($radius)
-  +ctb-border-bottom-right-radius($radius)
-  +ctb-border-bottom-left-radius($radius)
+=border-bottom-radius($radius)
+  +border-bottom-right-radius($radius)
+  +border-bottom-left-radius($radius)
 
-=ctb-border-left-radius($radius)
-  +ctb-border-top-left-radius($radius)
-  +ctb-border-bottom-left-radius($radius)
+=border-left-radius($radius)
+  +border-top-left-radius($radius)
+  +border-bottom-left-radius($radius)
 
 // Drop shadows
-=ctb-box-shadow($shadow)
+=box-shadow($shadow)
   -webkit-box-shadow: $shadow
   -moz-box-shadow: $shadow
   box-shadow: $shadow
 
 // Transitions
-=ctb-transition($transition)
+=transition($transition)
   -webkit-transition: $transition
   -moz-transition: $transition
   -o-transition: $transition
   transition: $transition
 
 // Transformations
-=ctb-rotate($degrees)
+=rotate($degrees)
   -webkit-transform: rotate($degrees)
   -moz-transform: rotate($degrees)
   -ms-transform: rotate($degrees)
   -o-transform: rotate($degrees)
   transform: rotate($degrees)
 
-=ctb-scale($ratio)
+=scale($ratio)
   -webkit-transform: scale($ratio)
   -moz-transform: scale($ratio)
   -ms-transform: scale($ratio)
   -o-transform: scale($ratio)
   transform: scale($ratio)
 
-=ctb-translate($x, $y)
+=translate($x, $y)
   -webkit-transform: translate($x, $y)
   -moz-transform: translate($x, $y)
   -ms-transform: translate($x, $y)
   -o-transform: translate($x, $y)
   transform: translate($x, $y)
 
-=ctb-skew($x, $y)
+=skew($x, $y)
   -webkit-transform: skew($x, $y)
   -moz-transform: skew($x, $y)
   -ms-transform: skew($x, $y)
   -o-transform: skew($x, $y)
   transform: skew($x, $y)
 
-=ctb-translate3d($x, $y, $z)
+=translate3d($x, $y, $z)
   -webkit-transform: translate3d($x, $y, $z)
   -moz-transform: translate3d($x, $y, $z)
   -o-transform: translate3d($x, $y, $z)
@@ -264,34 +264,34 @@
 // Prevent browsers from flickering when using CSS 3D transforms.
 // Default value is `visible`, but can be changed to `hidden
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
-=ctb-backface-visibility($visibility)
+=backface-visibility($visibility)
   -webkit-backface-visibility: $visibility
   -moz-backface-visibility: $visibility
   backface-visibility: $visibility
 
 // Background clipping
 // Heads up: FF 3.6 and under need "padding" instead of "padding-box"
-=ctb-background-clip($clip)
+=background-clip($clip)
   -webkit-background-clip: $clip
   -moz-background-clip: $clip
   background-clip: $clip
 
 // Background sizing
-=ctb-background-size($size)
+=background-size($size)
   -webkit-background-size: $size
   -moz-background-size: $size
   -o-background-size: $size
   background-size: $size
 
 // Box sizing
-=ctb-box-sizing($boxmodel)
+=box-sizing($boxmodel)
   -webkit-box-sizing: $boxmodel
   -moz-box-sizing: $boxmodel
   box-sizing: $boxmodel
 
 // User select
 // For selecting text on the page
-=ctb-user-select($select)
+=user-select($select)
   -webkit-user-select: $select
   -moz-user-select: $select
   -ms-user-select: $select
@@ -299,14 +299,14 @@
   user-select: $select
 
 // Resize anything
-=ctb-resizable($direction)
+=resizable($direction)
   resize: $direction
   // Options: horizontal, vertical, both
   overflow: auto
   // Safari fix
 
 // CSS3 Content Columns
-=ctb-content-columns($columnCount, $columnGap: $gridGutterWidth)
+=content-columns($columnCount, $columnGap: $gridGutterWidth)
   -webkit-column-count: $columnCount
   -moz-column-count: $columnCount
   column-count: $columnCount
@@ -315,7 +315,7 @@
   column-gap: $columnGap
 
 // Optional hyphenation
-=ctb-hyphens($mode: auto)
+=hyphens($mode: auto)
   word-wrap: break-word
   -webkit-hyphens: $mode
   -moz-hyphens: $mode
@@ -324,7 +324,7 @@
   hyphens: $mode
 
 // Opacity
-=ctb-opacity($opacity)
+=opacity($opacity)
   opacity: $opacity / 100
   filter: alpha(opacity = $opacity)
 
@@ -332,23 +332,23 @@
 // --------------------------------------------------
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
-=ctb-translucent-background($color: $white, $alpha: 1)
+=translucent-background($color: $white, $alpha: 1)
   background-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
 
-=ctb-translucent-border($color: $white, $alpha: 1)
+=translucent-border($color: $white, $alpha: 1)
   border-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
-  +ctb-background-clip(padding-box)
+  +background-clip(padding-box)
 
 // Gradient Bar Colors for buttons and alerts
-=ctb-gradientBar($primaryColor, $secondaryColor, $textColor: white, $textShadow: 0 -1px 0 rgba(0, 0, 0, 0.25))
+=gradientBar($primaryColor, $secondaryColor, $textColor: white, $textShadow: 0 -1px 0 rgba(0, 0, 0, 0.25))
   color: $textColor
   text-shadow: $textShadow
-  +ctb-gradient-vertical($primaryColor, $secondaryColor)
+  +gradient-vertical($primaryColor, $secondaryColor)
   border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%)
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fade-in(rgba(0, 0, 0, 0.1), 0.15)
 
 // Gradients
-=ctb-gradient-horizontal($startColor: #555555, $endColor: #333333)
+=gradient-horizontal($startColor: #555555, $endColor: #333333)
   background-color: $endColor
   background-image: -moz-linear-gradient(left, $startColor, $endColor)
   // FF 3.6+
@@ -364,7 +364,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=1)
   // IE9 and down
 
-=ctb-gradient-vertical($startColor: #555555, $endColor: #333333)
+=gradient-vertical($startColor: #555555, $endColor: #333333)
   background-color: mix($startColor, $endColor, 62.5%)
   background-image: -moz-linear-gradient(top, $startColor, $endColor)
   // FF 3.6+
@@ -380,7 +380,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0)
   // IE9 and down
 
-=ctb-gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
+=gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
   background-color: $endColor
   background-repeat: repeat-x
   background-image: -moz-linear-gradient($deg, $startColor, $endColor)
@@ -392,7 +392,7 @@
   background-image: linear-gradient($deg, $startColor, $endColor)
   // Standard, IE10
 
-=ctb-gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
+=gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
   background-color: mix($midColor, $endColor, 80%)
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor))
   background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor)
@@ -403,7 +403,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0)
   // IE9 and down, gets no color-stop at all for proper fallback
 
-=ctb-gradient-radial($innerColor: #555555, $outerColor: #333333)
+=gradient-radial($innerColor: #555555, $outerColor: #333333)
   background-color: $outerColor
   background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor))
   background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor)
@@ -411,7 +411,7 @@
   background-image: -o-radial-gradient(circle, $innerColor, $outerColor)
   background-repeat: no-repeat
 
-=ctb-gradient-striped($color, $angle: 45deg)
+=gradient-striped($color, $angle: 45deg)
   background-color: $color
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
   background-image: -webkit-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
@@ -420,7 +420,7 @@
   background-image: linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
 
 // Reset filters for IE
-=ctb-gradient-reset-filter
+=gradient-reset-filter
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)
 
 // COMPONENT MIXINS
@@ -429,7 +429,7 @@
 // Horizontal dividers
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
-=ctb-nav-divider($top: #e5e5e5, $bottom: $white)
+=nav-divider($top: #e5e5e5, $bottom: $white)
   // IE7 needs a set width since we gave a height. Restricting just
   // to IE7 to keep the 1px left/right space in other browsers.
   // It is unclear where IE is getting the extra space that we need
@@ -445,12 +445,12 @@
 
 // Button backgrounds
 // ------------------
-=ctb-buttonBackground($startColor, $endColor, $textColor: white, $textShadow: 0 -1px 0 rgba(0, 0, 0, 0.25))
+=buttonBackground($startColor, $endColor, $textColor: white, $textShadow: 0 -1px 0 rgba(0, 0, 0, 0.25))
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
-  +ctb-gradientBar($startColor, $endColor, $textColor, $textShadow)
+  +gradientBar($startColor, $endColor, $textColor, $textShadow)
   *background-color: $endColor
   /* Darken IE7 buttons by default so they stand out more given they won't have borders
-  +ctb-gradient-reset-filter
+  +gradient-reset-filter
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled]
     color: $textColor
@@ -465,20 +465,20 @@
 // -------------------------
 // Vertically center elements in the navbar.
 // Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
-=ctb-navbarVerticalAlign($elementHeight)
+=navbarVerticalAlign($elementHeight)
   margin-top: ($navbarHeight - $elementHeight) / 2
 
 // Grid System
 // -----------
 
 // Centered container element
-=ctb-container-fixed
+=container-fixed
   margin-right: auto
   margin-left: auto
-  +ctb-clearfix
+  +clearfix
 
 // Table columns
-=ctb-tableColumns($columnSpan: 1)
+=tableColumns($columnSpan: 1)
   float: none
   // undo default grid column styles
   width: $gridColumnWidth * $columnSpan + $gridGutterWidth * ($columnSpan - 1) - 16
@@ -488,26 +488,26 @@
 
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-=ctb-makeRow
+=makeRow
   margin-left: $gridGutterWidth * -1
-  +ctb-clearfix
+  +clearfix
 
-=ctb-makeColumn($columns: 1, $offset: 0)
+=makeColumn($columns: 1, $offset: 0)
   float: left
   margin-left: $gridColumnWidth * $offset + $gridGutterWidth * ($offset - 1) + $gridGutterWidth * 2
   width: $gridColumnWidth * $columns + $gridGutterWidth * ($columns - 1)
 
 // The Grid
-=ctb-core-offset($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
+=core-offset($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
   margin-left: $columnWidth * $columns + $gutterWidth * ($columns + 1)
 
-=ctb-core-span($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
+=core-span($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
   width: $columnWidth * $columns + $gutterWidth * ($columns - 1)
 
-=ctb-grid-core($columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
+=grid-core($columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
   .row
     margin-left: $gutterWidth * -1
-    +ctb-clearfix
+    +clearfix
   [class*="span"]
     float: left
     margin-left: $gutterWidth
@@ -516,37 +516,37 @@
   .navbar-static-top .container,
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container
-    +ctb-core-span($gridColumns, $columnWidth, $gutterWidth)
+    +core-span($gridColumns, $columnWidth, $gutterWidth)
   // generate .spanX and .offsetX
   $i: $gridColumns
   @while $i > 0
     .span#{$i}
-      +ctb-core-span($i, $columnWidth, $gutterWidth)
+      +core-span($i, $columnWidth, $gutterWidth)
     $i: $i - 1
   $i: $gridColumns
   @while $i > 0
     .offset#{$i}
-      +ctb-core-offset($i, $columnWidth, $gutterWidth)
+      +core-offset($i, $columnWidth, $gutterWidth)
     $i: $i - 1
 
-=ctb-fluid-offset($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
+=fluid-offset($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
   margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) + $gutterWidth * 2
   *margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) - 0.5 / $gridRowWidth * 100px * 1% + $gutterWidth * 2 - 0.5 / $gridRowWidth * 100px * 1%
 
-=ctb-fluid-offset-first-child($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
+=fluid-offset-first-child($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
   margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) + $gutterWidth
   *margin-left: $columnWidth * $columns + $gutterWidth * ($columns - 1) - 0.5 / $gridRowWidth * 100px * 1% + $gutterWidth - 0.5 / $gridRowWidth * 100px * 1%
 
-=ctb-fluid-span($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
+=fluid-span($columns, $columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
   width: $columnWidth * $columns + $gutterWidth * ($columns - 1)
   *width: $columnWidth * $columns + $gutterWidth * ($columns - 1) - 0.5 / $gridRowWidth * 100px * 1%
 
-=ctb-grid-fluid($columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
+=grid-fluid($columnWidth: $fluidGridColumnWidth, $gutterWidth: $fluidGridGutterWidth)
   .row-fluid
     width: 100%
-    +ctb-clearfix
+    +clearfix
     [class*="span"]
-      +ctb-input-block-level
+      +input-block-level
       float: left
       margin-left: $gutterWidth
       *margin-left: $gutterWidth - 0.5 / $gridRowWidth * 100px * 1%
@@ -556,17 +556,17 @@
     $i: $gridColumns
     @while $i > 0
       .span#{$i}
-        +ctb-fluid-span($i, $columnWidth, $gutterWidth)
+        +fluid-span($i, $columnWidth, $gutterWidth)
       .offset#{$i}
-        +ctb-fluid-offset($i, $columnWidth, $gutterWidth)
+        +fluid-offset($i, $columnWidth, $gutterWidth)
       .offset#{$i}:first-child
-        +ctb-fluid-offset-first-child($i, $columnWidth, $gutterWidth)
+        +fluid-offset-first-child($i, $columnWidth, $gutterWidth)
       $i: $i - 1
 
-=ctb-input-span($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
+=input-span($columns, $columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
   width: $columnWidth * $columns + $gutterWidth * ($columns - 1) - 14
 
-=ctb-grid-input($columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
+=grid-input($columnWidth: $gridColumnWidth, $gutterWidth: $gridGutterWidth)
   input,
   textarea,
   .uneditable-input
@@ -581,5 +581,5 @@
     input.span#{$i},
     textarea.span#{$i},
     .uneditable-input.span#{$i}
-      +ctb-input-span($i, $columnWidth, $gutterWidth)
+      +input-span($i, $columnWidth, $gutterWidth)
     $i: $i - 1

@@ -60,7 +60,7 @@ table
   *border-collapse: collapse
   // IE7 can't round corners anyway
   border-left: 0
-  +ctb-border-radius(4px)
+  +border-radius(4px)
   th,
   td
     border-left: 1px solid $tableBorder
@@ -90,7 +90,7 @@ table
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child,
   tfoot:last-child tr:last-child td:first-child
-    +ctb-border-radius(0 0 0 4px)
+    +border-radius(0 0 0 4px)
     -webkit-border-bottom-left-radius: 4px
     border-bottom-left-radius: 4px
     -moz-border-radius-bottomleft: 4px
@@ -152,7 +152,7 @@ table [class*=span],
 table
   @for $i from 1 through 24
     .span#{$i}
-      +ctb-tableColumns($i)
+      +tableColumns($i)
 
 // TABLE BACKGROUNDS
 // -----------------
