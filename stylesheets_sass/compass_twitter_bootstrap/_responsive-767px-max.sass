@@ -51,11 +51,11 @@
     display: block
     width: 100%
     margin-left: 0
-    +box-sizing(border-box)
+    +ctb-box-sizing(border-box)
   .span12,
   .row-fluid .span12
     width: 100%
-    +box-sizing(border-box)
+    +ctb-box-sizing(border-box)
   .row-fluid [class*="offset"]:first-child
     margin-left: 0
   // FORM FIELDS
@@ -68,7 +68,7 @@
   select[class*="span"],
   textarea[class*="span"],
   .uneditable-input
-    +input-block-level
+    +ctb-input-block-level
   // But don't let it screw up prepend/append inputs
   .input-prepend input,
   .input-append input,
