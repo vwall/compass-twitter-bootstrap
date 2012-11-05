@@ -74,6 +74,7 @@ private
     file = replace_opacity(file)
     file = replace_image_urls(file)
     file = replace_image_paths(file)
+    file = replace_escaping(file)
 
     file
   end
@@ -142,6 +143,11 @@ private
 
   def replace_image_paths(less)
     less.gsub('../img/', '')
+  end
+
+  def replace_escaping(less)
+    less = less.gsub(/\~"([^"]+)"/, '#{\1}') # Get rid of ~ escape
+    less.gsub(/(\W)e\("([^\)]+)"\)/) {|s| "#{$1 if $1 != /\s/}#{$2}"} # Get rid of e escape
   end
 
   def insert_default_vars(scss)
