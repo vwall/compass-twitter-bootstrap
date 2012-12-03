@@ -101,6 +101,8 @@ To convert all twitter bootstrap .scss files to .sass (with overwrite):
 
 `$ for f in stylesheets/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/${f%%.*}.sass; done`
 
+Or just use `rake convert`
+
 Nice and easy :)
 
 ## Upgrading
