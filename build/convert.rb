@@ -2,44 +2,36 @@ require 'open-uri'
 require 'json'
 
 class Convert
+  def initialize(branch = 'master')
+    @branch = branch
+    @files  = get_less_files
+  end
 
   def process
-    get_less_files.each do |name|
+    @files.each do |name|
       unless ['bootstrap.less', 'responsive.less'].include?(name)
-        file = open_git_file("https://raw.github.com/twitter/bootstrap/master/less/#{name}")
-        file = convert(file) 
+        file = open("https://raw.github.com/twitter/bootstrap/#{@branch}/less/#{name}").read
+
+        case name
+        when 'mixins.less'
+          file = replace_vars(file)
+          file = replace_mixin_file(file)
+          file = replace_mixins(file)
+        when 'utilities.less'
+          file = replace_mixin_file(file)
+          file = convert(file)
+        when 'variables.less'
+          file = convert(file)
+          file = insert_default_vars(file)
+        else
+          file = convert(file)
+        end
 
         if name == 'progress-bars.less'
-          file = fix_progress_bar(file)
+          #file = fix_progress_bar(file)
         end
 
-        if name == 'variables.less'
-          file = insert_default_vars(file)
-        end
-
-        save_file(name, file) unless name == 'mixins.less'
-      end
-    end
-
-    self.create_sass_files
-  end
-  
-  def create_sass_files
-    puts 'Creating sass files for testing'
-
-    scss_files = 'stylesheets'
-
-    Dir.glob(scss_files+'/*').each do |dir|
-      file_or_dir = File.open dir
-
-      if File.file? file_or_dir
-        convert_scss(file_or_dir)
-      else
-        Dir.open(file_or_dir).each do |filename|
-          file = File.open("#{file_or_dir.path}/#{filename}")
-          next unless File.fnmatch? '**.scss', file
-          convert_scss(file, 'compass_twitter_bootstrap/')
-        end
+        save_file(name, file)
       end
     end
   end
@@ -48,8 +40,7 @@ private
 
   # Get the sha of less branch
   def get_tree_sha
-    sha = nil
-    trees = open('https://api.github.com/repos/twitter/bootstrap/git/trees/master').read
+    trees = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{@branch}").read
     trees = JSON.parse trees
     trees['tree'].find{|t| t['path'] == 'less'}['sha']
   end
@@ -60,27 +51,30 @@ private
     files['tree'].select{|f| f['type'] == 'blob' }.map{|f| f['path'] }
   end
 
+  def get_mixins_name
+    mixins      = []
+    less_mixins = open("https://raw.github.com/twitter/bootstrap/#{@branch}/less/mixins.less").read
+
+    less_mixins.scan(/\.([\w-]+)\(.*\)\s?{?/) do |mixin|
+      mixins << mixin
+    end
+
+    mixins
+  end
 
   def convert(file)
-    file = replace_interpolation(file)
     file = replace_vars(file)
     file = replace_fonts(file)
     file = replace_font_family(file)
     file = replace_grads(file)
     file = replace_mixins(file)
     file = replace_less_extend(file)
-    file = replace_includes(file)
     file = replace_spin(file)
-    file = replace_opacity(file)
     file = replace_image_urls(file)
     file = replace_image_paths(file)
     file = replace_escaping(file)
 
     file
-  end
-
-  def open_git_file(file)
-    open(file).read
   end
 
   def save_file(name, content)
@@ -91,8 +85,13 @@ private
     puts "Converted #{name}\n"
   end
 
-  def replace_interpolation(less)
-    less.gsub(/@{([^}]+)}/, '#{$\1}')
+  def replace_mixins(less)
+    mixin_pattern = /\.([\w-]+\(.*\))\s?{?/
+    less.gsub(mixin_pattern, '@include ctb-\1')
+  end
+
+  def replace_mixin_file(less)
+    less.gsub(/^\.([\w-]+\(.*\)\s?{?)$/, '@mixin ctb-\1')
   end
 
   def replace_vars(less)
@@ -117,24 +116,12 @@ private
     less.gsub(/#gradient \> \.([\w-]+)/, '@include gradient-\1')
   end
 
-  def replace_mixins(less)
-    less.gsub(/^\.([\w-]*)(\(.*\))([\s\{]+)$/, '@mixin \1\2\3')
-  end
-
-  def replace_includes(less)
-    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include \1\2;')
-  end
-
   def replace_less_extend(less)
     less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include \1-\2\3;')
   end
 
   def replace_spin(less)
     less.gsub(/spin/, 'adjust-hue')
-  end
-
-  def replace_opacity(scss)
-    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include opacity(#{$1.to_f / 100})"}
   end
 
   def replace_image_urls(less)
@@ -158,7 +145,4 @@ private
     sass_files = 'stylesheets_sass'
     system("sass-convert #{file.path} #{sass_files}/#{folder}#{File.basename(file, 'scss')}sass")
   end
-
 end
-
-Convert.new.process
