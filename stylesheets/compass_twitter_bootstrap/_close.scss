@@ -7,15 +7,15 @@
   float: right;
   font-size: 20px;
   font-weight: bold;
-  line-height: $baseLineHeight;
-  color: $black;
+  line-height: $line-height-base;
+  color: #000;
   text-shadow: 0 1px 0 rgba(255,255,255,1);
-  @include ctb-opacity(0.2);
+  @include ctb-opacity(20);
   &:hover {
-    color: $black;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
-    @include ctb-opacity(0.4);
+    @include ctb-opacity(40);
   }
 }
 
