@@ -12,36 +12,36 @@
   width: 100%
   position: relative
 
-.carousel
-  .item
+.carousel-inner
+  > .item
     display: none
     position: relative
     +ctb-transition(0.6s ease-in-out left)
   // Account for jankitude on images
-  .item > img
+  > .item > img
     display: block
     line-height: 1
-  .active,
-  .next,
-  .prev
+  > .active,
+  > .next,
+  > .prev
     display: block
-  .active
+  > .active
     left: 0
-  .next,
-  .prev
+  > .next,
+  > .prev
     position: absolute
     top: 0
     width: 100%
-  .next
+  > .next
     left: 100%
-  .prev
+  > .prev
     left: -100%
-  .next.left,
-  .prev.right
+  > .next.left,
+  > .prev.right
     left: 0
-  .active.left
+  > .active.left
     left: -100%
-  .active.right
+  > .active.right
     left: 100%
 
 // Left/right controls for nav
@@ -62,7 +62,7 @@
   background: $grayDarker
   border: 3px solid $white
   +ctb-border-radius(23px)
-  +ctb-opacity(0.5)
+  +ctb-opacity(50)
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
@@ -77,7 +77,7 @@
   &:hover
     color: $white
     text-decoration: none
-    +ctb-opacity(0.9)
+    +ctb-opacity(90)
 
 // Caption for text below images
 // -----------------------------
