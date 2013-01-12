@@ -1,5 +1,8 @@
 # Overview
 
+## 2.2.2
+* Upgraded twiter bootstrap to 2.2.2 (@tijsverkoyen)
+
 ## 2.1.0
 * Upgrade twitter bootstrap to 2.1.0 in the scss files (@kristianmandrup)
 
