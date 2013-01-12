@@ -7,7 +7,7 @@ class Convert
     get_less_files.each do |name|
       unless ['bootstrap.less', 'responsive.less'].include?(name)
         file = open_git_file("https://raw.github.com/twitter/bootstrap/master/less/#{name}")
-        file = convert(file) 
+        file = convert(file)
 
         if name == 'progress-bars.less'
           file = fix_progress_bar(file)
@@ -23,7 +23,7 @@ class Convert
 
     self.create_sass_files
   end
-  
+
   def create_sass_files
     puts 'Creating sass files for testing'
 
@@ -106,15 +106,15 @@ private
   end
 
   def replace_fonts(less)
-    less.gsub(/#font \> \.([\w-]+)/, '@include font-\1')
+    less.gsub(/#font \> \.([\w-]+)/, '@include ctb-font-\1')
   end
 
   def replace_font_family(less)
-    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include font-family-\1')
+    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include ctb-font-family-\1')
   end
 
   def replace_grads(less)
-    less.gsub(/#gradient \> \.([\w-]+)/, '@include gradient-\1')
+    less.gsub(/#gradient \> \.([\w-]+)/, '@include ctb-gradient-\1')
   end
 
   def replace_mixins(less)
@@ -122,11 +122,11 @@ private
   end
 
   def replace_includes(less)
-    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include \1\2;')
+    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include ctb-\1\2;')
   end
 
   def replace_less_extend(less)
-    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include \1-\2\3;')
+    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include ctb-\1-\2\3;')
   end
 
   def replace_spin(less)
@@ -134,7 +134,7 @@ private
   end
 
   def replace_opacity(scss)
-    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include opacity(#{$1.to_f / 100})"}
+    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include ctb-opacity(#{$1.to_f / 100})"}
   end
 
   def replace_image_urls(less)
