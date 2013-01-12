@@ -115,7 +115,7 @@
   text-decoration: none;
   background-color: transparent;
   background-image: none; // Remove CSS gradient
-  @include ctb-reset-filter();
+  @include ctb-gradient-reset-filter();
   cursor: default;
 }
 
