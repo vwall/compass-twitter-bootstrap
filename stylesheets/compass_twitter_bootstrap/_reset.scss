@@ -150,7 +150,7 @@ textarea {
 // -------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css
 
-$media print {
+@media print {
 
   * {
     text-shadow: none !important;
@@ -198,7 +198,7 @@ $media print {
     max-width: 100% !important;
   }
 
-  $page {
+  @page {
     margin: 0.5cm;
   }
 
