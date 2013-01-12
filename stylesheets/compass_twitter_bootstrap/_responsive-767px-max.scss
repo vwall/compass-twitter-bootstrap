@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 
-@media (max-width: 767px) {
+$media (max-width: 767px) {
 
   // Padding to set content in a bit
   body {
@@ -118,7 +118,7 @@
 // UP TO LANDSCAPE PHONE
 // ---------------------
 
-@media (max-width: 480px) {
+$media (max-width: 480px) {
 
   // Smooth out the collapsing/expanding nav
   .nav-collapse {

@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 
-@media (min-width: 768px) and (max-width: 979px) {
+$media (min-width: 768px) and (max-width: 979px) {
 
   // Fixed grid
   @include ctb-grid-core($gridColumnWidth768, $gridGutterWidth768);
