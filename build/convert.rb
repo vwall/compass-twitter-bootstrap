@@ -95,7 +95,7 @@ private
   end
 
   def replace_vars(less)
-    less.gsub(/(?!@media)@/, '$')
+    less.gsub(/(?!@media|@-\w)@/, '$')
   end
 
   def fix_progress_bar(less)
