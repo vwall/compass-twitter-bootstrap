@@ -73,6 +73,7 @@ private
     file = replace_image_urls(file)
     file = replace_image_paths(file)
     file = replace_escaping(file)
+    file = convert_less_ampersand(file)
 
     file
   end
@@ -144,5 +145,17 @@ private
   def convert_scss(file, folder='')
     sass_files = 'stylesheets_sass'
     system("sass-convert #{file.path} #{sass_files}/#{folder}#{File.basename(file, 'scss')}sass")
+  end
+
+  # Converts &-
+  def convert_less_ampersand(less)
+    regx = /^\.badge\s*\{[\s\/\w\(\)]+(&{1}-{1})\w.*?^}$/m
+
+    tmp = ''
+    less.scan(/^(\s*&)(-[\w\[\]]+\s*{.+})$/) do |ampersand, css|
+      tmp << ".badge#{css}\n"
+    end
+
+    less.gsub(regx, tmp)
   end
 end
