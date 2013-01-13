@@ -34,17 +34,13 @@ a.badge {
 
 // Colors
 // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-.badge {
-  // Important (red)
-  &-danger            { background-color: $state-error-text; }
-  &-danger[href]      { background-color: darken($state-error-text, 10%); }
-  // Warnings (orange)
-  &-warning           { background-color: #f89406; }
-  &-warning[href]     { background-color: darken(#f89406, 10%); }
-  // Success (green)
-  &-success           { background-color: $state-success-text; }
-  &-success[href]     { background-color: darken($state-success-text, 10%); }
-}
+.badge-danger            { background-color: $state-error-text; }
+.badge-danger[href]      { background-color: darken($state-error-text, 10%); }
+.badge-warning           { background-color: #f89406; }
+.badge-warning[href]     { background-color: darken(#f89406, 10%); }
+.badge-success           { background-color: $state-success-text; }
+.badge-success[href]     { background-color: darken($state-success-text, 10%); }
+
 
 // Quick fix for labels/badges in buttons
 .btn {

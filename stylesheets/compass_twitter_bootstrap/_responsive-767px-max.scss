@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 
-$media (max-width: 767px) {
+@media (max-width: 767px) {
 
   // Padding to set content in a bit
   body {
@@ -67,9 +67,6 @@ $media (max-width: 767px) {
     display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
   }
-  .controls-row [class*="span"] + [class*="span"] {
-    margin-left: 0;
-  }
 
   // Modals
   .modal {
@@ -90,7 +87,7 @@ $media (max-width: 767px) {
 // UP TO LANDSCAPE PHONE
 // ---------------------
 
-$media (max-width: 480px) {
+@media (max-width: 480px) {
 
   // Smooth out the collapsing/expanding nav
   .nav-collapse {
