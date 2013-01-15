@@ -1,5 +1,8 @@
 # Overview
 
+## 2.2.2.1
+* Upgradde Font Awesome to 3.0.1
+
 ## 2.2.2
 * Upgraded twiter bootstrap to 2.2.2 (@tijsverkoyen)
 
