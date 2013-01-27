@@ -1,5 +1,11 @@
 # Overview
 
+## 2.2.2.2
+Fix cb-opacity mixin to correctly calculate opacity (@mindmelting)
+Added in clearfix utils class as per bootstrap docs (@mindmelting)
+Fix bootstrap version comment (@skivvies)
+Add affix to all js (@friesencr)
+
 ## 2.2.2.1
 * Upgradde Font Awesome to 3.0.1
 
