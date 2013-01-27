@@ -17,7 +17,7 @@
 
 .modal-backdrop,
 .modal-backdrop.fade.in {
-  @include ctb-opacity(80);
+  @include ctb-opacity(0.8);
 }
 
 // Base modal
