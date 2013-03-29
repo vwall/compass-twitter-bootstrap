@@ -1,5 +1,5 @@
-/*
- * Bootstrap v2.2.2
+/*!
+ * Bootstrap v2.3.1
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -10,14 +10,24 @@
 
 @import "compass";
 
+// Core variables and mixins
+@import "compass_twitter_bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
 @import "compass_twitter_bootstrap/mixins";
+
+.clearfix {
+  @include ctb-clearfix();
+}
+
+.hide-text {
+  @include ctb-hide-text();
+}
+
+.input-block-level {
+  @include ctb-input-block-level();
+}
 
 // CSS Reset
 @import "compass_twitter_bootstrap/reset";
-
-// Core variables and mixins
-@import "compass_twitter_bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
-
 
 // Grid system and page structure
 @import "compass_twitter_bootstrap/scaffolding";
@@ -56,6 +66,7 @@
 
 // Components: Misc
 @import "compass_twitter_bootstrap/thumbnails";
+@import "compass_twitter_bootstrap/media";
 @import "compass_twitter_bootstrap/labels-badges";
 @import "compass_twitter_bootstrap/progress-bars";
 @import "compass_twitter_bootstrap/accordion";

@@ -1,5 +1,4 @@
 //=require bootstrap-transition
-//=require bootstrap-affix
 //=require bootstrap-alert
 //-require bootstrap-affix
 //=require bootstrap-modal

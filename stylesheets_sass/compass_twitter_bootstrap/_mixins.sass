@@ -24,7 +24,7 @@
 // ------------------
 =ctb-tab-focus
   // Default
-  outline: thin dotted #333
+  outline: thin dotted #333333
   // Webkit
   outline: 5px auto -webkit-focus-ring-color
   outline-offset: -2px
@@ -130,15 +130,15 @@
 =ctb-input-block-level
   display: block
   width: 100%
-  min-height: 30px
-  // Make inputs at least the height of their button counterpart
+  min-height: $inputHeight
+  // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   +ctb-box-sizing(border-box)
   // Makes inputs behave like true block-level elements
 
 // Mixin for form field states
 =ctb-formFieldState($textColor: #555555, $borderColor: #cccccc, $backgroundColor: whitesmoke)
   // Set the text color
-  > label,
+  .control-label,
   .help-block,
   .help-inline
     color: $textColor
@@ -149,6 +149,9 @@
   select,
   textarea
     color: $textColor
+  input,
+  select,
+  textarea
     border-color: $borderColor
     +ctb-box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075))
     // Redeclare so transitions work
@@ -225,6 +228,18 @@
   -o-transition: $transition
   transition: $transition
 
+=ctb-transition-delay($transition-delay)
+  -webkit-transition-delay: $transition-delay
+  -moz-transition-delay: $transition-delay
+  -o-transition-delay: $transition-delay
+  transition-delay: $transition-delay
+
+=ctb-transition-duration($transition-duration)
+  -webkit-transition-duration: $transition-duration
+  -moz-transition-duration: $transition-duration
+  -o-transition-duration: $transition-duration
+  transition-duration: $transition-duration
+
 // Transformations
 =ctb-rotate($degrees)
   -webkit-transform: rotate($degrees)
@@ -250,9 +265,12 @@
 =ctb-skew($x, $y)
   -webkit-transform: skew($x, $y)
   -moz-transform: skew($x, $y)
-  -ms-transform: skew($x, $y)
+  -ms-transform: skewX($x) skewY($y)
+  // See https://github.com/twitter/bootstrap/issues/4885
   -o-transform: skew($x, $y)
   transform: skew($x, $y)
+  -webkit-backface-visibility: hidden
+  // See https://github.com/twitter/bootstrap/issues/5319
 
 =ctb-translate3d($x, $y, $z)
   -webkit-transform: translate3d($x, $y, $z)
@@ -392,6 +410,17 @@
   background-image: linear-gradient($deg, $startColor, $endColor)
   // Standard, IE10
 
+=ctb-gradient-horizontal-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
+  background-color: mix($midColor, $endColor, 80%)
+  background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor))
+  background-image: -webkit-linear-gradient(left, $startColor, $midColor $colorStop, $endColor)
+  background-image: -moz-linear-gradient(left, $startColor, $midColor $colorStop * 100%, $endColor)
+  background-image: -o-linear-gradient(left, $startColor, $midColor $colorStop, $endColor)
+  background-image: linear-gradient(to right, $startColor, $midColor $colorStop, $endColor)
+  background-repeat: no-repeat
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0)
+  // IE9 and down, gets no color-stop at all for proper fallback
+
 =ctb-gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
   background-color: mix($midColor, $endColor, 80%)
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor))
@@ -411,7 +440,7 @@
   background-image: -o-radial-gradient(circle, $innerColor, $outerColor)
   background-repeat: no-repeat
 
-=ctb-gradient-striped($color, $angle: 45deg)
+=ctb-gradient-striped($color: #555555, $angle: 45deg)
   background-color: $color
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
   background-image: -webkit-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
@@ -452,7 +481,7 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders
   +ctb-gradient-reset-filter
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled, &[disabled]
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled]
     color: $textColor
     background-color: $endColor
     *background-color: darken($endColor, 5%)
@@ -510,6 +539,8 @@
     +ctb-clearfix
   [class*="span"]
     float: left
+    min-height: 1px
+    // prevent collapsing columns
     margin-left: $gutterWidth
   // Set the container width, and override it for fixed navbars in media queries
   .container,
@@ -552,6 +583,9 @@
       *margin-left: $gutterWidth - 0.5 / $gridRowWidth * 100px * 1%
     [class*="span"]:first-child
       margin-left: 0
+    // Space grid-sized controls properly if multiple per line
+    .controls-row [class*="span"] + [class*="span"]
+      margin-left: $gutterWidth
     // generate .spanX and .offsetX
     $i: $gridColumns
     @while $i > 0

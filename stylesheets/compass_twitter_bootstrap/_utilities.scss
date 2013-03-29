@@ -10,9 +10,7 @@
 .pull-left {
   float: left;
 }
-.clearfix {
-  @include ctb-clearfix();
-}
+
 // Toggling content
 .hide {
   display: none;
