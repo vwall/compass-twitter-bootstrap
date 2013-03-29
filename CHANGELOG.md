@@ -1,5 +1,8 @@
 # Overview
 
+## 2.3.1
+* Upgrade Twitter Bootstrap to 2.3.1 (@szinya)
+
 ## 2.2.2.2
 Fix cb-opacity mixin to correctly calculate opacity (@mindmelting)
 Added in clearfix utils class as per bootstrap docs (@mindmelting)

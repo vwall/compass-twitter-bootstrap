@@ -72,8 +72,8 @@
     @include ctb-box-sizing(border-box);
   }
   .row-fluid [class*="offset"]:first-child {
-		margin-left: 0;
-	}
+    margin-left: 0;
+  }
 
   // FORM FIELDS
   // -----------
