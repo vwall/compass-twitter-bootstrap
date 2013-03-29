@@ -111,6 +111,7 @@
   border: 0;
 }
 
+
 // FONTS
 // --------------------------------------------------
 
@@ -149,7 +150,7 @@
 @mixin ctb-input-block-level {
   display: block;
   width: 100%;
-  min-height: 30px;                // Make inputs at least the height of their button counterpart
+  min-height: $inputHeight;                // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   @include ctb-box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
 
@@ -158,7 +159,7 @@
 // Mixin for form field states
 @mixin ctb-formFieldState($textColor: #555, $borderColor: #ccc, $backgroundColor: #f5f5f5) {
   // Set the text color
-  > label,
+  .control-label,
   .help-block,
   .help-inline {
     color: $textColor;
@@ -170,6 +171,10 @@
   select,
   textarea {
     color: $textColor;
+  }
+  input,
+  select,
+  textarea {
     border-color: $borderColor;
     @include ctb-box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
@@ -255,6 +260,18 @@
        -o-transition: $transition;
           transition: $transition;
 }
+@mixin ctb-transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+     -moz-transition-delay: $transition-delay;
+       -o-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin ctb-transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+     -moz-transition-duration: $transition-duration;
+       -o-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
 
 // Transformations
 @mixin ctb-rotate($degrees) {
@@ -278,15 +295,14 @@
        -o-transform: translate($x, $y);
           transform: translate($x, $y);
 }
-
 @mixin ctb-skew($x, $y) {
   -webkit-transform: skew($x, $y);
      -moz-transform: skew($x, $y);
-      -ms-transform: skew($x, $y);
+      -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
        -o-transform: skew($x, $y);
           transform: skew($x, $y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
 }
-
 @mixin ctb-translate3d($x, $y, $z) {
   -webkit-transform: translate3d($x, $y, $z);
      -moz-transform: translate3d($x, $y, $z);
@@ -423,6 +439,16 @@
   background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient($deg, $startColor, $endColor); // Standard, IE10
 }
+@mixin ctb-gradient-horizontal-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: mix($midColor, $endColor, 80%);
+  background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+  background-image: -webkit-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+  background-image: -moz-linear-gradient(left, $startColor, $midColor $colorStop*100%, $endColor);
+  background-image: -o-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+  background-image: linear-gradient(to right, $startColor, $midColor $colorStop, $endColor);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+}
 @mixin ctb-gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
   background-color: mix($midColor, $endColor, 80%);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
@@ -441,7 +467,7 @@
   background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
   background-repeat: no-repeat;
 }
-@mixin ctb-gradient-striped($color, $angle: 45deg) {
+@mixin ctb-gradient-striped($color: #555, $angle: 45deg) {
   background-color: $color;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
@@ -486,7 +512,7 @@
   @include ctb-gradient-reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled, &[disabled] {
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
     color: $textColor;
     background-color: $endColor;
     *background-color: darken($endColor, 5%);
@@ -506,7 +532,6 @@
 @mixin ctb-navbarVerticalAlign($elementHeight) {
   margin-top: ($navbarHeight - $elementHeight) / 2;
 }
-
 
 
 
@@ -556,6 +581,7 @@
 
   [class*="span"] {
     float: left;
+    min-height: 1px; // prevent collapsing columns
     margin-left: $gutterWidth;
   }
 
@@ -608,6 +634,11 @@
     }
     [class*="span"]:first-child {
       margin-left: 0;
+    }
+
+    // Space grid-sized controls properly if multiple per line
+    .controls-row [class*="span"] + [class*="span"] {
+      margin-left: $gutterWidth;
     }
 
     // generate .spanX and .offsetX

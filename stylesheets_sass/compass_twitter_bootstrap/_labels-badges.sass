@@ -34,10 +34,12 @@
   &:empty
     display: none
 
-// Hover state, but only for links
+// Hover/focus state, but only for links
 a
   &.label:hover,
-  &.badge:hover
+  &.label:focus,
+  &.badge:hover,
+  &.badge:focus
     color: $white
     text-decoration: none
     cursor: pointer

@@ -2,6 +2,13 @@
 // Responsive: Utility classes
 // --------------------------------------------------
 
+// IE10 Metro responsive
+// Required for Windows 8 Metro split-screen snapping with IE10
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+@-ms-viewport
+  width: device-width
+
+
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden
@@ -54,4 +61,16 @@
   // Use inherit to restore previous behavior
   // Hide
   .hidden-phone
+    display: none !important
+
+// Print utilities
+.visible-print
+  display: none !important
+
+.hidden-print
+
+@media print
+  .visible-print
+    display: inherit !important
+  .hidden-print
     display: none !important
