@@ -123,8 +123,7 @@ input[type="color"],
   &:focus
     border-color: rgba(82, 168, 236, 0.8)
     outline: 0
-    outline: thin dotted \9
-    /* IE6-9
+    outline: thin dotted \9 /* IE6-9 */
     +ctb-box-shadow(#{inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)})
 
 // Position radios and checkboxes better
@@ -132,10 +131,8 @@ input[type="color"],
 input[type="radio"],
 input[type="checkbox"]
   margin: 4px 0 0
-  *margin-top: 0
-  /* IE7
-  margin-top: 1px \9
-  /* IE8-9
+  *margin-top: 0 /* IE7 */
+  margin-top: 1px \9 /* IE8-9 */
   line-height: normal
 
 // Reset width of input images, buttons, radios, checkboxes
@@ -154,10 +151,8 @@ input[type="checkbox"]
 
 select,
 input[type="file"]
-  height: $inputHeight
-  /* In IE7, the height of the select element cannot be changed by height, only font-size
-  *margin-top: 4px
-  /* For IE7, add top margin to align select with labels
+  height: $inputHeight /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  *margin-top: 4px /* For IE7, add top margin to align select with labels */
   line-height: $inputHeight
 
 // Make select elements obey height by applying a border
@@ -517,8 +512,7 @@ input.search-query
   padding-right: 14px
   padding-right: 4px \9
   padding-left: 14px
-  padding-left: 4px \9
-  /* IE7-8 doesn't have border-radius, so don't indent the padding
+  padding-left: 4px \9 /* IE7-8 doesn't have border-radius, so don't indent the padding */
   margin-bottom: 0
   // Remove the default margin on all inputs
   +ctb-border-radius(15px)
