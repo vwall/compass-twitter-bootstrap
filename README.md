@@ -115,13 +115,13 @@ There is a Rake-task that will help you to fetch all recent changes from the Twi
 When that is done
 
 * update the assets
-* replace `$media ` with @media `, `$page ` with @page `, `$-ms-keyframes ` with @-ms-keyframes `, `$-o-keyframes ` with @-o-keyframes `, `$-ms-viewport` with @-ms-viewport`, see https://github.com/vwall/compass-twitter-bootstrap/issues/100.
+* replace `$media` with `@media` , `$page` with `@page` , `$-ms-keyframes` with `@-ms-keyframes` , `$-o-keyframes` with `@-o-keyframes` , `$-ms-viewport` with `@-ms-viewport`, see https://github.com/vwall/compass-twitter-bootstrap/issues/100.
 * replace `ctb-reset-filter` with `ctb-gradient-reset-filter`
 * replace `ctb-span(` with `ctb-core-span(`
 * replace `@include ctb-opacity(100)` with `@include ctb-opacity(1)` as seen in https://github.com/vwall/compass-twitter-bootstrap/commit/b80ea1bc20f031a4abad7906ba14590bccadc74e
 * search for `(e(` and fix it
 * search for `&-` and fix it, see https://github.com/vwall/compass-twitter-bootstrap/issues/101
-* search fo `.navbar-fixed-bottom .container {` and fix it
+* search for `.navbar-fixed-bottom .container {` and fix it
 * readd the imports into _buttons.scss as seen in https://github.com/vwall/compass-twitter-bootstrap/commit/18d2d061235d5477c3a30beab9f02c7e9387f0c4
 * add utility classes defined in mixins.scss to stylesheets/_compass_twitter_bootstrap*.scss (right after importing mixins)
 
