@@ -1,6 +1,6 @@
 //=require bootstrap-transition
 //=require bootstrap-alert
-//-require bootstrap-affix
+//=require bootstrap-affix
 //=require bootstrap-modal
 //=require bootstrap-dropdown
 //=require bootstrap-scrollspy
