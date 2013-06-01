@@ -1,0 +1,18 @@
+{
+    "name": "vwall/sass-twitter-bootstrap"
+  , "description": "The twitter bootstrap ported to compass"
+  , "keywords": ["bootstrap", "scss", "sass", "compass"]
+  , "homepage": "http://github.com/vwall/sass-twitter-bootstrap/"
+  , "authors": [
+        {
+            "name": "Mark Otto",
+            "homepage": "http://markdotto.com/"
+        },
+        {
+            "name": "Jacob Thornton",
+            "homepage": "http://byfat.xxx/"
+        }
+    ]
+  , "license": "Apache-2.0"
+
+}
