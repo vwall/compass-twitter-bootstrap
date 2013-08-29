@@ -7,7 +7,7 @@ class Convert
     get_less_files.each do |name|
       unless ['bootstrap.less', 'responsive.less'].include?(name)
         file = open_git_file("https://raw.github.com/twitter/bootstrap/master/less/#{name}")
-        file = convert(file) 
+        file = convert(file)
 
         if name == 'progress-bars.less'
           file = fix_progress_bar(file)
@@ -23,7 +23,7 @@ class Convert
 
     self.create_sass_files
   end
-  
+
   def create_sass_files
     puts 'Creating sass files for testing'
 
@@ -57,11 +57,12 @@ private
   def get_less_files
     files = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{get_tree_sha}").read
     files = JSON.parse files
-    files['tree'].map{|f| f['path']}
+    files['tree'].select{|f| f['type'] == 'blob' }.map{|f| f['path'] }
   end
 
 
   def convert(file)
+    file = replace_interpolation(file)
     file = replace_vars(file)
     file = replace_fonts(file)
     file = replace_font_family(file)
@@ -72,6 +73,8 @@ private
     file = replace_spin(file)
     file = replace_opacity(file)
     file = replace_image_urls(file)
+    file = replace_image_paths(file)
+    file = replace_escaping(file)
 
     file
   end
@@ -88,6 +91,10 @@ private
     puts "Converted #{name}\n"
   end
 
+  def replace_interpolation(less)
+    less.gsub(/@{([^}]+)}/, '#{$\1}')
+  end
+
   def replace_vars(less)
     less.gsub(/@/, '$')
   end
@@ -99,15 +106,15 @@ private
   end
 
   def replace_fonts(less)
-    less.gsub(/#font \> \.([\w-]+)/, '@include font-\1')
+    less.gsub(/#font \> \.([\w-]+)/, '@include ctb-font-\1')
   end
 
   def replace_font_family(less)
-    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include font-family-\1')
+    less.gsub(/#font \> #family \> \.([\w-]+)/, '@include ctb-font-family-\1')
   end
 
   def replace_grads(less)
-    less.gsub(/#gradient \> \.([\w-]+)/, '@include gradient-\1')
+    less.gsub(/#gradient \> \.([\w-]+)/, '@include ctb-gradient-\1')
   end
 
   def replace_mixins(less)
@@ -115,11 +122,11 @@ private
   end
 
   def replace_includes(less)
-    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include \1\2;')
+    less.gsub(/\.([\w-]*)(\(.*\));?/, '@include ctb-\1\2;')
   end
 
   def replace_less_extend(less)
-    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include \1-\2\3;')
+    less.gsub(/\#(\w+) \> \.([\w-]*)(\(.*\));?/, '@include ctb-\1-\2\3;')
   end
 
   def replace_spin(less)
@@ -127,11 +134,20 @@ private
   end
 
   def replace_opacity(scss)
-    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include opacity(#{$1.to_f / 100})"}
+    scss.gsub(/\@include opacity\((\d+)\)/) {|s| "@include ctb-opacity(#{$1.to_f / 100})"}
   end
 
   def replace_image_urls(less)
-    less.gsub(/background-image: url\((.*)\);/) {|s| "background-image: image-url(\"#{$1.gsub('../img/','')}\");" }
+    less.gsub(/background-image: url\("?(.*?)"?\);/) {|s| "background-image: image-url(\"#{$1}\");" }
+  end
+
+  def replace_image_paths(less)
+    less.gsub('../img/', '')
+  end
+
+  def replace_escaping(less)
+    less = less.gsub(/\~"([^"]+)"/, '#{\1}') # Get rid of ~ escape
+    less.gsub(/(\W)e\("([^\)]+)"\)/) {|s| "#{$1 if $1 != /\s/}#{$2}"} # Get rid of e escape
   end
 
   def insert_default_vars(scss)

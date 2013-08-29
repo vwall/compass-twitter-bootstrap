@@ -1,6 +1,6 @@
-// SPRITES
-// Glyphs and icons for buttons, nav, and more
-// -------------------------------------------
+//
+// Sprites
+// --------------------------------------------------
 
 // ICONS
 // -----
@@ -18,18 +18,37 @@
   display: inline-block
   width: 14px
   height: 14px
-  +bootstrap-ie7-restore-right-whitespace
+  +ctb-ie7-restore-right-whitespace
   line-height: 14px
   vertical-align: text-top
   background-image: image-url(#{$iconSpritePath})
   background-position: 14px 14px
   background-repeat: no-repeat
+  margin-top: 1px
 
-.icon-white
+/* White icons with optional class, or on hover/focus/active states of certain elements
+
+.icon-white,
+.nav-pills > .active > a > [class^="icon-"],
+.nav-pills > .active > a > [class*=" icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:focus > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > li > a:focus > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"],
+.dropdown-submenu:hover > a > [class^="icon-"],
+.dropdown-submenu:focus > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*=" icon-"],
+.dropdown-submenu:focus > a > [class*=" icon-"]
   background-image: image-url(#{$iconWhiteSpritePath})
 
 .icon-glass
-  background-position: 0      0
+  background-position: 0 0
 
 .icon-music
   background-position: -24px 0
@@ -361,6 +380,7 @@
 
 .icon-random
   background-position: -216px -120px
+  width: 16px
 
 .icon-comment
   background-position: -240px -120px
@@ -383,9 +403,11 @@
 
 .icon-folder-close
   background-position: -384px -120px
+  width: 16px
 
 .icon-folder-open
   background-position: -408px -120px
+  width: 16px
 
 .icon-resize-vertical
   background-position: -432px -119px

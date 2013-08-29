@@ -1,5 +1,23 @@
 # Overview
 
+## 2.3.1
+* Upgrade Twitter Bootstrap to 2.3.1 (@szinya)
+
+## 2.2.2.2
+Fix cb-opacity mixin to correctly calculate opacity (@mindmelting)
+Added in clearfix utils class as per bootstrap docs (@mindmelting)
+Fix bootstrap version comment (@skivvies)
+Add affix to all js (@friesencr)
+
+## 2.2.2.1
+* Upgradde Font Awesome to 3.0.1
+
+## 2.2.2
+* Upgraded twiter bootstrap to 2.2.2 (@tijsverkoyen)
+
+## 2.1.0
+* Upgrade twitter bootstrap to 2.1.0 in the scss files (@kristianmandrup)
+
 ## 2.0.1.2
 * Really fix sprites, maybe.
 * Update JS

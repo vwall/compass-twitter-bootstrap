@@ -38,7 +38,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
     bundle install
 
 **Add it to your Application.rb**
-        
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -62,7 +62,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
   Rails.configuration.sass.tap do |config|
     ...
 
-    # twitter bootstrap  
+    # twitter bootstrap
     config.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
 
     ...
@@ -83,11 +83,49 @@ To use the font awesome font and icons simply change the standard import to:
 
 Javascript Libraries are located in vendor/assets/javascripts
 
-Include them individually or 
+Include them individually or
 
     //=require bootstrap-all
 
 to include all files
+
+## SCSS to SASS Conversion tip
+
+To easily convert `.scss` files to `.sass` files you can use this little bash script:
+
+`$ for f in *.scss; do sass-convert -F scss -T sass $f ${f%%.*}.sass; done`
+
+To convert all twitter bootstrap .scss files to .sass (with overwrite):
+
+`$ for f in stylesheets/compass_twitter_bootstrap/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/compass_twitter_bootstrap/${f%%.*}.sass; done`
+
+`$ for f in stylesheets/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/${f%%.*}.sass; done`
+
+Nice and easy :)
+
+## Upgrading
+
+If you want to contribute and help out keeping this gem in sync with the latest release of Twitter Bootstrap, you should keep in mind that all mixins are prefixed with `ctb-`.
+With this prefixed we can't run into problems where the converted less-mixins conflict with native Compass names, parameters, ...
+
+There is a Rake-task that will help you to fetch all recent changes from the Twitter Bootstrap master:
+
+`rake convert`
+
+When that is done
+
+* update the assets
+* replace `$media` with `@media` , `$page` with `@page` , `$-ms-keyframes` with `@-ms-keyframes` , `$-o-keyframes` with `@-o-keyframes` , `$-ms-viewport` with `@-ms-viewport`, see https://github.com/vwall/compass-twitter-bootstrap/issues/100.
+* replace `ctb-reset-filter` with `ctb-gradient-reset-filter`
+* replace `ctb-span(` with `ctb-core-span(`
+* replace `@include ctb-opacity(100)` with `@include ctb-opacity(1)` as seen in https://github.com/vwall/compass-twitter-bootstrap/commit/b80ea1bc20f031a4abad7906ba14590bccadc74e
+* search for `(e(` and fix it
+* search for `&-` and fix it, see https://github.com/vwall/compass-twitter-bootstrap/issues/101
+* search for `.navbar-fixed-bottom .container {` and fix it
+* readd the imports into _buttons.scss as seen in https://github.com/vwall/compass-twitter-bootstrap/commit/18d2d061235d5477c3a30beab9f02c7e9387f0c4
+* add utility classes defined in mixins.scss to stylesheets/_compass_twitter_bootstrap*.scss (right after importing mixins)
+
+@remark: if some Ruby-genius wants to automate this feel free
 
 
 ## TWITTER BOOTSTRAP
@@ -111,7 +149,7 @@ To get started -- checkout http://twitter.github.com/bootstrap!
 
 ##Copyright and License
 
-Copyright 2011 Twitter, Inc.
+Copyright 2012 Twitter, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.

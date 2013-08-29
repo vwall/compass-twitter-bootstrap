@@ -1,5 +1,6 @@
-// CAROUSEL
-// --------
+//
+// Carousel
+// --------------------------------------------------
 
 .carousel
   position: relative
@@ -11,36 +12,37 @@
   width: 100%
   position: relative
 
-.carousel
-  .item
+.carousel-inner
+  > .item
     display: none
     position: relative
-    +bootstrap-transition(0.6s ease-in-out left)
-  // Account for jankitude on images
-  .item > img
+    +ctb-transition(0.6s ease-in-out left)
+    // Account for jankitude on images
+    > img,
+    > a > img
+      display: block
+      line-height: 1
+  > .active,
+  > .next,
+  > .prev
     display: block
-    line-height: 1
-  .active,
-  .next,
-  .prev
-    display: block
-  .active
+  > .active
     left: 0
-  .next,
-  .prev
+  > .next,
+  > .prev
     position: absolute
     top: 0
     width: 100%
-  .next
+  > .next
     left: 100%
-  .prev
+  > .prev
     left: -100%
-  .next.left,
-  .prev.right
+  > .next.left,
+  > .prev.right
     left: 0
-  .active.left
+  > .active.left
     left: -100%
-  .active.right
+  > .active.right
     left: 100%
 
 // Left/right controls for nav
@@ -60,23 +62,46 @@
   text-align: center
   background: $grayDarker
   border: 3px solid $white
-  +bootstrap-border-radius(23px)
-  +bootstrap-opacity(50)
+  +ctb-border-radius(23px)
+  +ctb-opacity(50)
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
   // in the middle of another animation
   // ;_;
-  // @include bootstrap-transition(opacity .2s linear);
+  // @include ctb-transition(opacity .2s linear);
   // Reposition the right one
   &.right
     left: auto
     right: 15px
-  // Hover state
-  &:hover
+  // Hover/focus state
+  &:hover,
+  &:focus
     color: $white
     text-decoration: none
-    +bootstrap-opacity(90)
+    +ctb-opacity(90)
+
+// Carousel indicator pips
+// -----------------------------
+.carousel-indicators
+  position: absolute
+  top: 15px
+  right: 15px
+  z-index: 5
+  margin: 0
+  list-style: none
+  li
+    display: block
+    float: left
+    width: 10px
+    height: 10px
+    margin-left: 5px
+    text-indent: -999px
+    background-color: #ccc
+    background-color: rgba(255, 255, 255, 0.25)
+    border-radius: 5px
+  .active
+    background-color: #fff
 
 // Caption for text below images
 // -----------------------------
@@ -86,10 +111,17 @@
   left: 0
   right: 0
   bottom: 0
-  padding: 10px 15px 5px
+  padding: 15px
   background: $grayDark
   background: rgba(0, 0, 0, 0.75)
 
 .carousel-caption h4,
 .carousel-caption p
   color: $white
+  line-height: $baseLineHeight
+
+.carousel-caption h4
+  margin: 0 0 5px
+
+.carousel-caption p
+  margin-bottom: 0

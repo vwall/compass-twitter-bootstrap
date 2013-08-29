@@ -1,8 +1,8 @@
-// Variables.less
-// Variables to customize the look and feel of Bootstrap
-// -----------------------------------------------------
+//
+// Variables
+// --------------------------------------------------
 
-// GLOBAL VALUES
+// Global values
 // --------------------------------------------------
 
 // Grays
@@ -40,35 +40,63 @@ $linkColorHover: darken($linkColor, 15%) !default
 // -------------------------
 $sansFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif !default
 $serifFontFamily: Georgia, "Times New Roman", Times, serif !default
-$monoFontFamily: Menlo, Monaco, Consolas, "Courier New", monospace !default
+$monoFontFamily: Monaco, Menlo, Consolas, "Courier New", monospace !default
 
-$baseFontSize: 13px !default
+$baseFontSize: 14px !default
 $baseFontFamily: $sansFontFamily !default
-$baseLineHeight: 18px !default
+$baseLineHeight: 20px !default
 $altFontFamily: $serifFontFamily !default
 
-$headingsFontFamily: inherit !default
+$headingsFontFamily: inherit  !default
 
 // empty to use BS default, $baseFontFamily
-$headingsFontWeight: bold !default
+$headingsFontWeight: bold  !default
 
 // instead of browser default, bold
 $headingsColor: inherit !default
 
 // empty to use BS default, $textColor
 
+// Component sizing
+// -------------------------
+// Based on 14px font-size and 20px line-height
+
+$fontSizeLarge: $baseFontSize * 1.25
+
+// ~18px
+$fontSizeSmall: $baseFontSize * 0.85
+
+// ~12px
+$fontSizeMini: $baseFontSize * 0.75
+
+// ~11px
+
+$paddingLarge: 11px 19px
+
+// 44px
+$paddingSmall: 2px 10px
+
+// 26px
+$paddingMini: 0 6px
+
+// 22px
+
+$baseBorderRadius: 4px !default
+$borderRadiusLarge: 6px !default
+$borderRadiusSmall: 3px !default
+
 // Tables
 // -------------------------
-$tableBackground: transparent !default
+$tableBackground: transparent
 
 // overall background-color
-$tableBackgroundAccent: #f9f9f9 !default
+$tableBackgroundAccent: #f9f9f9
 
 // for striping
-$tableBackgroundHover: #f5f5f5 !default
+$tableBackgroundHover: whitesmoke
 
 // for hover
-$tableBorder: #dddddd !default
+$tableBorder: #dddddd
 
 // table and cell border
 
@@ -79,7 +107,7 @@ $btnBackgroundHighlight: darken($white, 10%) !default
 $btnBorder: #cccccc !default
 
 $btnPrimaryBackground: $linkColor !default
-$btnPrimaryBackgroundHighlight: adjust-hue($btnPrimaryBackground, 15%) !default
+$btnPrimaryBackgroundHighlight: adjust-hue($btnPrimaryBackground, 20%) !default
 
 $btnInfoBackground: #5bc0de !default
 $btnInfoBackgroundHighlight: #2f96b4 !default
@@ -93,24 +121,33 @@ $btnWarningBackgroundHighlight: $orange !default
 $btnDangerBackground: #ee5f5b !default
 $btnDangerBackgroundHighlight: #bd362f !default
 
-$btnInverseBackground: $gray !default
+$btnInverseBackground: #444444 !default
 $btnInverseBackgroundHighlight: $grayDarker !default
 
 // Forms
 // -------------------------
 $inputBackground: $white !default
 $inputBorder: #cccccc !default
-$inputBorderRadius: 3px !default
+$inputBorderRadius: $baseBorderRadius !default
 $inputDisabledBackground: $grayLighter !default
-$formActionsBackground: #f5f5f5 !default
+$formActionsBackground: whitesmoke !default
+$inputHeight: $baseLineHeight + 10px
+
+// base line-height + 8px vertical padding + 2px top/bottom border
 
 // Dropdowns
 // -------------------------
 $dropdownBackground: $white !default
 $dropdownBorder: rgba(0, 0, 0, 0.2) !default
+$dropdownDividerTop: #e5e5e5 !default
+$dropdownDividerBottom: $white !default
+
 $dropdownLinkColor: $grayDark !default
 $dropdownLinkColorHover: $white !default
-$dropdownLinkBackgroundHover: $linkColor !default
+$dropdownLinkColorActive: $white !default
+
+$dropdownLinkBackgroundActive: $linkColor !default
+$dropdownLinkBackgroundHover: $dropdownLinkBackgroundActive !default
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -121,7 +158,7 @@ $dropdownLinkBackgroundHover: $linkColor !default
 // Try to avoid customizing these :)
 $zindexDropdown: 1000 !default
 $zindexPopover: 1010 !default
-$zindexTooltip: 1020 !default
+$zindexTooltip: 1030 !default
 $zindexFixedNavbar: 1030 !default
 $zindexModalBackdrop: 1040 !default
 $zindexModal: 1050 !default
@@ -139,24 +176,57 @@ $placeholderText: $grayLight !default
 // -------------------------
 $hrBorder: $grayLighter !default
 
+// Horizontal forms & lists
+// -------------------------
+$horizontalComponentOffset: 180px !default
+
+// Wells
+// -------------------------
+$wellBackground: whitesmoke !default
+
 // Navbar
 // -------------------------
+$navbarCollapseWidth: 979px !default
+$navbarCollapseDesktopWidth: $navbarCollapseWidth + 1 !default
+
 $navbarHeight: 40px !default
-$navbarBackground: $grayDarker !default
-$navbarBackgroundHighlight: $grayDark !default
+$navbarBackgroundHighlight: white !default
+$navbarBackground: darken($navbarBackgroundHighlight, 5%) !default
+$navbarBorder: darken($navbarBackground, 12%) !default
 
-$navbarText: $grayLight !default
-$navbarLinkColor: $grayLight !default
-$navbarLinkColorHover: $white !default
-$navbarLinkColorActive: $navbarLinkColorHover !default
+$navbarText: #777777 !default
+$navbarLinkColor: #777777 !default
+$navbarLinkColorHover: $grayDark !default
+$navbarLinkColorActive: $gray !default
 $navbarLinkBackgroundHover: transparent !default
-$navbarLinkBackgroundActive: $navbarBackground !default
+$navbarLinkBackgroundActive: darken($navbarBackground, 5%) !default
 
-$navbarSearchBackground: lighten($navbarBackground, 25%) !default
-$navbarSearchBackgroundFocus: $white !default
-$navbarSearchBorder: darken($navbarSearchBackground, 30%) !default
-$navbarSearchPlaceholderColor: #cccccc !default
 $navbarBrandColor: $navbarLinkColor !default
+
+// Inverted navbar
+$navbarInverseBackground: #111111 !default
+$navbarInverseBackgroundHighlight: #222222 !default
+$navbarInverseBorder: #252525 !default
+
+$navbarInverseText: $grayLight !default
+$navbarInverseLinkColor: $grayLight !default
+$navbarInverseLinkColorHover: $white !default
+$navbarInverseLinkColorActive: $navbarInverseLinkColorHover !default
+$navbarInverseLinkBackgroundHover: transparent !default
+$navbarInverseLinkBackgroundActive: $navbarInverseBackground !default
+
+$navbarInverseSearchBackground: lighten($navbarInverseBackground, 25%) !default
+$navbarInverseSearchBackgroundFocus: $white !default
+$navbarInverseSearchBorder: $navbarInverseBackground !default
+$navbarInverseSearchPlaceholderColor: #cccccc !default
+
+$navbarInverseBrandColor: $navbarInverseLinkColor !default
+
+// Pagination
+// -------------------------
+$paginationBackground: white !default
+$paginationBorder: #dddddd !default
+$paginationActiveBackground: whitesmoke !default
 
 // Hero unit
 // -------------------------
@@ -182,6 +252,22 @@ $infoText: #3a87ad !default
 $infoBackground: #d9edf7 !default
 $infoBorder: darken(adjust-hue($infoBackground, -10), 7%) !default
 
+// Tooltips and popovers
+// -------------------------
+$tooltipColor: white !default
+$tooltipBackground: black !default
+$tooltipArrowWidth: 5px !default
+$tooltipArrowColor: $tooltipBackground !default
+
+$popoverBackground: white !default
+$popoverArrowWidth: 10px !default
+$popoverArrowColor: white !default
+$popoverTitleBackground: darken($popoverBackground, 3%) !default
+
+// Special enhancement for popovers
+$popoverArrowOuterWidth: $popoverArrowWidth + 1 !default
+$popoverArrowOuterColor: rgba(0, 0, 0, 0.25) !default
+
 // GRID
 // --------------------------------------------------
 
@@ -192,7 +278,25 @@ $gridColumnWidth: 60px !default
 $gridGutterWidth: 20px !default
 $gridRowWidth: $gridColumns * $gridColumnWidth + $gridGutterWidth * ($gridColumns - 1) !default
 
+// 1200px min
+$gridColumnWidth1200: 70px !default
+$gridGutterWidth1200: 30px !default
+$gridRowWidth1200: $gridColumns * $gridColumnWidth1200 + $gridGutterWidth1200 * ($gridColumns - 1) !default
+
+// 768px-979px
+$gridColumnWidth768: 42px !default
+$gridGutterWidth768: 20px !default
+$gridRowWidth768: $gridColumns * $gridColumnWidth768 + $gridGutterWidth768 * ($gridColumns - 1) !default
+
 // Fluid grid
 // -------------------------
-$fluidGridColumnWidth: 6.383% !default
-$fluidGridGutterWidth: 2.128% !default
+$fluidGridColumnWidth: percentage($gridColumnWidth / $gridRowWidth) !default
+$fluidGridGutterWidth: percentage($gridGutterWidth / $gridRowWidth) !default
+
+// 1200px min
+$fluidGridColumnWidth1200: percentage($gridColumnWidth1200 / $gridRowWidth1200) !default
+$fluidGridGutterWidth1200: percentage($gridGutterWidth1200 / $gridRowWidth1200) !default
+
+// 768px-979px
+$fluidGridColumnWidth768: percentage($gridColumnWidth768 / $gridRowWidth768) !default
+$fluidGridGutterWidth768: percentage($gridGutterWidth768 / $gridRowWidth768) !default
