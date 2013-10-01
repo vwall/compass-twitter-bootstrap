@@ -1,3 +1,1 @@
-module CompassTwitterBootstrap
-  VERSION = '2.3.1'
-end
+CompassTwitterBootstrap::VERSION = '2.3.1' unless defined?(CompassTwitterBootstrap::VERSION)
