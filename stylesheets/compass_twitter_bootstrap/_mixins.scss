@@ -254,7 +254,7 @@
 }
 
 // Transitions
-@mixin ctb-transition($transition) {
+@mixin ctb-transition($transition...) {
   -webkit-transition: $transition;
      -moz-transition: $transition;
        -o-transition: $transition;
