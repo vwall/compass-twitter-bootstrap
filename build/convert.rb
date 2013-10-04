@@ -6,7 +6,7 @@ class Convert
   def process
     get_less_files.each do |name|
       unless ['bootstrap.less', 'responsive.less'].include?(name)
-        file = open_git_file("https://raw.github.com/twitter/bootstrap/master/less/#{name}")
+        file = open_git_file("https://raw.github.com/twbs/bootstrap/master/less/#{name}")
         file = convert(file)
 
         if name == 'progress-bars.less'
@@ -49,13 +49,13 @@ private
   # Get the sha of less branch
   def get_tree_sha
     sha = nil
-    trees = open('https://api.github.com/repos/twitter/bootstrap/git/trees/master').read
+    trees = open('https://api.github.com/repos/twbs/bootstrap/git/trees/master').read
     trees = JSON.parse trees
     trees['tree'].find{|t| t['path'] == 'less'}['sha']
   end
 
   def get_less_files
-    files = open("https://api.github.com/repos/twitter/bootstrap/git/trees/#{get_tree_sha}").read
+    files = open("https://api.github.com/repos/twbs/bootstrap/git/trees/#{get_tree_sha}").read
     files = JSON.parse files
     files['tree'].select{|f| f['type'] == 'blob' }.map{|f| f['path'] }
   end
