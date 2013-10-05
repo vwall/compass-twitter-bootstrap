@@ -24,7 +24,7 @@
 // ------------------
 =ctb-tab-focus
   // Default
-  outline: thin dotted #333333
+  outline: thin dotted #333
   // Webkit
   outline: 5px auto -webkit-focus-ring-color
   outline-offset: -2px
@@ -88,7 +88,7 @@
 // -------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 =ctb-hide-text
-  font: 0 / 0 a
+  font: 0/0 a
   color: transparent
   text-shadow: none
   background-color: transparent
@@ -343,8 +343,8 @@
 
 // Opacity
 =ctb-opacity($opacity)
-  opacity: $opacity / 100
-  filter: alpha(opacity = $opacity)
+  opacity: $opacity
+  filter: alpha(opacity = ($opacity * 100))
 
 // BACKGROUNDS
 // --------------------------------------------------

@@ -116,8 +116,8 @@
     @include ctb-border-radius(0);
     @include ctb-box-shadow(none);
   }
-  .nav-collapse .open > .dropdown-menu {
-    display: block;
+  .nav-collapse .open > .dropdown-menu { 
+    display: block; 
   }
 
   .nav-collapse .dropdown-menu:before,
