@@ -58,7 +58,7 @@
   &[disabled] {
     cursor: default;
     background-image: none;
-    @include ctb-opacity(65);
+    @include ctb-opacity(0.65);
     @include ctb-box-shadow(none);
   }
 

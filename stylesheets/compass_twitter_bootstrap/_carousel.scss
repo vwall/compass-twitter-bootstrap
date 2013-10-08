@@ -83,7 +83,7 @@
   background: $grayDarker;
   border: 3px solid $white;
   @include ctb-border-radius(23px);
-  @include ctb-opacity(50);
+  @include ctb-opacity(0.5);
 
   // we can't have this transition here
   // because webkit cancels the carousel
@@ -103,7 +103,7 @@
   &:focus {
     color: $white;
     text-decoration: none;
-    @include ctb-opacity(90);
+    @include ctb-opacity(0.9);
   }
 }
 
