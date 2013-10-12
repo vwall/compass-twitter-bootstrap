@@ -1,6 +1,6 @@
-# Twitter Bootstrap - For Compass
+# Bootstrap - For Compass
 
-Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
+Compass Twitter Bootstrap is the Bootstrap toolkit converted for Compass.
 
 Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
 
@@ -46,7 +46,7 @@ Demo App at https://github.com/vwall/Compass-Twitter-Bootstrap-Demo-App
 
     @import "compass_twitter_bootstrap"
 
-**Import twitter bootstrap responsive if you're looking for that**
+**Import Bootstrap responsive if you're looking for that**
 
     @import "compass_twitter_bootstrap_responsive"
 
@@ -95,7 +95,7 @@ To easily convert `.scss` files to `.sass` files you can use this little bash sc
 
 `$ for f in *.scss; do sass-convert -F scss -T sass $f ${f%%.*}.sass; done`
 
-To convert all twitter bootstrap .scss files to .sass (with overwrite):
+To convert all Bootstrap .scss files to .sass (with overwrite):
 
 `$ for f in stylesheets/compass_twitter_bootstrap/*.scss; do sass-convert -F scss -T sass $f stylesheets_sass/compass_twitter_bootstrap/${f%%.*}.sass; done`
 
@@ -105,10 +105,10 @@ Nice and easy :)
 
 ## Upgrading
 
-If you want to contribute and help out keeping this gem in sync with the latest release of Twitter Bootstrap, you should keep in mind that all mixins are prefixed with `ctb-`.
+If you want to contribute and help out keeping this gem in sync with the latest release of Bootstrap, you should keep in mind that all mixins are prefixed with `ctb-`.
 With this prefixed we can't run into problems where the converted less-mixins conflict with native Compass names, parameters, ...
 
-There is a Rake-task that will help you to fetch all recent changes from the Twitter Bootstrap master:
+There is a Rake-task that will help you to fetch all recent changes from the Bootstrap master:
 
 `rake convert`
 
@@ -128,9 +128,9 @@ When that is done
 @remark: if some Ruby-genius wants to automate this feel free
 
 
-## TWITTER BOOTSTRAP
+## BOOTSTRAP
 
-Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
+Bootstrap is a toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
 
 To get started -- checkout http://getbootstrap.com!
 
