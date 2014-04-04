@@ -1,3 +1,9 @@
+# HEADS UP:
+
+This gem is no longer being actively maintained.
+
+If you need Bootstrap 3 on Sass you should use this: https://github.com/twbs/bootstrap-sass
+
 # Twitter Bootstrap - For Compass
 
 Compass Twitter Bootstrap is Twitter's toolkit converted for Compass.
